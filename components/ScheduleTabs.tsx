@@ -135,7 +135,7 @@ const ScheduleTabs = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`font-sans font-medium text-xs md:text-sm md:text-base whitespace-nowrap pb-4 transition-all relative ${activeTab === tab
+            className={`font-sans cursor-pointer font-medium text-xs md:text-sm md:text-base whitespace-nowrap pb-4 transition-all relative ${activeTab === tab
               ? 'text-aprolac-green'
               : 'text-gray-500 hover:text-aprolac-text'
               }`}
