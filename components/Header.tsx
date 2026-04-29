@@ -1,106 +1,145 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Bloquear el scroll del body cuando el menú móvil está abierto
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [menuOpen]);
+
   const navLinks = [
     { name: 'Quiénes Somos', href: '#quienes-somos', icon: 'mdi:account-group-outline' },
+    { name: 'Expo', href: '#expo', icon: 'mdi:bullhorn-outline' },
     { name: 'Stands', href: '#stands', icon: 'mdi:storefront-outline' },
     { name: 'Actividades', href: '#actividades', icon: 'mdi:calendar-text-outline' },
     { name: 'FAQ', href: '#faq', icon: 'mdi:help-circle-outline' },
   ];
 
   return (
-    <header 
-      className="fixed top-0 w-full z-50 bg-white shadow-sm py-5"
-    >
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* IZQUIERDA — Logo */}
-        <a href="/" className="font-display font-bold text-xl tracking-[0.25em] text-aprolac-green">
-          APROLAC
-        </a>
-
-        {/* CENTRO — Nav links (desktop) */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a 
-                href={link.href}
-                className="group relative flex items-center gap-2 px-2 py-1 font-sans text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
-              >
-                <Icon
-                  icon={link.icon}
-                  className="w-5 h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
-                />
-                <span className="relative">
-                  {link.name}
-                  <span className="absolute -bottom-1.5 left-0 h-[2px] w-0 bg-aprolac-green transition-all duration-300 rounded-full group-hover:w-full"></span>
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* DERECHA — CTA + Hamburguesa mobile */}
-        <div className="flex items-center gap-4">
-          <a 
-            href="#contacto"
-            className="hidden md:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-6 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
-          >
-            <Icon icon="mdi:email-outline" className="w-5 h-5" />
-            Contacto
+    <>
+      <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-5">
+        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          {/* IZQUIERDA — Logo */}
+          <a href="#inicio" className="font-display font-bold text-xl tracking-[0.25em] text-aprolac-green relative z-[60]">
+            APROLAC
           </a>
-          <button 
-            className="md:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {/* Llamada corregida a los íconos de Iconify */}
-            {menuOpen ? (
-              <Icon icon="mdi:close" height="28" />
-            ) : (
-              <Icon icon="mdi:menu" height="28" className="text-aprolac-dark" />
-            )}
-          </button>
-        </div>
-      </nav>
 
-      {/* MOBILE MENU — dropdown */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-xl transition-all duration-300 overflow-hidden ${
-          menuOpen ? 'max-h-80 border-t border-gray-100' : 'max-h-0'
-        }`}
-      >
-        <ul className="flex flex-col p-6 gap-6">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a 
-                href={link.href}
-                className="group flex items-center gap-4 font-sans text-sm font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
-                onClick={() => setMenuOpen(false)}
-              >
-                <Icon
-                  icon={link.icon}
-                  className="w-6 h-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
-                />
-                {link.name}
-              </a>
-            </li>
-          ))}
-          <li className="pt-2">
-            <a 
+          {/* CENTRO — Nav links (desktop) */}
+          <ul className="hidden lg:flex items-center gap-6 lg:gap-8">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  className="group relative flex items-center gap-2 px-2 py-1 font-sans text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
+                >
+                  <Icon
+                    icon={link.icon}
+                    className="w-5 h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
+                  />
+                  <span className="relative">
+                    {link.name}
+                    <span className="absolute -bottom-1.5 left-0 h-[2px] w-0 bg-aprolac-green transition-all duration-300 rounded-full group-hover:w-full"></span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* DERECHA — CTA + Hamburguesa mobile */}
+          <div className="flex items-center gap-4">
+            <a
               href="#contacto"
-              className="flex items-center justify-center gap-2 w-full text-center bg-aprolac-green text-white rounded-lg py-3 font-semibold uppercase tracking-widest text-sm transition-colors hover:bg-[#0a5c3e]"
-              onClick={() => setMenuOpen(false)}
+              className="hidden lg:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-6 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
             >
               <Icon icon="mdi:email-outline" className="w-5 h-5" />
               Contacto
             </a>
-          </li>
-        </ul>
-      </div>
-    </header>
+            <button
+              className="lg:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[60]"
+              onClick={() => setMenuOpen(true)}
+            >
+              <Icon icon="mdi:menu" height="28" className="text-aprolac-dark" />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Sidebar Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setMenuOpen(false);
+              }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] cursor-pointer"
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[70] p-8 shadow-2xl flex flex-col border-l border-gray-100"
+            >
+              <div className="flex justify-end mb-12">
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="text-aprolac-text hover:text-aprolac-green transition-colors"
+                  aria-label="Cerrar menú"
+                >
+                  <Icon icon="mdi:close" className="w-8 h-8" />
+                </button>
+              </div>
+              <nav className="flex flex-col gap-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="group flex items-center gap-4 text-sm font-bold text-aprolac-text hover:text-aprolac-green tracking-widest uppercase transition-colors duration-300"
+                  >
+                    <Icon
+                      icon={link.icon}
+                      className="w-6 h-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
+                    />
+                    <span>{link.name}</span>
+                  </a>
+                ))}
+
+                <div className="pt-8 border-t border-gray-100">
+                  <a
+                    href="#contacto"
+                    className="flex items-center justify-center gap-2 w-full text-center bg-aprolac-green text-white rounded-lg py-3 font-semibold uppercase tracking-widest text-sm transition-colors hover:bg-[#0a5c3e]"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <Icon icon="mdi:email-outline" className="w-5 h-5" />
+                    Contacto
+                  </a>
+                </div>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

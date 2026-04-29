@@ -1,99 +1,54 @@
 'use client';
-import { useState, useEffect } from 'react';
-import ScrollFloat from './ScrollFloat';
 import { Icon } from "@iconify/react";
 
 const Hero = () => {
-  // Estado para la opacidad controlada nativamente
-  const [overlayOpacity, setOverlayOpacity] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Posición actual del scroll
-      const scrollY = window.scrollY;
-
-      // ¿A cuántos píxeles de scroll queremos que llegue al negro máximo?
-      // window.innerHeight * 0.8 significa que al scrollear el 80% de una pantalla, ya estará en negro casi total.
-      const targetScroll = window.innerHeight * 0.60;
-
-      // Calculamos la proporción (de 0 a 1)
-      let currentOpacity = scrollY / targetScroll;
-
-      // Topamos el máximo en 0.98 para que nunca pase de ahí
-      if (currentOpacity > 0.98) currentOpacity = 0.96;
-
-      setOverlayOpacity(currentOpacity);
-    };
-
-    // Escuchamos el scroll
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Ejecutamos una vez al montar por si el usuario recarga a mitad de la página
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section className="relative w-full h-[200vh]">
-      {/* Fondo de Video (Sticky) */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden z-0">
-        <video
-          src="/video Hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+    <section id="inicio" className="relative w-full h-screen overflow-hidden">
+      {/* Fondo de Video */}
+      <video
+        src="/hero-video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
 
-        {/* Overlay Oscuro con opacidad inyectada directamente */}
-        <div
-          style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-black z-10"
-        />
-      </div>
+      {/* Overlay Oscuro Fijo */}
+      <div
+        className="absolute inset-0 bg-black z-10"
+        style={{ opacity: 0.7 }}
+      />
 
-      {/* Capa de Texto (Flujo Normal para GSAP) */}
-      <div className="absolute top-[100vh] left-0 w-full flex flex-col items-center justify-center z-20 px-6">
+      {/* Capa de Texto Fija en el Centro */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6 pt-16">
         <div className="flex flex-col items-center text-center">
-          <ScrollFloat
-            scrollStart="top bottom"
-            scrollEnd="center center"
-            textClassName="font-lexend font-extrabold text-5xl md:text-8xl text-white uppercase tracking-tight"
-            containerClassName="mb-0"
-          >
-            EL RENACIMIENTO
-          </ScrollFloat>
-
-          <ScrollFloat
-            scrollStart="top bottom"
-            scrollEnd="center center"
-            textClassName="font-lexend font-extrabold text-5xl md:text-8xl text-aprolac-green uppercase tracking-tight"
-            containerClassName="mt-[-0.3rem] md:mt-[-0.5rem]"
-          >
-            DE UNA INDUSTRIA
-          </ScrollFloat>
+          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight">
+            <span className="text-white">EL RENACIMIENTO</span>
+            <br />
+            <span className="text-aprolac-green mt-[-0.2rem] lg:mt-[-0.5rem] block">DE UNA INDUSTRIA</span>
+          </h1>
 
           {/* Subtítulo y Botones */}
-          <div className="mt-8 flex flex-col items-center max-w-2xl">
-            <p className="font-sans text-gray-300 text-lg md:text-xl leading-relaxed">
+          <div className="mt-6 lg:mt-8 flex flex-col items-center max-w-2xl">
+            <p className="font-sans text-gray-300 text-base lg:text-xl leading-relaxed">
               Expo Agro Negocios Lácteos Venezuela 2026. Liderando el futuro del sector
               a través del desarrollo sostenible y la tecnología corporativa.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-10 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10 w-full sm:w-auto px-4 sm:px-0">
               <a
                 href="#contacto"
-                className="bg-aprolac-green text-white rounded-lg px-10 py-4 font-bold text-lg hover:bg-[#0a5c3e] transition-all transform hover:scale-105 shadow-lg shadow-aprolac-green/20 text-center"
+                className="flex items-center justify-center gap-3 bg-aprolac-green text-white rounded-xl px-6 py-3 lg:px-10 lg:py-4 font-bold text-base lg:text-lg hover:bg-[#0a5c3e] transition-all transform hover:scale-105 shadow-lg shadow-aprolac-green/20"
               >
+                <Icon icon="mdi:account-tie" height="24" />
                 Contactar Asesor
               </a>
               <a
                 href="https://wa.me/+58424000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 border-2 border-white text-white rounded-lg px-8 py-4 font-bold text-lg hover:bg-white hover:text-aprolac-dark transition-all transform hover:scale-105"
+                className="flex items-center justify-center gap-3 border-2 border-white text-white rounded-xl px-6 py-3 lg:px-8 lg:py-4 font-bold text-base lg:text-lg hover:bg-white hover:text-aprolac-dark transition-all transform hover:scale-105"
               >
                 <Icon icon="mdi:whatsapp" height="24" />
                 WhatsApp Oficial

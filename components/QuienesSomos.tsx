@@ -59,8 +59,9 @@ const QuienesSomos = () => {
             <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/imagen1.jpeg"
-                alt="Maquinaria Agroindustrial APROLAC"
+                alt="Maquinaria Agroindustrial APROLAC – Procesamiento lácteo de alta tecnología"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 priority
               />
