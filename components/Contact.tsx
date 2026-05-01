@@ -40,7 +40,9 @@ const Contact = () => {
             className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
           >
             <form className="space-y-6 flex-grow" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              {/* Contenedor Grid para Nombre y Empresa (Alineados en desktop) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                 {/* Nombre */}
                 <div className="space-y-2">
                   <label htmlFor="nombre" className="font-sans text-sm font-bold text-aprolac-dark uppercase tracking-wider">
@@ -59,9 +61,10 @@ const Contact = () => {
                     />
                   </div>
                 </div>
+
                 {/* Empresa */}
                 <div className="space-y-2">
-                  <label htmlFor="empresa" className="font-sans text-sm font-bold text-aprolac-dark uppercase tracking-wider flex items-center gap-2">
+                  <label htmlFor="empresa" className="font-sans mb-1 text-sm font-bold text-aprolac-dark uppercase tracking-wider flex items-center gap-2">
                     Empresa / Org.
                   </label>
                   <div className="relative">
@@ -72,11 +75,14 @@ const Contact = () => {
                       id="empresa"
                       name="empresa"
                       type="text"
-                      placeholder="Nombre de tu empresa"
+                      placeholder="Empresa"
                       className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                     />
                   </div>
-                  <span className="text-[10px] text-gray-400 font-normal normal-case">(Opcional si no formas parte de una)</span>
+                  {/* Este texto lo mantengo, pero alinea bien con el grid */}
+                  <div className="">
+                    <span className="text-[10px] text-gray-400 font-normal normal-case">(Opcional)</span>
+                  </div>
                 </div>
               </div>
 
@@ -189,18 +195,21 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative w-full h-full z-10 flex flex-col lg:block"
           >
-            {/* Contenedor del Mapa */}
+            {/* Contenedor del Mapa - Apuntando a Eurobuilding Puerto Ordaz */}
             <div className="relative w-full h-[350px] md:h-[450px] lg:h-full rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <iframe
-                title="Ubicación del evento Expo Agro Negocios Lácteos 2026 - Pariaguán, Anzoátegui"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31481.5658145828!2d-64.183333!3d8.933333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8dc1f586940d90d7%3A0x6b77209736e67a5b!2sPariagu%C3%A1n%206050%2C%20Anzo%C3%A1tegui!5e0!3m2!1ses!2s!4v1715000000000!5m2!1ses!2s"
+                title="Ubicación del evento Expo Agro Negocios Lácteos 2026 - Eurobuilding Hotel & Suites Guayana, Puerto Ordaz"
+                
+               
+                src="https://maps.google.com/maps?q=Eurobuilding%20Hotel%20%26%20Suites%20Guayana,%20Puerto%20Ordaz&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                className="absolute inset-0 w-full h-full contrast-125  transition-all duration-700"
               />
             </div>
 
@@ -213,7 +222,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-display font-bold text-aprolac-dark text-sm">Sede del Evento</p>
-                    <p className="font-sans text-aprolac-text text-xs leading-relaxed">Pariaguán, Estado Anzoátegui, Venezuela</p>
+                    <p className="font-sans text-aprolac-text text-xs leading-relaxed">Eurobuilding Hotel & Suites Guayana, Puerto Ordaz</p>
                   </div>
                 </div>
 

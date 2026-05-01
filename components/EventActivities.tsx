@@ -30,7 +30,7 @@ const activities = [
 
 const EventActivities = () => {
   return (
-    <section id="actividades" className="bg-aprolac-cream py-24 md:py-32">
+    <section id="actividades" className="bg-aprolac-cream py-5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Título de Sección */}
         <div className="mb-12">

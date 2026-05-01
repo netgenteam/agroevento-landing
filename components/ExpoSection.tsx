@@ -286,7 +286,6 @@ const ExpoSection = () => {
           </div>
         </motion.div>
 
-        {/* Mapa de Distribución */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -303,22 +302,42 @@ const ExpoSection = () => {
                 Distribución estratégica de pabellones, zonas de networking y stands comerciales.
               </p>
             </div>
-            <button className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm">
+            
+            {/* CORRECCIÓN 1: El botón ahora es un enlace de descarga real */}
+            <a 
+              href="/plano-expo.pdf" // Ruta al archivo PDF en tu carpeta public
+              download="Plano_Expo_Agro_Lacteos_2026.pdf" // Nombre con el que se guardará el archivo
+              className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm focus:outline-none "
+            >
               <Icon icon="mdi:download" className="w-5 h-5" />
               Descargar Plano PDF
-            </button>
+            </a>
           </div>
 
-          {/* Imagen del Mapa Blueprint */}
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white">
-            <div className="absolute inset-0 bg-gray-100 animate-pulse -z-10" />
+          {/* Imagen del Mapa Blueprint (Preview Visual) */}
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white bg-gray-100 group">
+            <div className="absolute inset-0 bg-gray-200 animate-pulse -z-10" />
             <Image
-              src="/expo-map.png"
-              alt="Plano de distribución de la Expo Agro Negocios Lácteos 2026 – Pabellones, stands y zonas de networking"
+              src="/expo-map2.png"
+              alt="Plano de distribución de la Expo Agro Negocios Lácteos 2026"
               fill
               sizes="(max-width: 768px) 100vw, 90vw"
-              className="object-cover object-center hover:scale-105 transition-transform duration-1000"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+              priority // <-- ¡AGREGA ESTA LÍNEA! Esto resuelve el LCP warning
             />
+            
+            {/* Capa superpuesta opcional para indicar que se puede hacer clic/ampliar */}
+            <a 
+              href="/plano-expo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+            >
+               <span className="bg-white text-aprolac-dark px-4 py-2 rounded-lg shadow-lg font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  <Icon icon="mdi:eye" className="w-5 h-5" />
+                  Ver PDF Completo
+               </span>
+            </a>
           </div>
         </motion.div>
 

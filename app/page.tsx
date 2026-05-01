@@ -8,10 +8,11 @@ import EventActivities from '@/components/EventActivities';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import FloatingButton from '@/components/FloatingButton'; // <-- Importamos el botón
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-aprolac-cream">
+    <div className="min-h-screen flex flex-col bg-aprolac-cream relative">
       <Header />
       
       <main className="flex-grow">
@@ -29,6 +30,9 @@ export default function Home() {
       </main>
       
       <Footer />
+
+      {/* Botón Flotante agregado aquí, fuera del flujo normal para que sobreponga todo */}
+      <FloatingButton />
     </div>
   );
 }
