@@ -37,7 +37,7 @@ const Contact = () => {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
+            className="bg-white rounded-3xl shadow-xl p-4 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
           >
             <form className="space-y-6 flex-grow" onSubmit={(e) => e.preventDefault()}>
               
@@ -57,7 +57,7 @@ const Contact = () => {
                       name="nombre"
                       type="text"
                       placeholder="Ej. Juan Pérez"
-                      className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
+                      className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                     />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ const Contact = () => {
                       name="empresa"
                       type="text"
                       placeholder="Empresa"
-                      className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
+                      className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                     />
                   </div>
                   {/* Este texto lo mantengo, pero alinea bien con el grid */}
@@ -100,7 +100,7 @@ const Contact = () => {
                     name="email"
                     type="email"
                     placeholder="email@empresa.com"
-                    className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
+                    className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                   />
                 </div>
               </div>
@@ -117,7 +117,7 @@ const Contact = () => {
                   <button
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans text-left relative z-0"
+                    className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans text-left relative z-0"
                   >
                     <span className={selectedReason ? 'text-aprolac-dark' : 'text-gray-400'}>
                       {selectedReason || 'Seleccione un motivo'}
@@ -145,7 +145,7 @@ const Contact = () => {
                                 setSelectedReason(reason);
                                 setIsDropdownOpen(false);
                               }}
-                              className="w-full text-left px-4 py-3 font-sans text-sm md:text-base text-aprolac-dark hover:bg-aprolac-cream hover:text-aprolac-green transition-colors"
+                              className="w-full text-left px-2 py-3 font-sans text-sm md:text-base text-aprolac-dark hover:bg-aprolac-cream hover:text-aprolac-green transition-colors"
                             >
                               {reason}
                             </button>
@@ -171,7 +171,7 @@ const Contact = () => {
                     name="mensaje"
                     rows={4}
                     placeholder="¿En qué podemos ayudarte?"
-                    className="bg-aprolac-cream/50 border border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans resize-none"
+                    className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans resize-none"
                   />
                 </div>
               </div>
