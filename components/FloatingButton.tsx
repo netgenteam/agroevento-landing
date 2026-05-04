@@ -88,11 +88,11 @@ export default function FloatingButton() {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
       
       {/* Menú desplegable */}
       <motion.div
-        className="flex flex-col items-end gap-3 mb-4"
+        className={`flex flex-col items-end gap-3 mb-4 ${isOpen ? 'pointer-events-auto' : ''}`}
         variants={menuVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
@@ -126,7 +126,7 @@ export default function FloatingButton() {
       {/* Botón Principal (Toggle) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-[#0F4A32] cursor-pointer rounded-full shadow-2xl flex items-center justify-center hover:scale-105 hover:bg-[#156042] transition-all duration-300 z-50 focus:outline-none"
+        className="w-16 h-16 bg-[#0F4A32] cursor-pointer rounded-full shadow-2xl flex items-center justify-center hover:scale-105 hover:bg-[#156042] transition-all duration-300 z-50 focus:outline-none pointer-events-auto"
         aria-label="Abrir menú de contacto"
       >
         <motion.div

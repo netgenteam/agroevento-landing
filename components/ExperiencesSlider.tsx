@@ -116,7 +116,7 @@ export default function ExperiencesSlider() {
       </div>
 
       {/* Contenedor Principal de la Imagen (Animado) */}
-      <div className="relative w-full aspect-[16/10] md:aspect-[21/9] rounded-3xl overflow-hidden bg-gray-900 shadow-xl">
+      <div className="relative w-full aspect-[4/5] md:aspect-[21/9] rounded-3xl overflow-hidden bg-gray-900 shadow-xl">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
