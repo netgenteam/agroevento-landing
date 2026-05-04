@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* ── Permitir Orígenes de Desarrollo (Túneles como ngrok) ── */
+  allowedDevOrigins: ["humbly-thankful-warthog.ngrok-free.app"],
+
   /* ── Optimización de Imágenes ── */
   images: {
     formats: ["image/avif", "image/webp"],

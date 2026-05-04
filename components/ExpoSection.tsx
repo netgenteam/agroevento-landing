@@ -6,6 +6,7 @@ import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
 
+
 const stats = [
   { id: 1, label: 'Asistentes Proyectados', value: 5000, suffix: '+', icon: 'mdi:account-group-outline' },
   { id: 2, label: 'Empresas y Marcas', value: 120, suffix: '+', icon: 'mdi:domain' },
@@ -245,19 +246,23 @@ const ExpoSection = () => {
           ))}
         </div>
 
-        {/* Video Promocional del Evento */}
+       {/* Video Promocional del Evento */}
+       {/* Video Promocional del Evento */}
+       {/* Video Promocional del Evento */}
         <motion.div
           ref={videoContainerRef}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          onClick={() => setIsVideoModalOpen(true)}
-          className="mb-20 relative w-full aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group cursor-pointer"
+          // El clic principal de la tarjeta
+          onClick={() => setIsVideoModalOpen(true)} 
+          className="mb-20 relative w-full aspect-[4/3] sm:aspect-video rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group cursor-pointer block"
         >
-          {/* Overlay Gradiente Oscuro */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 pointer-events-none" />
+          {/* Capa 1: Gradiente Oscuro (pointer-events-none global) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10 pointer-events-none" />
 
+          {/* Capa 2: Video de fondo (Reacciona al hover del grupo padre) */}
           <video
             src="/video-evento.mp4"
             autoPlay
@@ -267,25 +272,44 @@ const ExpoSection = () => {
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 z-0"
           />
 
-          {/* Contenido Flotante sobre el video */}
-          <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 right-8 z-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-            <div>
-              <span className="inline-flex items-center gap-2 bg-aprolac-green/90 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 shadow-lg border border-aprolac-green/50">
-                <Icon icon="mdi:eye" className="w-4 h-4" />
-                Experiencia APROLAC
-              </span>
-              <h3 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-md leading-tight max-w-2xl">
-                Visualiza el futuro de la agroindustria láctea
-              </h3>
-            </div>
-
-            {/* Decoración Visual (Play Icon estético) */}
-            <div className="flex flex-shrink-0 w-14 h-14 md:w-20 md:h-20 bg-aprolac-green/80 backdrop-blur-md rounded-full border-2 border-white/50 items-center justify-center text-white group-hover:bg-aprolac-green group-hover:scale-110 transition-all duration-500 shadow-[0_0_40px_rgba(40,167,69,0.4)]">
-              <Icon icon="mdi:play" className="w-8 h-8 md:w-10 md:h-10" />
-            </div>
+          {/* Capa 3: Textos (Independientes, en la esquina inferior izquierda) */}
+          {/* Se usa pr-[100px] para asegurar que el texto nunca choque visualmente con el botón derecho */}
+          <div className="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 z-20 pointer-events-none pr-[80px] sm:pr-[100px] md:pr-[120px]">
+            <span className="inline-flex items-center gap-2 bg-aprolac-green/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 sm:mb-4 shadow-lg border border-aprolac-green/50">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Experiencia APROLAC
+            </span>
+            <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-lg leading-tight max-w-2xl">
+              Visualiza el futuro de la agroindustria láctea
+            </h3>
           </div>
-        </motion.div>
 
+          {/* Capa 4: Botón (Totalmente independiente, en la esquina inferior derecha) */}
+          {/* Al no estar dentro de un contenedor con pointer-events-none, el CSS fluye natural */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsVideoModalOpen(true);
+            }}
+            className="absolute bottom-5 right-5 cursor-pointer sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 z-30 w-16 h-16 sm:w-20 sm:h-20 bg-aprolac-green/80 backdrop-blur-md rounded-full border-2 border-white/50 flex items-center justify-center text-white hover:bg-aprolac-green hover:border-white hover:scale-110 transition-all duration-300 shadow-[0_0_30px_rgba(40,167,69,0.5)] focus:outline-none"
+          >
+            <Icon 
+             onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsVideoModalOpen(true);
+            }}
+              icon="mdi:play" 
+              className="w-8 h-8 sm:w-12 sm:h-12 ml-1 pointer-events-none" 
+            />
+          </button>
+
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

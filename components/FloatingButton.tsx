@@ -28,7 +28,7 @@ export default function FloatingButton() {
   const actions = [
     {
       id: "pdf",
-      label: "Descargar Brochure",
+      label: "Descargar Plano",
       color: "bg-[#E23F44]", // Rojo PDF
       href: "/ruta-a-tu-archivo.pdf", 
       download: true,
