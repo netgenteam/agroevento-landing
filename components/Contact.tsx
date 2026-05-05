@@ -3,10 +3,77 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
+import Toast, { ToastType } from './Toast';
 
 const Contact = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedReason, setSelectedReason] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [toastConfig, setToastConfig] = useState<{
+    isVisible: boolean;
+    message: string;
+    type: ToastType;
+  }>({
+    isVisible: false,
+    message: '',
+    type: 'info'
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      nombre: formData.get('nombre') as string,
+      empresa: formData.get('empresa') as string,
+      email: formData.get('email') as string,
+      motivo: selectedReason,
+      mensaje: formData.get('mensaje') as string,
+    };
+
+    if (!data.motivo) {
+      setToastConfig({
+        isVisible: true,
+        message: 'Por favor seleccione un motivo de contacto.',
+        type: 'warning'
+      });
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setToastConfig({
+          isVisible: true,
+          message: '¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.',
+          type: 'info'
+        });
+        (e.target as HTMLFormElement).reset();
+        setSelectedReason('');
+      } else {
+        setToastConfig({
+          isVisible: true,
+          message: 'Hubo un error al enviar el mensaje. Por favor intente nuevamente.',
+          type: 'error'
+        });
+      }
+    } catch (error) {
+      setToastConfig({
+        isVisible: true,
+        message: 'Hubo un error al enviar el mensaje. Por favor intente nuevamente.',
+        type: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const reasons = [
     "Adquisición de Stand",
@@ -17,6 +84,12 @@ const Contact = () => {
 
   return (
     <section id="contacto" className="bg-aprolac-cream py-24 relative overflow-hidden">
+      <Toast 
+        message={toastConfig.message}
+        type={toastConfig.type}
+        isVisible={toastConfig.isVisible}
+        onClose={() => setToastConfig({ ...toastConfig, isVisible: false })}
+      />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Cabecera de Sección */}
         <div className="mb-12">
@@ -39,7 +112,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl shadow-xl p-4 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
           >
-            <form className="space-y-6 flex-grow" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6 flex-grow" onSubmit={handleSubmit}>
               
               {/* Contenedor Grid para Nombre y Empresa (Alineados en desktop) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -179,10 +252,15 @@ const Contact = () => {
               {/* Botón */}
               <button
                 type="submit"
-                className="w-full cursor-pointer flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5"
+                disabled={isLoading}
+                className="w-full cursor-pointer flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <Icon icon="mdi:send" className="w-5 h-5" />
-                Enviar Solicitud
+                {isLoading ? (
+                  <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />
+                ) : (
+                  <Icon icon="mdi:send" className="w-5 h-5" />
+                )}
+                {isLoading ? "Enviando..." : "Enviar Solicitud"}
               </button>
             </form>
           </motion.div>
