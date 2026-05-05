@@ -179,7 +179,7 @@ const Contact = () => {
               {/* Botón */}
               <button
                 type="submit"
-                className="w-full flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5"
+                className="w-full cursor-pointer flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5"
               >
                 <Icon icon="mdi:send" className="w-5 h-5" />
                 Enviar Solicitud

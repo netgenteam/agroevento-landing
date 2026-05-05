@@ -37,7 +37,7 @@ const toastStyles = {
   },
 };
 
-export default function Toast({ message, type, isVisible, onClose, duration = 4000 }: ToastProps) {
+export default function Toast({ message, type, isVisible, onClose, duration = 3000 }: ToastProps) {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {

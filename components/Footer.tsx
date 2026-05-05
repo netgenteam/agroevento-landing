@@ -87,8 +87,8 @@ const Footer = () => {
         <p>
           Diseñado y desarrollado con tecnología corporativa por{' '}
           <a
-            href="mailto:netgenteam@gmail.com"
-            className="font-bold hover:text-white transition-colors"
+            href="https://netgenteam.com/"
+            className="font-bold hover:text-white cursor-pointer transition-colors"
           >
             NetGen
           </a>.

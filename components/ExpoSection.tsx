@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
@@ -41,7 +40,7 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
 /* ── Modal de Video con detección de orientación ── */
 const VideoModal = ({ onClose }: { onClose: () => void }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  // Controlar reproducción al abrir
+
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
@@ -49,7 +48,6 @@ const VideoModal = ({ onClose }: { onClose: () => void }) => {
     }
   }, []);
 
-  // Bloquear scroll del body cuando el modal está abierto
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -65,7 +63,6 @@ const VideoModal = ({ onClose }: { onClose: () => void }) => {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 md:p-10"
       onClick={onClose}
     >
-      {/* Botón Cerrar */}
       <button
         className="absolute top-6 right-6 z-50 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 backdrop-blur-sm transition-all cursor-pointer"
         onClick={onClose}
@@ -89,7 +86,6 @@ const VideoModal = ({ onClose }: { onClose: () => void }) => {
           className="w-full h-full object-contain rounded-2xl"
         />
 
-        {/* Recomendación: Gira tu dispositivo (Visible via CSS solo en Mobile Portrait) */}
         <div className="absolute -bottom-14 md:hidden left-0 right-0 z-10 portrait:flex landscape:hidden justify-center pointer-events-none">
           <div className="bg-black/70 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2 shadow-lg animate-pulse">
             <Icon icon="mdi:phone-rotate-landscape" className="w-5 h-5 text-aprolac-green" />
@@ -110,11 +106,11 @@ const ExpoSection = () => {
 
   const handleCloseVideoModal = () => {
     setIsVideoModalOpen(false);
-    // Restaurar scroll al contenedor del video tras el cierre
     setTimeout(() => {
       videoContainerRef.current?.scrollIntoView({ behavior: 'instant', block: 'center' });
     }, 50);
   };
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -132,9 +128,13 @@ const ExpoSection = () => {
     setToast({ isVisible: true, message, type });
   };
 
+  // ✅ FIX: useCallback para referencia estable — evita que el timer del Toast se reinicie en cada render
+  const handleCloseToast = useCallback(() => {
+    setToast(prev => ({ ...prev, isVisible: false }));
+  }, []);
+
   useEffect(() => {
     setIsMounted(true);
-    // Fecha objetivo: 15 de Mayo de 2026, 08:00 AM
     const targetDate = new Date('2026-05-15T08:00:00').getTime();
 
     const updateTimer = () => {
@@ -224,14 +224,12 @@ const ExpoSection = () => {
         </div>
 
         {/* Video Promocional del Evento */}
-        {/* Video Promocional del Evento */}
         <motion.div
           ref={videoContainerRef}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          // 1. QUITAMOS el onClick de aquí
           className="relative w-full aspect-[4/3] sm:aspect-video rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group"
         >
           {/* Capa 1: Gradiente Oscuro */}
@@ -261,7 +259,7 @@ const ExpoSection = () => {
             </h3>
           </div>
 
-          {/* Capa 4: Botón Play — Ahora es un botón REAL e interactivo */}
+          {/* Capa 4: Botón Play */}
           <button
             onClick={() => setIsVideoModalOpen(true)}
             aria-label="Reproducir video"
@@ -272,8 +270,7 @@ const ExpoSection = () => {
             </svg>
           </button>
 
-          {/* 🔥 CAPA 5 (NUEVA): Hitbox Transparente NATIVA para Móviles 🔥 */}
-          {/* 2. AGREGAMOS este botón invisible por encima de todo (z-40) para capturar el tap */}
+          {/* Capa 5: Hitbox Transparente para Móviles */}
           <button
             type="button"
             className="absolute inset-0 w-full h-full z-40 cursor-pointer bg-transparent appearance-none focus:outline-none [-webkit-tap-highlight-color:transparent]"
@@ -282,7 +279,7 @@ const ExpoSection = () => {
           />
         </motion.div>
 
-        {/* Recomendación de orientación — FUERA del contenedor del video, debajo */}
+        {/* Recomendación de orientación */}
         <div className="mb-20 md:hidden portrait:flex landscape:hidden justify-center mt-3 pointer-events-none">
           <div className="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
             <Icon icon="mdi:phone-rotate-landscape" className="w-4 h-4 text-aprolac-green flex-shrink-0" />
@@ -292,9 +289,10 @@ const ExpoSection = () => {
           </div>
         </div>
 
-        {/* Espaciado antes del mapa cuando no se muestra el mensaje */}
         <div className="mb-20 md:hidden portrait:hidden landscape:flex" />
         <div className="mb-20 hidden md:block" />
+
+        {/* Plano de Exhibición */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -312,19 +310,17 @@ const ExpoSection = () => {
               </p>
             </div>
 
-            {/* CORRECCIÓN 1: El botón ahora es un enlace de descarga real */}
             <a
-              href="/plano-expo.pdf" // Ruta al archivo PDF en tu carpeta public
-              download="Plano_Expo_Agro_Lacteos_2026.pdf" // Nombre con el que se guardará el archivo
+              href="/plano-expo.pdf"
+              download="Plano_Expo_Agro_Lacteos_2026.pdf"
               onClick={() => showToast('¡Descarga iniciada! El plano se guardará en tu dispositivo.')}
-              className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm focus:outline-none "
+              className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm focus:outline-none"
             >
               <Icon icon="mdi:download" className="w-5 h-5" />
               Descargar Plano PDF
             </a>
           </div>
 
-          {/* Imagen del Mapa Blueprint (Preview Visual) */}
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white bg-gray-100 group">
             <div className="absolute inset-0 bg-gray-200 animate-pulse -z-10" />
             <Image
@@ -333,10 +329,9 @@ const ExpoSection = () => {
               fill
               sizes="(max-width: 768px) 100vw, 90vw"
               className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
-              priority // <-- ¡AGREGA ESTA LÍNEA! Esto resuelve el LCP warning
+              priority
             />
 
-            {/* Capa superpuesta opcional para indicar que se puede hacer clic/ampliar */}
             <a
               href="/plano-expo.pdf"
               target="_blank"
@@ -352,18 +347,19 @@ const ExpoSection = () => {
           </div>
         </motion.div>
 
-        {/* Video Modal con Backdrop Blur */}
+        {/* Video Modal */}
         <AnimatePresence>
           {isVideoModalOpen && (
             <VideoModal onClose={handleCloseVideoModal} />
           )}
         </AnimatePresence>
 
-        <Toast 
+        {/* ✅ FIX: onClose usa handleCloseToast con useCallback para referencia estable */}
+        <Toast
           isVisible={toast.isVisible}
           message={toast.message}
           type={toast.type}
-          onClose={() => setToast({ ...toast, isVisible: false })}
+          onClose={handleCloseToast}
         />
 
       </div>
