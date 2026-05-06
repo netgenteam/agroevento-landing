@@ -20,7 +20,7 @@ const featuresData: Feature[] = [
     title: "Sostenibilidad",
     description:
       "Prácticas agrícolas que regeneran la tierra, asegurando que los recursos naturales se preserven para las generaciones venideras, manteniendo un equilibrio ecológico vital.",
-    imageUrl: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=800&auto=format&fit=crop", 
+    imageUrl: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "innovacion",
@@ -28,7 +28,7 @@ const featuresData: Feature[] = [
     title: "Innovación Agro-Tech",
     description:
       "Integración de sistemas avanzados de monitoreo y logística para optimizar el rendimiento lechero, garantizando eficiencia y trazabilidad desde el campo hasta la industria.",
-    imageUrl: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?q=80&w=800&auto=format&fit=crop", 
+    imageUrl: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "comunidad",
@@ -36,7 +36,7 @@ const featuresData: Feature[] = [
     title: "Desarrollo Comunitario",
     description:
       "Empoderamiento de las economías locales a través de alianzas justas con productores, fomentando el crecimiento económico y fortaleciendo el tejido social rural.",
-    imageUrl: "https://images.unsplash.com/photo-1595841696650-6f03d6e5a6a4?q=80&w=800&auto=format&fit=crop", 
+    imageUrl: "/asian-woman.jpeg",
   },
 ];
 
@@ -46,7 +46,7 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
       delayChildren: 0.3,
     },
   },
@@ -57,7 +57,7 @@ const cardVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }, 
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
   },
 };
 
@@ -74,7 +74,7 @@ export default function CommitmentSection() {
   return (
     <section id="compromiso" className="relative w-full bg-[#f8fbf9] py-20 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Cabecera de la sección */}
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16 lg:mb-24"

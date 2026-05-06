@@ -175,15 +175,16 @@ export default function Stands() {
 
               {/* Botón */}
               <div className="px-6 sm:px-8 mt-auto pt-4">
-                <button
-                  className={`w-full py-3 px-6 rounded-full font-semibold text-sm transition-all duration-300 ${
+                <a
+                  href="#contacto"
+                  className={`w-full py-3 px-6 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center ${
                     plan.isVip
                       ? "bg-[#7B1938] text-white hover:bg-[#5f132b] hover:shadow-lg"
                       : "bg-transparent text-[#0F4A32] border border-[#0F4A32] hover:bg-[#0F4A32] hover:text-white"
                   }`}
                 >
                   {plan.buttonText}
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}

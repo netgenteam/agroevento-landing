@@ -84,7 +84,7 @@ const Contact = () => {
 
   return (
     <section id="contacto" className="bg-aprolac-cream py-24 relative overflow-hidden">
-      <Toast 
+      <Toast
         message={toastConfig.message}
         type={toastConfig.type}
         isVisible={toastConfig.isVisible}
@@ -113,7 +113,7 @@ const Contact = () => {
             className="bg-white rounded-3xl shadow-xl p-4 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
           >
             <form className="space-y-6 flex-grow" onSubmit={handleSubmit}>
-              
+
               {/* Contenedor Grid para Nombre y Empresa (Alineados en desktop) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                 {/* Nombre */}
@@ -218,7 +218,7 @@ const Contact = () => {
                                 setSelectedReason(reason);
                                 setIsDropdownOpen(false);
                               }}
-                              className="w-full text-left px-2 py-3 font-sans text-sm md:text-base text-aprolac-dark hover:bg-aprolac-cream hover:text-aprolac-green transition-colors"
+                              className="w-full text-left px-4 py-3 font-sans text-sm md:text-base text-aprolac-dark hover:bg-aprolac-cream hover:text-aprolac-green transition-colors"
                             >
                               {reason}
                             </button>
@@ -277,10 +277,10 @@ const Contact = () => {
             <div className="relative w-full h-[350px] md:h-[450px] lg:h-full rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <iframe
                 title="Ubicación del evento Expo Agro Negocios Lácteos 2026 - Eurobuilding Hotel & Suites Guayana, Puerto Ordaz"
-                
-               
+
+
                 src="https://maps.google.com/maps?q=Eurobuilding%20Hotel%20%26%20Suites%20Guayana,%20Puerto%20Ordaz&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                
+
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
