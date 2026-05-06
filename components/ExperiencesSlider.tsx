@@ -23,7 +23,7 @@ const slides: SlideData[] = [
     id: 2,
     title: "Exhibición de Innovación",
     description: "Las últimas tecnologías aplicadas a la industria láctea presentadas en tiempo real.",
-    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop", 
+    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop",
   },
   {
     id: 3,
@@ -54,13 +54,13 @@ const slideVariants: Variants = {
 // Íconos SVG reutilizables
 const ChevronLeft = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m15 18-6-6 6-6"/>
+    <path d="m15 18-6-6 6-6" />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m9 18 6-6-6-6"/>
+    <path d="m9 18 6-6-6-6" />
   </svg>
 );
 
@@ -84,7 +84,7 @@ export default function ExperiencesSlider() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      
+
       {/* Cabecera del Slider: Textos a la izquierda, Controles a la derecha */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
         <div className="max-w-2xl">
@@ -95,19 +95,19 @@ export default function ExperiencesSlider() {
             Descubra el nivel de excelencia y las oportunidades de negocio forjadas en nuestros eventos pasados.
           </p>
         </div>
-        
+
         {/* Controles de Navegación */}
         <div className="flex items-center gap-3">
-          <button 
+          <button
             onClick={() => paginate(-1)}
-            className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
+            className="w-12 h-12 rounded-full  cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
             aria-label="Anterior"
           >
             <ChevronLeft />
           </button>
-          <button 
+          <button
             onClick={() => paginate(1)}
-            className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
+            className="w-12 h-12 rounded-full cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
             aria-label="Siguiente"
           >
             <ChevronRight />
@@ -129,18 +129,18 @@ export default function ExperiencesSlider() {
             className="absolute inset-0 w-full h-full"
           >
             {/* Imagen de fondo */}
-            <img 
-              src={slides[currentIndex].imageUrl} 
+            <img
+              src={slides[currentIndex].imageUrl}
               alt={slides[currentIndex].title}
               className="w-full h-full object-cover"
             />
-            
+
             {/* Gradiente oscuro inferior para legibilidad del texto */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
             {/* Textos sobre la imagen */}
             <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full max-w-4xl">
-              <motion.h3 
+              <motion.h3
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
@@ -148,7 +148,7 @@ export default function ExperiencesSlider() {
               >
                 {slides[currentIndex].title}
               </motion.h3>
-              <motion.p 
+              <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
@@ -167,9 +167,8 @@ export default function ExperiencesSlider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              index === currentIndex ? "w-8 bg-[#0F4A32]" : "w-2 bg-gray-300 hover:bg-gray-400"
-            }`}
+            className={`h-2 rounded-full transition-all duration-500 ${index === currentIndex ? "w-8 bg-[#0F4A32]" : "w-2 bg-gray-300 hover:bg-gray-400"
+              }`}
             aria-label={`Ir a diapositiva ${index + 1}`}
           />
         ))}

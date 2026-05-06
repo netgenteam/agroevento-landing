@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -84,12 +85,20 @@ const Footer = () => {
         <p>
           © 2026 APROLAC. Todos los derechos reservados.
         </p>
-        <p>
-          Diseñado y desarrollado con tecnología corporativa por{' '}
+        <p className="flex items-center gap-1">
+          Diseñado y desarrollado por{' '}
           <a
             href="https://netgenteam.com/"
-            className="font-bold hover:text-white cursor-pointer transition-colors"
+            className="inline-flex items-center gap-1 font-bold hover:text-white cursor-pointer transition-colors"
+            target="_blank"
           >
+            <Image
+              src="/image.png"
+              alt="NetGen Logo"
+              width={24}
+              height={24}
+              className="rounded-lg object-contain"
+            />
             NetGen
           </a>.
         </p>
