@@ -1,7 +1,12 @@
+'use client';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   return (
     <footer className="bg-aprolac-dark text-white pt-20 pb-8">
       {/* Grid Superior */}
@@ -24,27 +29,27 @@ const Footer = () => {
         <div>
           <p className="font-display text-lg mb-6 text-white font-semibold">Enlaces Rápidos</p>
           <div className="flex flex-col gap-3 font-sans text-gray-400 text-sm">
-            <a href="#inicio" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#inicio" : "/#inicio"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:home-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Inicio
             </a>
-            <a href="#quienes-somos" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#quienes-somos" : "/#quienes-somos"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:account-group-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Quiénes Somos
             </a>
-            <a href="#expo" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#expo" : "/#expo"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:bullhorn-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Expo
             </a>
-            <a href="#stands" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#stands" : "/#stands"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:storefront-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Stands
             </a>
-            <a href="#actividades" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#actividades" : "/#actividades"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:calendar-text-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Actividades
             </a>
-            <a href="#faq" className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#faq" : "/#faq"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:help-circle-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               FAQ
             </a>

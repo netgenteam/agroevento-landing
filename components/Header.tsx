@@ -2,9 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   // Bloquear el scroll del body cuando el menú móvil está abierto
   useEffect(() => {
@@ -32,7 +35,7 @@ const Header = () => {
       <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-5">
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* IZQUIERDA — Logo */}
-          <a href="#inicio" className="font-display font-bold text-xl tracking-[0.25em] text-aprolac-green relative z-[60]">
+          <a href={isHome ? '#inicio' : '/#inicio'} className="font-display font-bold text-xl tracking-[0.25em] text-aprolac-green relative z-[60]">
             APROLAC
           </a>
 
@@ -41,7 +44,7 @@ const Header = () => {
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
-                  href={link.href}
+                  href={isHome ? link.href : `/${link.href}`}
                   className="group relative flex items-center gap-2 px-2 py-1 font-sans text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
                 >
                   <Icon
@@ -60,7 +63,7 @@ const Header = () => {
           {/* DERECHA — CTA + Hamburguesa mobile */}
           <div className="flex items-center gap-4">
             <a
-              href="#contacto"
+              href={isHome ? '#contacto' : '/#contacto'}
               className="hidden lg:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-6 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
             >
               <Icon icon="mdi:email-outline" className="w-5 h-5" />
@@ -112,7 +115,7 @@ const Header = () => {
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
-                    href={link.href}
+                    href={isHome ? link.href : `/${link.href}`}
                     onClick={() => setMenuOpen(false)}
                     className="group flex items-center gap-4 text-sm font-bold text-aprolac-text hover:text-aprolac-green tracking-widest uppercase transition-colors duration-300"
                   >
@@ -126,7 +129,7 @@ const Header = () => {
 
                 <div className="pt-8 border-t border-gray-100">
                   <a
-                    href="#contacto"
+                    href={isHome ? '#contacto' : '/#contacto'}
                     className="flex items-center justify-center gap-2 w-full text-center bg-aprolac-green text-white rounded-lg py-3 font-semibold uppercase tracking-widest text-sm transition-colors hover:bg-[#0a5c3e]"
                     onClick={() => setMenuOpen(false)}
                   >

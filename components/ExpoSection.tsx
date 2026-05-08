@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import Link from 'next/link'; // <-- NUEVA IMPORTACIÓN
 import Toast, { ToastType } from './Toast';
 
 
@@ -344,6 +345,45 @@ const ExpoSection = () => {
                 Ver PDF Completo
               </span>
             </a>
+          </div>
+        </motion.div>
+        <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
+
+        {/* 🔥 NUEVO: BOTÓN AL PLANO INTERACTIVO 🔥 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="mt-10 bg-white rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl border border-gray-100 relative overflow-hidden"
+        >
+          
+          {/* Adorno de fondo */}
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-[0.03] pointer-events-none">
+            <Icon icon="mdi:texture-box" className="w-64 h-64 text-aprolac-dark" />
+          </div>
+
+          <div className="text-center md:text-left relative z-10">
+            <div className="inline-flex items-center gap-2 bg-aprolac-green/10 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-aprolac-green/20 text-aprolac-green">
+              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+              Stands Disponibles
+            </div>
+            <h3 className="font-display text-aprolac-dark font-bold text-2xl md:text-4xl lg:text-5xl mb-4 leading-tight">
+              ¿Listo para asegurar <br className="hidden md:block"/>tu espacio?
+            </h3>
+            <p className="font-sans text-aprolac-text max-w-xl text-sm md:text-base leading-relaxed">
+              Explora nuestro nuevo plano interactivo. Revisa la disponibilidad en tiempo real, elige la ubicación perfecta y arma tu cotización al instante de manera fácil y rápida.
+            </p>
+          </div>
+          
+          <div className="relative z-10 shrink-0">
+            <Link
+              href="/Map"
+              className="bg-aprolac-green text-sm  text-white border-2 border-transparent font-bold font-sans px-8 py-5 rounded-2xl flex items-center gap-3 hover:bg-[#0a5c3e] hover:scale-105 hover:shadow-[0_10px_25px_rgba(40,167,69,0.3)] transition-all duration-300 sm:text-lg group"
+            >
+              Ir al Plano Interactivo
+              <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </motion.div>
 

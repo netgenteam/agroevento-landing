@@ -76,7 +76,7 @@ export default function FloatingButton() {
       id: "whatsapp",
       label: "Chatear en WhatsApp",
       color: "bg-[#25D366]", // Verde WhatsApp oficial
-      href: "https://wa.me/1234567890", 
+      href: "https://wa.me/584148469666?text=Hola,%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20la%20Expo%202026.",
       download: false,
       icon: (
         // Ícono oficial de WhatsApp (trazado completo)

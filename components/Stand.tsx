@@ -190,6 +190,8 @@ export default function Stands() {
           ))}
         </motion.div>
 
+        
+
         {/* Separador y Slider de Experiencias */}
         <div className="mt-20 w-full">
           <div className="w-full h-px bg-gray-200 mb-16"></div> {/* Línea divisoria sutil */}

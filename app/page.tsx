@@ -9,7 +9,7 @@ import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import FloatingButton from '@/components/FloatingButton'; 
-import InteractiveMap from "@/components/InteractiveMap"
+
 // <-- Importamos el botón
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         <EventActivities />
         <FAQ />
         <Contact />
-        <InteractiveMap/>
+        
       </main>
       
       <Footer />

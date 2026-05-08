@@ -45,7 +45,7 @@ const Hero = () => {
                 Contactar Asesor
               </a>
               <a
-                href="https://wa.me/+58424000000"
+                href="https://wa.me/584148469666?text=Hola,%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20la%20Expo%202026."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 border-2 border-white text-white rounded-xl px-6 py-3 lg:px-8 lg:py-4 font-bold text-base lg:text-lg hover:bg-white hover:text-aprolac-dark transition-all transform hover:scale-105"
