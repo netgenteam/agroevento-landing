@@ -47,7 +47,7 @@ export default function FloatingButton() {
       id: "email",
       label: "Enviar Correo",
       color: "bg-gray-800",
-      href: "mailto:contacto@tuempresa.com",
+      href: "mailto:info.agronegocioslacteos@gmail.com",
       download: false,
       icon: (
         // Ícono de Correo limpio
