@@ -30,7 +30,7 @@ export default function FloatingButton() {
       id: "pdf",
       label: "Descargar Plano",
       color: "bg-[#E23F44]", // Rojo PDF
-      href: "/ruta-a-tu-archivo.pdf", 
+      href: "/plano-expo.pdf", 
       download: true,
       icon: (
         // Ícono de Documento con flecha de descarga
