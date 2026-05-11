@@ -9,10 +9,10 @@ import Toast, { ToastType } from './Toast';
 
 
 const stats = [
-  { id: 1, label: 'Asistentes Proyectados', value: 5000, suffix: '+', icon: 'mdi:account-group-outline' },
-  { id: 2, label: 'Empresas y Marcas', value: 120, suffix: '+', icon: 'mdi:domain' },
-  { id: 3, label: 'Universidades Aliadas', value: 15, suffix: '+', icon: 'mdi:school-outline' },
-  { id: 4, label: 'Área de Exhibición', value: 10, suffix: 'k m²', icon: 'mdi:texture-box' },
+  { id: 1, label: 'Visitantes a la Expo', value: 5000, suffix: '+', icon: 'mdi:account-group-outline' },
+  { id: 2, label: 'Empresas Expositoras', value: 50, suffix: '+', icon: 'mdi:domain' },
+  { id: 3, label: 'Universidades Aliadas', value: 10, suffix: '+', icon: 'mdi:school-outline' },
+  { id: 5, label: 'Congresistas', value: 1000, suffix: '+', icon: 'mdi:domain' },
 ];
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -136,7 +136,7 @@ const ExpoSection = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    const targetDate = new Date('2026-05-15T08:00:00').getTime();
+    const targetDate = new Date('2026-09-18T08:00:00').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -165,10 +165,10 @@ const ExpoSection = () => {
         <div className="flex flex-col lg:flex-row justify-between items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-aprolac-dark mb-4">
-              La Gran Expo <span className="text-aprolac-green">2026</span>
+              Expo Agronegocios Lácteos Venezuela <span className="text-aprolac-green">2026</span>
             </h2>
             <p className="font-sans text-aprolac-text text-lg max-w-xl leading-relaxed">
-              El punto de encuentro definitivo para la innovación agroindustrial. Prepárate para el evento B2B más importante del sector lácteo en Venezuela.
+              El primer gran hito nacional diseñado para articular la cadena de valor, transformar el arraigo rural en competitividad global y convertir nuestra tradición quesera en un activo económico diferenciado.
             </p>
           </div>
 
@@ -256,7 +256,7 @@ const ExpoSection = () => {
               Experiencia APROLAC
             </span>
             <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-lg leading-tight max-w-2xl">
-              Visualiza el futuro de la agroindustria láctea
+              De la supervivencia a la construcción de valor: El renacer del agronegocio venezolano.
             </h3>
           </div>
 
@@ -307,7 +307,7 @@ const ExpoSection = () => {
                 Plano de Exhibición
               </h3>
               <p className="font-sans text-aprolac-text mt-2">
-                Distribución estratégica de pabellones, zonas de networking y stands comerciales.
+                Una plataforma de articulación para conectar los eslabones rotos de la cadena de valor: desde el productor primario y la academia hasta la industria transformadora y los mercados de exportación.
               </p>
             </div>
 
@@ -357,7 +357,7 @@ const ExpoSection = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mt-10 bg-white rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl border border-gray-100 relative overflow-hidden"
         >
-          
+
           {/* Adorno de fondo */}
           <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-[0.03] pointer-events-none">
             <Icon icon="mdi:texture-box" className="w-64 h-64 text-aprolac-dark" />
@@ -369,13 +369,13 @@ const ExpoSection = () => {
               Stands Disponibles
             </div>
             <h3 className="font-display text-aprolac-dark font-bold text-2xl md:text-4xl lg:text-5xl mb-4 leading-tight">
-              ¿Listo para asegurar <br className="hidden md:block"/>tu espacio?
+              ¿Listo para ser parte del nuevo<br className="hidden md:block" />modelo productivo?
             </h3>
             <p className="font-sans text-aprolac-text max-w-xl text-sm md:text-base leading-relaxed">
-              Explora nuestro nuevo plano interactivo. Revisa la disponibilidad en tiempo real, elige la ubicación perfecta y arma tu cotización al instante de manera fácil y rápida.
+              Asegura tu lugar en el evento que activará la transformación del sector lácteo. Conéctate con proveedores certificados, talento calificado y oportunidades de financiamiento.
             </p>
           </div>
-          
+
           <div className="relative z-10 shrink-0">
             <Link
               href="/Map"
