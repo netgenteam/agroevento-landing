@@ -23,19 +23,20 @@ const Hero = () => {
       {/* Capa de Texto Fija en el Centro */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6 pt-16">
         <div className="flex flex-col items-center text-center">
-          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight">
-            <span className="text-white">EL RENACIMIENTO</span>
+          <span className="text-gray-300 font-sans text-[10px] lg:text-xl tracking-[0.3em] uppercase mb-4 block">
+            "Seguid el ejemplo que Guayana dio"
+          </span>
+         <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight leading-none">
+            <span className="text-white">EXPO AGRONEGOCIOS</span>
             <br />
-            <span className="text-aprolac-green mt-[-0.2rem] lg:mt-[-0.5rem] block">DE UNA INDUSTRIA</span>
+            <span className="text-aprolac-green block mt-2">LÁCTEOS 2026</span>
           </h1>
 
           {/* Subtítulo y Botones */}
           <div className="mt-6 lg:mt-8 flex flex-col items-center max-w-2xl">
             <p className="font-sans text-gray-300 text-base lg:text-xl leading-relaxed">
-              Expo Agro Negocios Lácteos Venezuela 2026. Liderando el futuro del sector
-              a través del desarrollo sostenible y la tecnología corporativa.
+               Un hito fundacional para articular el sector, impulsar la denominación de origen y proyectar a Venezuela hacia la agro-exportación.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10 w-full sm:w-auto px-4 sm:px-0">
               <a
                 href="#contacto"

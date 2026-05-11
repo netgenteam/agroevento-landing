@@ -12,30 +12,30 @@ interface Feature {
   imageUrl: string;
 }
 
-// 2. Datos extraídos para escalabilidad
+// 2. Datos extraídos de la presentación oficial (Ajustado a 3 Ejes)
 const featuresData: Feature[] = [
   {
-    id: "sostenibilidad",
+    id: "tradicion-innovacion",
     number: "01",
-    title: "Sostenibilidad",
+    title: "Tradición + Innovación",
     description:
-      "Prácticas agrícolas que regeneran la tierra, asegurando que los recursos naturales se preserven para las generaciones venideras, manteniendo un equilibrio ecológico vital.",
+      "Respetar el saber ancestral incorporando trazabilidad y tecnología. Innovar no es romper la tradición, sino fortalecerla para el futuro.",
     imageUrl: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "innovacion",
+    id: "visibilidad-cadena",
     number: "02",
-    title: "Innovación Agro-Tech",
+    title: "Visibilidad de Cadena",
     description:
-      "Integración de sistemas avanzados de monitoreo y logística para optimizar el rendimiento lechero, garantizando eficiencia y trazabilidad desde el campo hasta la industria.",
+      "Articular desde el campo hasta el consumidor final. Transparencia total, procesos auditables y trazabilidad en cada eslabón productivo.",
     imageUrl: "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?q=80&w=800&auto=format&fit=crop",
   },
   {
-    id: "comunidad",
+    id: "proyeccion-global",
     number: "03",
-    title: "Desarrollo Comunitario",
+    title: "Proyección y Expansión",
     description:
-      "Empoderamiento de las economías locales a través de alianzas justas con productores, fomentando el crecimiento económico y fortaleciendo el tejido social rural.",
+      "Elevar el estándar de nuestros productos lácteos para conquistar mercados de agro-exportación, creando un modelo replicable en todo el país.",
     imageUrl: "/asian-woman.jpeg",
   },
 ];
@@ -77,19 +77,18 @@ export default function CommitmentSection() {
 
         {/* Cabecera de la sección */}
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16 lg:mb-24"
+          className="text-center max-w-3xl mx-auto mb-10 lg:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={headerVariants}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F4A32] mb-6 tracking-tight">
-            Nuestro Compromiso con la <br className="hidden md:block" />
-            Tierra y el Futuro
+            Ejes Estratégicos para <br className="hidden md:block" />
+            Transformar el Sector
           </h2>
           <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-            Transformando el potencial lechero en una realidad industrial
-            sostenible, respetando nuestra herencia agrícola.
+            Nuestra visión se sostiene en pilares fundamentales para llevar el Queso Guayanés y la producción nacional al siguiente nivel de competitividad.
           </p>
         </motion.div>
 
@@ -107,7 +106,6 @@ export default function CommitmentSection() {
               variants={cardVariants}
               className="relative group flex flex-col"
             >
-              {/* COMPONENTE MODIFICADO: Cambiamos aspect-[4/3] por aspect-[4/5] para hacerlas más altas */}
               <div className="relative w-full aspect-[4/4] rounded-3xl overflow-hidden mb-8 shadow-sm group-hover:shadow-xl transition-shadow duration-500">
                 <img
                   src={feature.imageUrl}

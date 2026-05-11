@@ -61,7 +61,7 @@ export default function FloatingButton() {
       id: "instagram",
       label: "Síguenos en Instagram",
       color: "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600",
-      href: "https://instagram.com/tuempresa",
+      href: "https://instagram.com/agronegocioslacteos",
       download: false,
       icon: (
         // Ícono oficial de Instagram
