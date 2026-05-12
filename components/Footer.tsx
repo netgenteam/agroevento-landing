@@ -62,22 +62,22 @@ const Footer = () => {
           <div className="flex flex-col gap-4 font-sans text-gray-400 text-sm">
             <div className="flex items-start gap-3">
               <Icon icon="mdi:map-marker" className="w-5 h-5 text-aprolac-green shrink-0 mt-0.5" />
-              <span>Ciudad Guayana, Estado Bolívar, Venezuela</span>
+              <span> Puerto Ordaz, Estado Bolívar, Venezuela</span>
             </div>
             <div className="flex items-center gap-3">
               <Icon icon="mdi:phone" className="w-5 h-5 text-aprolac-green shrink-0" />
-              <span>+58 424 000 0000</span>
+              <span>+58 414 8469666</span>
             </div>
             <div className="flex items-center gap-3">
               <Icon icon="mdi:email" className="w-5 h-5 text-aprolac-green shrink-0" />
-              <a href="mailto:contacto@aprolac.org" className="hover:text-white transition-colors">
-                contacto@aprolac.org
+              <a href="mailto:info.agronegocioslacteos@gmail.com" className="hover:text-white transition-colors">
+                info.agronegocioslacteos@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-3">
               <Icon icon="mdi:instagram" className="w-5 h-5 text-aprolac-green shrink-0" />
-              <a href="https://www.instagram.com/aprolacbolivar/?hl=es" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                @aprolacbolivar
+              <a href="https://www.instagram.com/agronegocioslacteos/?hl=es" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                @agronegocioslacteos
               </a>
             </div>
           </div>

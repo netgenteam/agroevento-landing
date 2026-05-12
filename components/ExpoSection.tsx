@@ -256,7 +256,7 @@ const ExpoSection = () => {
               Experiencia APROLAC
             </span>
             <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-lg leading-tight max-w-2xl">
-              De la supervivencia a la construcción de valor: El renacer del agronegocio venezolano.
+              El renacer del agronegocio venezolano.
             </h3>
           </div>
 
@@ -307,8 +307,7 @@ const ExpoSection = () => {
                 Plano de Exhibición
               </h3>
               <p className="font-sans text-aprolac-text mt-2">
-                Una plataforma de articulación para conectar los eslabones rotos de la cadena de valor: desde el productor primario y la academia hasta la industria transformadora y los mercados de exportación.
-              </p>
+               Más que un evento, es la plataforma definitiva para integrar nuestra cadena de valor </p>
             </div>
 
             <a

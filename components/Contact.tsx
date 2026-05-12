@@ -310,7 +310,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-display font-bold text-aprolac-dark text-sm">Correo Oficial</p>
-                    <p className="font-sans text-aprolac-text text-xs">contacto@aprolac.org</p>
+                    <p className="font-sans text-aprolac-text text-xs">info.agronegocioslacteos@gmail.com</p>
                   </div>
                 </div>
 
@@ -320,7 +320,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-display font-bold text-aprolac-dark text-sm">Teléfono Corporativo</p>
-                    <p className="font-sans text-aprolac-text text-xs">+58 424 000 0000</p>
+                    <p className="font-sans text-aprolac-text text-xs">+58 414 8469666</p>
                   </div>
                 </div>
               </div>
