@@ -4,7 +4,7 @@ import QuienesSomos from '@/components/QuienesSomos';
 import CommitmentSection from '@/components/CommitmentSection';
 import ExpoSection from '@/components/ExpoSection';
 import Stands from '@/components/Stand';
-import EventActivities from '@/components/EventActivities';
+import ExperiencesSlider from "@/components/ExperiencesSlider"; 
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -26,7 +26,8 @@ export default function Home() {
         
         <Stands />
         
-        <EventActivities />
+        
+        <ExperiencesSlider />
         <FAQ />
         <Contact />
         

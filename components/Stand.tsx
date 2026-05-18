@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import ExperiencesSlider from "./ExperiencesSlider"; // <-- Importación del Slider
+
+import EventActivities from '@/components/EventActivities';// <-- Importación del Slider
 
 // 1. Tipos de Datos
 interface Feature {
@@ -195,7 +196,7 @@ export default function Stands() {
         {/* Separador y Slider de Experiencias */}
         <div className="mt-20 w-full">
           <div className="w-full h-px bg-gray-200 mb-16"></div> {/* Línea divisoria sutil */}
-          <ExperiencesSlider />
+          <EventActivities />
         </div>
 
       </div>
