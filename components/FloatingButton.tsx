@@ -1,0 +1,145 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+export default function FloatingButton() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Variantes para la animación: 
+  // -1 abre de abajo hacia arriba (desde el botón hacia fuera).
+  // 1 cierra de arriba hacia abajo.
+  const menuVariants = {
+    closed: {
+      transition: { staggerChildren: 0.05, staggerDirection: 1 },
+    },
+    open: {
+      transition: { staggerChildren: 0.1, staggerDirection: -1, delayChildren: 0.1 },
+    },
+  };
+
+  // Variantes para cada botón individual: aparecen con un ligero zoom y desplazamiento
+  const itemVariants = {
+    closed: { opacity: 0, y: 15, scale: 0.8, pointerEvents: "none" as const },
+    open: { opacity: 1, y: 0, scale: 1, pointerEvents: "auto" as const },
+  };
+
+  // Datos con íconos premium/oficiales
+  const actions = [
+    {
+      id: "pdf",
+      label: "Descargar Plano",
+      color: "bg-[#E23F44]", // Rojo PDF
+      href: "/plano-expo.pdf", 
+      download: true,
+      icon: (
+        // Ícono de Documento con flecha de descarga
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="12" y1="18" x2="12" y2="12"></line>
+          <line x1="9" y1="15" x2="12" y2="18"></line>
+          <line x1="15" y1="15" x2="12" y2="18"></line>
+        </svg>
+      ),
+    },
+    {
+      id: "email",
+      label: "Enviar Correo",
+      color: "bg-gray-800",
+      href: "mailto:info.agronegocioslacteos@gmail.com",
+      download: false,
+      icon: (
+        // Ícono de Correo limpio
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      ),
+    },
+    {
+      id: "instagram",
+      label: "Síguenos en Instagram",
+      color: "bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600",
+      href: "https://instagram.com/agronegocioslacteos",
+      download: false,
+      icon: (
+        // Ícono oficial de Instagram
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      ),
+    },
+    {
+      id: "whatsapp",
+      label: "Chatear en WhatsApp",
+      color: "bg-[#25D366]", // Verde WhatsApp oficial
+      href: "https://wa.me/584148469666?text=Hola,%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20la%20Expo%202026.",
+      download: false,
+      icon: (
+        // Ícono oficial de WhatsApp (trazado completo)
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none">
+      
+      {/* Menú desplegable */}
+      <motion.div
+        className={`flex flex-col items-end gap-3 mb-4 ${isOpen ? 'pointer-events-auto' : ''}`}
+        variants={menuVariants}
+        initial="closed"
+        animate={isOpen ? "open" : "closed"}
+      >
+        {actions.map((action) => (
+          <motion.div
+            key={action.id}
+            variants={itemVariants}
+            className="flex items-center gap-3"
+          >
+            {/* Tooltip (Etiqueta de texto) */}
+            <span className="bg-white text-gray-800 text-sm font-medium py-1.5 px-3 rounded-lg shadow-md border border-gray-100 opacity-0 lg:opacity-100 transition-opacity whitespace-nowrap">
+              {action.label}
+            </span>
+
+            {/* Botón de acción */}
+            <a
+              href={action.href}
+              target={action.download ? "_self" : "_blank"}
+              rel="noopener noreferrer"
+              download={action.download}
+              className={`w-12 h-12 flex justify-center items-center rounded-full shadow-lg hover:scale-110 transition-transform ${action.color}`}
+              aria-label={action.label}
+            >
+              {action.icon}
+            </a>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Botón Principal (Toggle) */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-16 h-16 bg-[#0F4A32] cursor-pointer rounded-full shadow-2xl flex items-center justify-center hover:scale-105 hover:bg-[#156042] transition-all duration-300 z-50 focus:outline-none pointer-events-auto"
+        aria-label="Abrir menú de contacto"
+      >
+        <motion.div
+          animate={{ rotate: isOpen ? 135 : 0 }}
+          transition={{ duration: 0.3, ease: "backOut" }}
+        >
+          {/* Ícono de cruz/más que gira para convertirse en una X */}
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+        </motion.div>
+      </button>
+    </div>
+  );
+}
