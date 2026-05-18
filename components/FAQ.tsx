@@ -6,34 +6,34 @@ import { Icon } from '@iconify/react';
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 const faqs: FAQItem[] = [
   {
     question: "¿Quiénes pueden participar como expositores o patrocinadores?",
-    answer: "Empresas del sector agroindustrial, proveedores de tecnología láctea, instituciones financieras y corporaciones B2B interesadas en el mercado venezolano. El perfil está orientado a tomadores de decisiones y líderes industriales."
+    answer: "Pueden participar empresas y productores del sector lácteo (ganaderos, procesadoras, marcas de quesos, etc.), proveedores de insumos químicos, maquinaria, genética animal, servicios financieros, y consultoras agroindustriales, además de empresas de servicios, alimentos y bebidas, entre otros."
   },
   {
     question: "¿Cuáles son los requisitos para adquirir un Stand Comercial?",
-    answer: "Es necesario completar el formulario de preventa, presentar el RIF jurídico y cumplir con los estándares de montaje técnico de la Expo. Ofrecemos diferentes niveles (Bronce, Plata, Oro y Platino) según la ubicación y dimensiones."
+    answer: "Los interesados pueden completar el formulario de preventa, consultar a uno de nuestros asesores en el departamento de Comercialización, y realizar la reserva según el dossier de ventas."
   },
   {
-    question: "¿El evento está abierto al público general o es netamente B2B?",
-    answer: "La Expo tiene un enfoque primordialmente B2B y técnico-corporativo. Sin embargo, se permite el acceso a estudiantes de agronomía e ingeniería de alimentos con acreditación previa para fomentar el relevo generacional del sector."
-  },
-  {
-    question: "¿Cómo gestionan el acceso a las Rondas de Negocios?",
-    answer: "Contamos con una plataforma digital de agendamiento donde expositores y visitantes profesionales pueden solicitar citas previas. Las rondas se llevan a cabo en una zona VIP diseñada para la privacidad y el cierre de acuerdos."
-  },
-  {
-    question: "¿Existen beneficios o tarifas especiales para los socios productores de APROLAC?",
-    answer: "Sí, todos los socios solventes de APROLAC cuentan con un descuento del 15% en la adquisición de stands y prioridad en la reserva de espacios destacados dentro de la zona comercial principal."
+    question: "¿La Expo es abierta al público general o es netamente B2B?",
+    answer: "Es un evento híbrido. Cuenta con áreas de exhibición comercial y exposición ganadera abiertas al público interesado y zonas exclusivas de rondas de negocios, foros y conferencias,  diseñadas para perfiles B2B / B2C."
   },
   {
     question: "¿Dónde puedo descargar el dossier corporativo detallado?",
-    answer: "El dossier completo con planos, tarifas y beneficios de patrocinio está disponible en el botón de 'Contacto' o puede solicitarlo directamente a través de nuestro WhatsApp oficial para recibir atención personalizada."
-  }
+    answer: (
+    <span>
+      El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de <strong className="font-bold text-[#0F4A32]">Contacto</strong> en la plataforma.
+    </span>
+  ),
+  },
+  {
+    question: "¿Pueden asistir niños?",
+    answer: "La familia completa puede asistir. El acceso a la exhibición comercial es totalmente gratuito, y pueden venir niños acompañados de sus representantes. Además, la Expo tendrá áreas dedicadas para los más pequeños de la familia."
+  },
 ];
 
 const FAQ = () => {
