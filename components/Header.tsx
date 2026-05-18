@@ -38,7 +38,7 @@ const Header = () => {
           {/* IZQUIERDA — Logo */}
           <a href={isHome ? '#inicio' : '/#inicio'} className="relative z-[60] flex items-center">
             <Image
-              src="/logo.png"
+              src="/logo completo color.png"
               alt="APROLAC Logo"
               width={160}
               height={48}

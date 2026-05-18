@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 interface FAQItem {
   question: string;
   answer: React.ReactNode;
+  answerText?: string;
 }
 
 const faqs: FAQItem[] = [
@@ -25,10 +26,11 @@ const faqs: FAQItem[] = [
   {
     question: "¿Dónde puedo descargar el dossier corporativo detallado?",
     answer: (
-    <span>
-      El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de <strong className="font-bold text-[#0F4A32]">Contacto</strong> en la plataforma.
-    </span>
-  ),
+      <span>
+        El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de <strong className="font-bold text-[#0F4A32]">Contacto</strong> en la plataforma.
+      </span>
+    ),
+    answerText: "El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de Contacto en la plataforma."
   },
   {
     question: "¿Pueden asistir niños?",
@@ -52,7 +54,7 @@ const FAQ = () => {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: typeof faq.answer === 'string' ? faq.answer : faq.answerText || '',
       },
     })),
   };

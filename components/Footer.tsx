@@ -16,7 +16,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center">
             <Image
-              src="/logo_en_blanco.png"
+              src="/logo completo.png"
               alt="APROLAC Logo Blanco"
               width={180}
               height={54}

@@ -89,7 +89,7 @@ export default function ExperiencesSlider() {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
         <div className="max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0F4A32] mb-3">
-            Experiencias de Ediciones Anteriores
+           Nuestros Eventos
           </h2>
           <p className="text-base text-gray-500 leading-relaxed">
             Descubra el nivel de excelencia y las oportunidades de negocio forjadas en nuestros eventos pasados.
