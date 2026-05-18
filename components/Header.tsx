@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,8 +36,15 @@ const Header = () => {
       <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-5">
         <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* IZQUIERDA — Logo */}
-          <a href={isHome ? '#inicio' : '/#inicio'} className="font-display font-bold text-xl tracking-[0.25em] text-aprolac-green relative z-[60]">
-            APROLAC
+          <a href={isHome ? '#inicio' : '/#inicio'} className="relative z-[60] flex items-center">
+            <Image
+              src="/logo.png"
+              alt="APROLAC Logo"
+              width={160}
+              height={48}
+              className="h-10 w-auto object-contain rounded"
+              priority
+            />
           </a>
 
           {/* CENTRO — Nav links (desktop) */}

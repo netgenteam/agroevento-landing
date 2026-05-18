@@ -14,9 +14,16 @@ const Footer = () => {
 
         {/* Columna 1: Marca Institucional */}
         <div>
-          <p className="font-display text-2xl text-aprolac-green font-bold tracking-widest uppercase">
-            APROLAC
-          </p>
+          <div className="flex items-center">
+            <Image
+              src="/logo_en_blanco.png"
+              alt="APROLAC Logo Blanco"
+              width={180}
+              height={54}
+              className="h-12 w-auto object-contain rounded"
+              priority
+            />
+          </div>
           <p className="font-sans text-gray-400 text-sm mt-4 leading-relaxed">
             Asociación de Productores Lácteos del Estado Bolívar. Liderando el ecosistema agroindustrial y la cadena de frío a nivel nacional.
           </p>
