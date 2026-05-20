@@ -165,7 +165,7 @@ const ExpoSection = () => {
         <div className="flex flex-col lg:flex-row justify-between items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-aprolac-dark mb-4">
-              Expo Agro negocios Lácteos Venezuela <span className="text-aprolac-green">2026</span>
+              Expo Agro Negocios Lácteos Venezuela <span className="text-aprolac-green">2026</span>
             </h2>
             <p className="font-sans text-aprolac-text text-lg max-w-xl leading-relaxed">
               El primer gran hito nacional diseñado para articular la cadena de valor, transformar el arraigo rural en competitividad global y convertir nuestra tradición quesera en un activo económico diferenciado.
