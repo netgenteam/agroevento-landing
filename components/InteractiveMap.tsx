@@ -6,23 +6,85 @@ import { ShoppingCart, Check, Lock, Send, Info, Trash2, ArrowLeft } from "lucide
 import Link from "next/link";
 
 // 1. BASE DE DATOS EXACTA: 44 Stands (Hoja 1) + 3 Stands (Hoja 2)
+// 1. Aquí controlas de forma manual e independiente cada stand.
+// Solo necesitas agregar el ID del stand y su nuevo estado ('ocupado', 'reservado', etc.)
+const ESTADOS_MANUALES: Record<string, string> = {
+  //"Y5": "ocupado",
+};
+
+// 2. Tu data generada ahora lee de ese diccionario
 const STANDS_DATA = [
   // 3 m2 (Naranjas) - 4 junto a Tarima, 3 abajo
-  ...Array.from({ length: 7 }).map((_, i) => ({ id: `O${i + 1}`, size: "3.0 m2", price: 600, status: "disponible", color: "bg-[#ed7d31]" })),
+  ...Array.from({ length: 7 }).map((_, i) => ({ 
+    id: `O${i + 1}`, 
+    size: "3.0 m2", 
+    price: 600, 
+    status: ESTADOS_MANUALES[`O${i + 1}`] || "disponible", 
+    color: "bg-[#ed7d31]" 
+  })),
+  
   // 3.75 m2 (Verdes Oscuros) - 1 izq, 2 der
-  ...Array.from({ length: 3 }).map((_, i) => ({ id: `G${i + 1}`, size: "3.75 m2", price: 750, status: "disponible", color: "bg-[#548235]" })),
+  ...Array.from({ length: 3 }).map((_, i) => ({ 
+    id: `G${i + 1}`, 
+    size: "3.75 m2", 
+    price: 750, 
+    status: ESTADOS_MANUALES[`G${i + 1}`] || "disponible", 
+    color: "bg-[#548235]" 
+  })),
+  
   // 4.0 m2 (Morados) - 14 en pasillos
-  ...Array.from({ length: 14 }).map((_, i) => ({ id: `M${i + 1}`, size: "4.0 m2", price: 800, status: "disponible", color: "bg-[#7030a0]" })),
+  ...Array.from({ length: 14 }).map((_, i) => ({ 
+    id: `M${i + 1}`, 
+    size: "4.0 m2", 
+    price: 800, 
+    status: ESTADOS_MANUALES[`M${i + 1}`] || "disponible", 
+    color: "bg-[#7030a0]" 
+  })),
+  
   // 5.0 m2 (Lila) - 1 en borde izquierdo (Encima de V1)
-  { id: "P1", size: "5.0 m2", price: 1000, status: "disponible", color: "bg-[#b482d6]" },
+  { 
+    id: "P1", 
+    size: "5.0 m2", 
+    price: 1000, 
+    status: ESTADOS_MANUALES["P1"] || "disponible", 
+    color: "bg-[#b482d6]" 
+  },
+  
   // 6.8 m2 (Amarillos) - 6 a los lados
-  ...Array.from({ length: 6 }).map((_, i) => ({ id: `Y${i + 1}`, size: "6.8 m2", price: 1300, status: i === 4 ? "ocupado" : "disponible", color: "bg-[#ffc000]" })),
+  ...Array.from({ length: 6 }).map((_, i) => ({ 
+    id: `Y${i + 1}`, 
+    size: "6.8 m2", 
+    price: 1300, 
+    status: ESTADOS_MANUALES[`Y${i + 1}`] || "disponible", 
+    color: "bg-[#ffc000]" 
+  })),
+  
   // 7.5 m2 (Azules) - 10 en bloque central + 2 en esquinas superiores (12 en total)
-  ...Array.from({ length: 12 }).map((_, i) => ({ id: `A${i + 1}`, size: "7.5 m2", price: 1500, status: i === 2 ? "ocupado" : "disponible", color: "bg-[#5b9bd5]" })),
+  ...Array.from({ length: 12 }).map((_, i) => ({ 
+    id: `A${i + 1}`, 
+    size: "7.5 m2", 
+    price: 1500, 
+    status: ESTADOS_MANUALES[`A${i + 1}`] || "disponible", 
+    color: "bg-[#5b9bd5]" 
+  })),
+  
   // 9.0 m2 (Verde Brillante) - 1 abajo izq (Debajo de P1)
-  { id: "V1", size: "9.0 m2", price: 2000, status: "disponible", color: "bg-[#00b050]" },
+  { 
+    id: "V1", 
+    size: "9.0 m2", 
+    price: 2000, 
+    status: ESTADOS_MANUALES["V1"] || "disponible", 
+    color: "bg-[#00b050]" 
+  },
+  
   // 8.0 m2 (Grises) - 3 en Hoja 2 (Área Piscina)
-  ...Array.from({ length: 3 }).map((_, i) => ({ id: `S${i + 1}`, size: "8.0 m2", price: 1800, status: "disponible", color: "bg-[#a6a6a6]" })),
+  ...Array.from({ length: 3 }).map((_, i) => ({ 
+    id: `S${i + 1}`, 
+    size: "8.0 m2", 
+    price: 1800, 
+    status: ESTADOS_MANUALES[`S${i + 1}`] || "disponible", 
+    color: "bg-[#a6a6a6]" 
+  })),
 ];
 
 export default function InteractiveFloorPlan() {
