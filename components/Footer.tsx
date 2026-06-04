@@ -48,14 +48,15 @@ const Footer = () => {
               <Icon icon="mdi:bullhorn-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Expo
             </a>
-            <a href={isHome ? "#stands" : "/#stands"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
-              <Icon icon="mdi:storefront-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Stands
-            </a>
             <a href={isHome ? "#actividades" : "/#actividades"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:calendar-text-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Actividades
             </a>
+            <a href={isHome ? "#stands" : "/#stands"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+              <Icon icon="mdi:clipboard-text-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              Solicitudes
+            </a>
+            
             <a href={isHome ? "#faq" : "/#faq"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
               <Icon icon="mdi:help-circle-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               FAQ

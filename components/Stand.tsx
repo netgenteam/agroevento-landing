@@ -3,7 +3,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
-import EventActivities from '@/components/EventActivities';// <-- Importación del Slider
+
 
 // 1. Tipos de Datos
 interface Feature {
@@ -108,7 +108,7 @@ const CheckIcon = ({ color }: { color: string }) => (
 
 export default function Stands() {
   return (
-    <section id="stands" className="relative w-full bg-[#f8fbf9] py-20 lg:py-32 overflow-hidden">
+    <section  className="relative w-full bg-[#f8fbf9] py-20 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header de los Planes */}
@@ -193,11 +193,7 @@ export default function Stands() {
 
         
 
-        {/* Separador y Slider de Experiencias */}
-        <div className="mt-20 w-full">
-          <div className="w-full h-px bg-gray-200 mb-16"></div> {/* Línea divisoria sutil */}
-          <EventActivities />
-        </div>
+        
 
       </div>
     </section>
