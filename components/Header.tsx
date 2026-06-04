@@ -26,8 +26,9 @@ const Header = () => {
   const navLinks = [
     { name: 'Quiénes Somos', href: '#quienes-somos', icon: 'mdi:account-group-outline' },
     { name: 'Expo', href: '#expo', icon: 'mdi:bullhorn-outline' },
-    { name: 'Stands', href: '#stands', icon: 'mdi:storefront-outline' },
     { name: 'Actividades', href: '#actividades', icon: 'mdi:calendar-text-outline' },
+    { name: 'Solicitudes', href: '#stands', icon: 'mdi:clipboard-text-outline' },
+    
     { name: 'FAQ', href: '#faq', icon: 'mdi:help-circle-outline' },
   ];
 

@@ -26,23 +26,7 @@ export default function FloatingButton() {
 
   // Datos con íconos premium/oficiales
   const actions = [
-    {
-      id: "pdf",
-      label: "Descargar Plano",
-      color: "bg-[#E23F44]", // Rojo PDF
-      href: "/plano-expo.pdf", 
-      download: true,
-      icon: (
-        // Ícono de Documento con flecha de descarga
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="12" y1="18" x2="12" y2="12"></line>
-          <line x1="9" y1="15" x2="12" y2="18"></line>
-          <line x1="15" y1="15" x2="12" y2="18"></line>
-        </svg>
-      ),
-    },
+    
     {
       id: "email",
       label: "Enviar Correo",
