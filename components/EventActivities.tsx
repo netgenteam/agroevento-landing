@@ -92,7 +92,7 @@ const EventActivities = () => {
         <div className="mt-24 h-px bg-aprolac-border w-full" />
 
         {/* Cronograma Interactivo */}
-        <ScheduleTabs />
+        {/*<ScheduleTabs />*/}
       </div>
     </section>
   );
