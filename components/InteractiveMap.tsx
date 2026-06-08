@@ -5,87 +5,61 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, Check, Lock, Send, Info, Trash2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-// 1. BASE DE DATOS EXACTA: 44 Stands (Hoja 1) + 3 Stands (Hoja 2)
-// 1. Aquí controlas de forma manual e independiente cada stand.
-// Solo necesitas agregar el ID del stand y su nuevo estado ('ocupado', 'reservado', etc.)
+// 1. CONTROL MANUAL DE ESTADOS
 const ESTADOS_MANUALES: Record<string, string> = {
-  //"Y5": "ocupado",
+   //"S24": "ocupado",
 };
 
-// 2. Tu data generada ahora lee de ese diccionario
+// 2. BASE DE DATOS EXACTA DEL NUEVO PLANO (Captura de pantalla 2026-06-08 090131.png)
 const STANDS_DATA = [
-  // 3 m2 (Naranjas) - 4 junto a Tarima, 3 abajo
-  ...Array.from({ length: 7 }).map((_, i) => ({ 
-    id: `O${i + 1}`, 
-    size: "3.0 m2", 
-    price: 600, 
-    status: ESTADOS_MANUALES[`O${i + 1}`] || "disponible", 
-    color: "bg-[#ed7d31]" 
-  })),
-  
-  // 3.75 m2 (Verdes Oscuros) - 1 izq, 2 der
-  ...Array.from({ length: 3 }).map((_, i) => ({ 
-    id: `G${i + 1}`, 
-    size: "3.75 m2", 
-    price: 750, 
-    status: ESTADOS_MANUALES[`G${i + 1}`] || "disponible", 
-    color: "bg-[#548235]" 
-  })),
-  
-  // 4.0 m2 (Morados) - 14 en pasillos
-  ...Array.from({ length: 14 }).map((_, i) => ({ 
-    id: `M${i + 1}`, 
-    size: "4.0 m2", 
-    price: 800, 
-    status: ESTADOS_MANUALES[`M${i + 1}`] || "disponible", 
-    color: "bg-[#7030a0]" 
-  })),
-  
-  // 5.0 m2 (Lila) - 1 en borde izquierdo (Encima de V1)
-  { 
-    id: "P1", 
-    size: "5.0 m2", 
-    price: 1000, 
-    status: ESTADOS_MANUALES["P1"] || "disponible", 
-    color: "bg-[#b482d6]" 
-  },
-  
-  // 6.8 m2 (Amarillos) - 6 a los lados
-  ...Array.from({ length: 6 }).map((_, i) => ({ 
-    id: `Y${i + 1}`, 
-    size: "6.8 m2", 
-    price: 1300, 
-    status: ESTADOS_MANUALES[`Y${i + 1}`] || "disponible", 
-    color: "bg-[#ffc000]" 
-  })),
-  
-  // 7.5 m2 (Azules) - 10 en bloque central + 2 en esquinas superiores (12 en total)
-  ...Array.from({ length: 12 }).map((_, i) => ({ 
-    id: `A${i + 1}`, 
-    size: "7.5 m2", 
-    price: 1500, 
-    status: ESTADOS_MANUALES[`A${i + 1}`] || "disponible", 
-    color: "bg-[#5b9bd5]" 
-  })),
-  
-  // 9.0 m2 (Verde Brillante) - 1 abajo izq (Debajo de P1)
-  { 
-    id: "V1", 
-    size: "9.0 m2", 
-    price: 2000, 
-    status: ESTADOS_MANUALES["V1"] || "disponible", 
-    color: "bg-[#00b050]" 
-  },
-  
-  // 8.0 m2 (Grises) - 3 en Hoja 2 (Área Piscina)
-  ...Array.from({ length: 3 }).map((_, i) => ({ 
-    id: `S${i + 1}`, 
-    size: "8.0 m2", 
-    price: 1800, 
-    status: ESTADOS_MANUALES[`S${i + 1}`] || "disponible", 
-    color: "bg-[#a6a6a6]" 
-  })),
-];
+  // --- PEQUEÑOS (Naranjas) ---
+  { id: "A1", size: "3 M2", price: 350, color: "bg-[#ed7d31]" },
+  { id: "A2", size: "4 M2", price: 450, color: "bg-[#ed7d31]" },
+  { id: "A3", size: "4 M2", price: 450, color: "bg-[#ed7d31]" },
+  { id: "A4", size: "4 M2", price: 450, color: "bg-[#ed7d31]" },
+  { id: "A5", size: "4 M2", price: 450, color: "bg-[#ed7d31]" },
+  { id: "A6", size: "4 M2", price: 450, color: "bg-[#ed7d31]" },
+  { id: "S36", size: "4.50 M2", price: 500, color: "bg-[#ed7d31]" },
+  { id: "S8", size: "4.50 M2", price: 500, color: "bg-[#ed7d31]" },
+  { id: "S32", size: "4.87 M2", price: 550, color: "bg-[#ed7d31]" },
+  { id: "S2", size: "5 M2", price: 600, color: "bg-[#ed7d31]" },
+
+  // --- MEDIANOS (Verdes) ---
+  { id: "S26", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S27", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S28", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S29", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S14", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S13", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S12", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S11", size: "6 M2", price: 700, color: "bg-[#548235]" },
+  { id: "S1", size: "6.25 M2", price: 750, color: "bg-[#548235]" },
+  { id: "S31", size: "7.50 M2", price: 850, color: "bg-[#548235]" },
+  { id: "S30", size: "7.50 M2", price: 850, color: "bg-[#548235]" },
+
+  // --- GRANDES (Azules) ---
+  { id: "S24", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S23", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S22", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S21", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S16", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S17", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S18", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S19", size: "9 M2", price: 1000, color: "bg-[#5b9bd5]" },
+  { id: "S35", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S34", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S33", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S7", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S6", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S5", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+  { id: "S4", size: "10.50 M2", price: 1200, color: "bg-[#5b9bd5]" },
+
+  // --- VIP (Morados) ---
+  { id: "S25", size: "12.50 M2", price: 1500, color: "bg-[#7030a0]" },
+  { id: "S20", size: "12.50 M2", price: 1500, color: "bg-[#7030a0]" },
+  { id: "S15", size: "12.50 M2", price: 1500, color: "bg-[#7030a0]" },
+  { id: "S10", size: "12.50 M2", price: 1500, color: "bg-[#7030a0]" },
+].map(stand => ({ ...stand, status: ESTADOS_MANUALES[stand.id] || "disponible" }));
 
 export default function InteractiveFloorPlan() {
   const [selectedStands, setSelectedStands] = useState<string[]>([]);
@@ -97,27 +71,21 @@ export default function InteractiveFloorPlan() {
     );
   };
 
-  const clearCart = () => {
-    setSelectedStands([]);
-  };
-
+  const clearCart = () => setSelectedStands([]);
   const cartItems = STANDS_DATA.filter((stand) => selectedStands.includes(stand.id));
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   const handleWhatsAppRedirect = () => {
-    const phoneNumber = "584148469666"; // Tu número de ventas
-    let message = `Hola, estoy muy interesado en reservar los siguientes stands en la Expo 2026:\n`;
-    
+    const phoneNumber = "584148469666";
+    let message = `Hola, estoy interesado en reservar los siguientes stands en la Expo:\n`;
     cartItems.forEach((item) => {
       message += `\n- Stand ${item.id} (${item.size}): $${item.price}`;
     });
-    
-    message += `\n\nTotal estimado: $${totalPrice}\n\nPor favor, me indican los pasos a seguir para concretar la reserva.`;
-    
+    message += `\n\nTotal estimado: $${totalPrice}\n\nPor favor, me indican los pasos a seguir.`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
-  const renderStand = (id: string, customStyles: string = "w-full h-16") => {
+  const renderStand = (id: string, customStyles: string) => {
     const stand = STANDS_DATA.find((s) => s.id === id);
     if (!stand) return null;
 
@@ -127,22 +95,32 @@ export default function InteractiveFloorPlan() {
     return (
       <motion.button
         key={stand.id}
-        whileHover={!isOccupied ? { scale: 1.05, zIndex: 10 } : {}}
+        // 1. LA SOLUCIÓN: Controlamos el zIndex y el scale exclusivamente con Framer Motion.
+        // Si está seleccionado, le forzamos un zIndex altísimo (50) para que nadie lo tape.
+        animate={{ 
+          scale: isSelected ? 1.05 : 1, 
+          zIndex: isSelected ? 50 : 10 
+        }}
+        whileHover={!isOccupied && !isSelected ? { scale: 1.05, zIndex: 40 } : {}}
         whileTap={!isOccupied ? { scale: 0.95 } : {}}
         onClick={() => toggleStand(stand.id, stand.status)}
-        className={`relative flex flex-col items-center justify-center rounded-md border-2 transition-all shadow-sm cursor-pointer overflow-hidden ${customStyles}
-          ${isOccupied ? "bg-gray-200 border-gray-300 cursor-not-allowed" : `${stand.color} border-white/50 text-white hover:shadow-lg hover:border-white`}
-          ${isSelected ? "!border-black ring-2 ring-black scale-105 z-10 shadow-xl" : ""}
+        // 2. Quitamos "transition-all" y el "scale-105" de Tailwind para que no peleen con la animación de arriba.
+        className={`relative flex flex-col items-center justify-center rounded-sm border-2 shadow-sm cursor-pointer overflow-hidden ${customStyles}
+          ${isOccupied 
+            ? "bg-gray-200 border-gray-300 cursor-not-allowed text-gray-400" 
+            : `${stand.color} border-white/20 text-white hover:shadow-lg hover:border-white`
+          }
+          ${isSelected ? "!border-black ring-2 ring-black shadow-xl" : ""}
         `}
       >
         {isOccupied ? (
-          <Lock className="w-4 h-4 text-gray-400" />
+          <Lock className="w-4 h-4" />
         ) : (
           <>
-            <span className="font-bold text-sm tracking-tight">{stand.id}</span>
-            <span className="text-[10px] opacity-90">{stand.size}</span>
+            <span className="font-bold text-[10px] md:text-xs lg:text-sm tracking-tight leading-none">{stand.id}</span>
+            <span className="text-[7px] md:text-[9px] opacity-90 mt-0.5 leading-none px-0.5 text-center">{stand.size}</span>
             {isSelected && (
-              <div className="absolute top-1 right-1 bg-black text-white rounded-full p-0.5">
+              <div className="absolute top-0.5 right-0.5 bg-black text-white rounded-full p-0.5 shadow-md">
                 <Check className="w-2.5 h-2.5" />
               </div>
             )}
@@ -153,153 +131,183 @@ export default function InteractiveFloorPlan() {
   };
 
   return (
-    <section className="py-24 bg-aprolac-cream relative">
+    <section className="py-12 md:py-24 bg-aprolac-cream relative">
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 grid grid-cols-1 xl:grid-cols-4 gap-8 items-start">
         
-        {/* COLUMNA IZQUIERDA: EL PLANO ARQUITECTÓNICO */}
-        <div className="xl:col-span-3 bg-white p-6 rounded-[2rem] shadow-xl border border-aprolac-border/50 overflow-hidden">
+        {/* COLUMNA IZQUIERDA: PLANO */}
+        <div className="xl:col-span-3 bg-white p-4 md:p-6 rounded-[2rem] shadow-xl border border-aprolac-border/50 overflow-hidden flex flex-col">
+          
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4">
             <div>
-              <Link 
-                href="/" 
-                className="inline-flex items-center gap-2 text-aprolac-green hover:text-aprolac-dark font-bold mb-4 transition-colors font-sans text-sm tracking-wide"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Volver al Inicio
+              <Link href="/" className="inline-flex items-center gap-2 text-aprolac-green hover:text-aprolac-dark font-bold mb-4 transition-colors font-sans text-sm tracking-wide">
+                <ArrowLeft className="w-4 h-4" /> Volver al Inicio
               </Link>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-aprolac-dark mb-1">Plano Interactivo</h2>
-              <p className="text-aprolac-text text-sm flex items-center gap-2">
-                <Info className="w-4 h-4 text-aprolac-green" /> Selecciona tus stands directamente en el mapa.
+              <p className="text-gray-500 text-sm flex items-center gap-2">
+                <Info className="w-4 h-4 text-aprolac-green" /> Selecciona tus stands en el mapa.
               </p>
             </div>
-            {/* Leyenda */}
-            <div className="flex flex-wrap gap-4 text-xs font-sans font-medium text-gray-600 bg-gray-50 px-4 py-2 rounded-xl">
-              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#5b9bd5]"></div> Disponible</span>
-              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-gray-200 border border-gray-300"></div> Ocupado</span>
-              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm border-2 border-black bg-white"></div> Tu Selección</span>
+            {/* Leyenda de Colores */}
+            <div className="flex flex-wrap gap-3 text-xs font-sans font-medium text-gray-600 bg-gray-50 px-4 py-3 rounded-xl border border-gray-100">
+              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#ed7d31]"></div> Pequeños</span>
+              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#548235]"></div> Medianos</span>
+              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#5b9bd5]"></div> Grandes</span>
+              <span className="flex items-center gap-1.5"><div className="w-3 h-3 rounded-sm bg-[#7030a0]"></div> VIP</span>
             </div>
           </div>
 
-          <div className="w-full overflow-x-auto custom-scrollbar pb-6">
-            <div className="min-w-[1000px] bg-[#f8f9fa] border border-gray-200 rounded-2xl p-8 relative flex flex-col">
+          {/* CONTENEDOR DEL MAPA (SOLUCIÓN RESPONSIVE) */}
+          {/* Se eliminó el "flex justify-center" que causaba el recorte en móvil. Se añadió pb-4 para dar espacio a la barra de scroll nativa. */}
+          <div className="w-full overflow-x-auto custom-scrollbar pb-4">
+            {/* Se mantiene el tamaño original rígido. Se añadió "mx-auto" para que se centre solo si hay espacio sobrante (Desktop). */}
+            <div className="min-w-[1000px] w-full min-h-[720px] max-w-[1100px] mx-auto bg-white border-4 border-[#b4b8c5] p-6 relative flex flex-col font-sans select-none text-[#7d8597] shadow-sm rounded-lg">
               
-              {/* === HOJA 1: ÁREA DE BANQUETE === */}
-              <div className="flex justify-between items-start mb-8 w-full px-2">
-                <div className="w-24">{renderStand("A11", "w-full h-24")}</div>
+              {/* --- FILA SUPERIOR --- */}
+              <div className="flex justify-between items-start border-b-2 border-[#e2e4e9] pb-2 relative">
                 
-                <div className="flex items-start gap-4">
-                  <div className="flex gap-2">
-                    {renderStand("O1", "w-16 h-16")}
-                    {renderStand("O2", "w-16 h-16")}
+                {/* Stands Izquierda y Centro */}
+                <div className="flex gap-4 items-start">
+                  <div className="flex flex-col">
+                    <div className="w-[80px] h-[18px] border-2 border-[#e2e4e9] bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,#f3f4f6_4px,#f3f4f6_8px)] mb-1"></div>
+                    {renderStand("S36", "w-[80px] h-[45px]")}
                   </div>
-                  <div className="w-[350px] h-24 bg-white border-2 border-dashed border-gray-400 rounded-xl flex items-center justify-center shadow-inner">
-                    <span className="font-display font-bold text-gray-400 tracking-[0.3em] text-xl">TARIMA</span>
+                  
+                  <div className="flex gap-3 ml-2">
+                    {renderStand("S35", "w-[100px] h-[65px]")}
+                    {renderStand("S34", "w-[100px] h-[65px]")}
+                    {renderStand("S33", "w-[100px] h-[65px]")}
                   </div>
-                  <div className="flex gap-2">
-                    {renderStand("O3", "w-16 h-16")}
-                    {renderStand("O4", "w-16 h-16")}
+
+                  <div className="flex gap-2 items-end ml-4">
+                    {renderStand("S32", "w-[50px] h-[60px]")}
+                    {renderStand("S31", "w-[75px] h-[75px]")}
+                    {renderStand("S30", "w-[75px] h-[75px]")}
                   </div>
                 </div>
 
-                <div className="w-24">{renderStand("A12", "w-full h-24")}</div>
+                {/* Cocina y Baños */}
+                <div className="flex flex-col gap-2 border-l-2 border-[#e2e4e9] pl-4">
+                  <div className="w-[180px] h-[50px] border-2 border-[#e2e4e9] flex items-center justify-center font-bold tracking-widest text-sm text-[#a0a5b1]">COCINA</div>
+                  <div className="flex gap-2">
+                    <div className="w-[86px] h-[50px] border-2 border-[#e2e4e9] flex items-center justify-center text-[10px] font-bold text-center text-[#a0a5b1]">B.<br/>CABALLEROS</div>
+                    <div className="w-[86px] h-[50px] border-2 border-[#e2e4e9] flex items-center justify-center text-[10px] font-bold text-center text-[#a0a5b1]">B. DAMAS</div>
+                  </div>
+                </div>
+
               </div>
 
-              {/* ZONA CENTRAL */}
-              {/* Agregamos relative z-20 para asegurar que esté por encima de la zona inferior */}
-              <div className="flex justify-between w-full px-2 relative z-20">
-                <div className="flex flex-col gap-2 w-24">
-                  {renderStand("Y1", "w-full h-24")}
-                  {renderStand("Y2", "w-full h-24")}
-                  {renderStand("Y3", "w-full h-24")}
-                  <div className="h-24 flex items-center justify-center border-l-2 border-gray-300">
-                    <div className="-rotate-90 text-center">
-                      <p className="text-[9px] text-gray-400 tracking-widest font-bold leading-tight whitespace-nowrap">SALIDA DE</p>
-                      <p className="text-[9px] text-gray-400 tracking-widest font-bold leading-tight whitespace-nowrap">EMERGENCIA</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2 w-20 pt-10">
-                  {["M1", "M2", "M3", "M4", "M5", "M6", "M7"].map((id) => renderStand(id, "w-full h-16"))}
-                </div>
-
-                <div className="w-12 flex items-center justify-center relative">
-                  <span className="text-gray-400 text-xs tracking-[0.2em] -rotate-90 whitespace-nowrap absolute">PASILLO 2 M ANCHO</span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2 w-64 pt-6">
-                  {["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"].map((id) => renderStand(id, "w-full h-20"))}
-                </div>
-
-                <div className="w-12 flex items-center justify-center relative">
-                  <span className="text-gray-400 text-xs tracking-[0.2em] -rotate-90 whitespace-nowrap absolute">PASILLO 2 M ANCHO</span>
-                </div>
-
-                <div className="flex flex-col gap-2 w-20 pt-10">
-                  {["M8", "M9", "M10", "M11", "M12", "M13", "M14"].map((id) => renderStand(id, "w-full h-16"))}
-                </div>
-
-                <div className="flex flex-col gap-2 w-24">
-                  {renderStand("Y4", "w-full h-24")}
-                  {renderStand("Y5", "w-full h-24")}
-                  {renderStand("Y6", "w-full h-24")}
-                  <div className="h-24 flex items-center justify-center border-r-2 border-gray-300">
-                    <div className="-rotate-90 text-center">
-                      <p className="text-[9px] text-gray-400 tracking-widest font-bold leading-tight whitespace-nowrap">SALIDA DE</p>
-                      <p className="text-[9px] text-gray-400 tracking-widest font-bold leading-tight whitespace-nowrap">EMERGENCIA</p>
-                    </div>
-                  </div>
-                  {renderStand("G2", "w-full h-20")}
-                  {renderStand("G3", "w-full h-20")}
-                </div>
-              </div>
-
-              {/* ZONA INFERIOR */}
-              {/* LA SOLUCIÓN: Agregamos pointer-events-none aquí para que los clics traspasen esta caja hacia la zona central */}
-              <div className="-mt-[7rem] flex items-end justify-start relative w-[95%] z-10 pointer-events-none">
+              {/* --- ZONA CENTRAL --- */}
+              <div className="flex justify-between py-10 relative">
                 
-                {/* Y agregamos pointer-events-auto a los hijos para que SÍ sean clickeables */}
-                <div className="flex items-end gap-2 pr-4 border-b-4 border-gray-400 pb-1 mb-[-2px] z-10 pointer-events-auto">
-                  <div className="flex flex-col gap-2 items-start">
-                    {renderStand("P1", "w-24 h-20")}
-                    {renderStand("V1", "w-32 h-28")}
+                {/* Tarima Izquierda */}
+                <div className="flex flex-col justify-center items-center gap-6 w-[100px] relative">
+                  
+                  {/* Sillas Arriba */}
+                  <div className="grid grid-cols-6 gap-1">
+                    {Array(24).fill(0).map((_,i) => <div key={i} className="w-3 h-2 border border-[#cbd0d9] rounded-[2px]"></div>)}
                   </div>
-                  {renderStand("G1", "w-24 h-20")}
-                </div>
-
-                <div className="flex gap-6 px-2 text-gray-500 font-bold tracking-widest text-sm z-20 bg-[#f8f9fa] mb-[-12px] pointer-events-auto">
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl mb-0.5">↓</span> SALIDA
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl mb-0.5">↑</span> ENTRADA
+                  
+                  <div className="w-full h-[100px] border-2 border-[#cbd0d9] flex items-center justify-center font-bold tracking-widest text-xs text-[#a0a5b1]">TARIMA</div>
+                  
+                  {/* Sillas Abajo */}
+                  <div className="grid grid-cols-6 gap-1">
+                    {Array(24).fill(0).map((_,i) => <div key={`b${i}`} className="w-3 h-2 border border-[#cbd0d9] rounded-[2px]"></div>)}
                   </div>
                 </div>
 
-                <div className="flex flex-col items-start gap-1 pl-2 border-b-4 border-gray-400 pb-1 mb-[-2px] flex-grow pointer-events-auto">
-                  <span className="text-gray-400 text-[10px] tracking-widest uppercase ml-1">Pasillo Principal</span>
-                  <div className="flex gap-2">
-                    {renderStand("O5", "w-20 h-16")}
-                    {renderStand("O6", "w-20 h-16")}
-                    {renderStand("O7", "w-20 h-16")}
+                {/* Islas Centrales (El Corazón de la Expo) */}
+                <div className="flex-1 flex flex-col justify-center gap-12 px-6 lg:px-6">
+                  
+                  {/* Isla Superior */}
+                  <div className="flex justify-center w-full">
+                    {renderStand("S25", "w-[60px] h-[130px]")}
+                    <div className="flex flex-col">
+                      <div className="flex">
+                        {renderStand("S26", "w-[80px] h-[55px]")}
+                        {renderStand("S27", "w-[80px] h-[55px]")}
+                        {renderStand("S28", "w-[80px] h-[55px]")}
+                        {renderStand("S29", "w-[80px] h-[55px]")}
+                      </div>
+                      <div className="flex">
+                        {renderStand("S24", "w-[80px] h-[75px]")}
+                        {renderStand("S23", "w-[80px] h-[75px]")}
+                        {renderStand("S22", "w-[80px] h-[75px]")}
+                        {renderStand("S21", "w-[80px] h-[75px]")}
+                      </div>
+                    </div>
+                    {renderStand("S20", "w-[60px] h-[130px]")}
+                  </div>
+
+                  {/* Isla Inferior */}
+                  <div className="flex justify-center w-full">
+                    {renderStand("S15", "w-[60px] h-[130px]")}
+                    <div className="flex flex-col">
+                      <div className="flex">
+                        {renderStand("S16", "w-[80px] h-[75px]")}
+                        {renderStand("S17", "w-[80px] h-[75px]")}
+                        {renderStand("S18", "w-[80px] h-[75px]")}
+                        {renderStand("S19", "w-[80px] h-[75px]")}
+                      </div>
+                      <div className="flex">
+                        {renderStand("S14", "w-[80px] h-[55px]")}
+                        {renderStand("S13", "w-[80px] h-[55px]")}
+                        {renderStand("S12", "w-[80px] h-[55px]")}
+                        {renderStand("S11", "w-[80px] h-[55px]")}
+                      </div>
+                    </div>
+                    {renderStand("S10", "w-[60px] h-[130px]")}
+                  </div>
+
+                </div>
+
+                {/* Lobby y Accesos Derecho (Stands A) */}
+                <div className="w-[180px] flex flex-col items-end border-l-2 border-[#e2e4e9] pl-2 relative">
+                  <div className="text-xl font-bold pr-5 tracking-[0.3em] text-[#868e9e] mb-12">ACCESO</div>
+                  
+                  <div className="flex gap-2 items-end pt-10">
+                    <div className="flex flex-col gap-2 pr-12">
+                      {renderStand("A6", "w-[55px] h-[55px]")}
+                      {renderStand("A5", "w-[55px] h-[55px]")}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {renderStand("A1", "w-[55px] h-[45px]")}
+                      {renderStand("A2", "w-[55px] h-[55px]")}
+                      {renderStand("A3", "w-[55px] h-[55px]")}
+                      {renderStand("A4", "w-[55px] h-[55px]")}
+                    </div>
                   </div>
                 </div>
+
               </div>
 
-              {/* === HOJA 2: ÁREA DE PISCINA === */}
-              <div className="mt-10 flex flex-col w-full pl-2">
-                <div className="flex items-center gap-8">
-                  <div className="flex flex-col gap-6 relative">
-                    <div className="absolute -right-38 top-0 bottom-0 w-1 bg-gray-400"></div>
-                    {renderStand("S1", "w-[150px] h-24")}
-                    <div className="flex items-center justify-start text-gray-400 font-bold tracking-widest text-sm py-1">
-                      <span className="text-xl mr-3">←</span> PISCINA SALIDA
-                    </div>
-                    {renderStand("S2", "w-[150px] h-24")}
+              {/* --- FILA INFERIOR --- */}
+              <div className="flex justify-between items-end border-t-2 border-[#e2e4e9] pt-6 relative">
+                
+                <div className="flex gap-4 items-end">
+                  <div className="flex flex-col">
+                    {renderStand("S8", "w-[80px] h-[45px]")}
+                    <div className="w-[80px] h-[18px] border-2 border-[#e2e4e9] bg-[repeating-linear-gradient(45deg,transparent,transparent_4px,#f3f4f6_4px,#f3f4f6_8px)] mt-1"></div>
                   </div>
-                  <div className="pt-32">
-                    {renderStand("S3", "w-24 h-[150px]")}
+                  
+                  <div className="flex gap-3 ml-2">
+                    {renderStand("S7", "w-[100px] h-[65px]")}
+                    {renderStand("S6", "w-[100px] h-[65px]")}
+                    {renderStand("S5", "w-[100px] h-[65px]")}
+                    {renderStand("S4", "w-[100px] h-[65px]")}
                   </div>
+
+                  <div className="flex gap-2 ml-8">
+                    {renderStand("S2", "w-[50px] h-[60px]")}
+                    {renderStand("S1", "w-[70px] h-[60px]")}
+                  </div>
+                </div>
+
+                <div className="w-[180px] text-center text-xs font-bold tracking-widest text-[#a0a5b1]">
+                  SALIDA<br/>PISCINA
+                </div>
+                
+                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-white px-4 text-xs font-bold tracking-widest text-[#a0a5b1]">
+                  SALIDA EMERGENCIA
                 </div>
               </div>
 
@@ -324,8 +332,7 @@ export default function InteractiveFloorPlan() {
                   onClick={clearCart}
                   className="flex items-center gap-1 text-xs cursor-pointer text-red-500 hover:text-red-700 font-bold uppercase tracking-wider transition-colors"
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
-                  Limpiar
+                  <Trash2 className="w-3.5 h-3.5" /> Limpiar
                 </button>
               )}
             </div>
@@ -347,9 +354,7 @@ export default function InteractiveFloorPlan() {
                     {cartItems.map((item) => (
                       <motion.div
                         layout
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
                         key={item.id}
                         className="flex justify-between items-center bg-gray-50 p-3 rounded-xl border border-gray-100 group"
                       >
@@ -382,7 +387,7 @@ export default function InteractiveFloorPlan() {
               <button
                 disabled={cartItems.length === 0}
                 onClick={handleWhatsAppRedirect}
-                className={`w-full py-4 rounded-xl  font-bold flex justify-center items-center gap-2 transition-all duration-300
+                className={`w-full py-4 rounded-xl font-bold flex justify-center items-center gap-2 transition-all duration-300
                   ${cartItems.length === 0 
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed" 
                     : "bg-[#25D366] text-white hover:bg-[#1ebe57] cursor-pointer hover:shadow-lg hover:-translate-y-1"
