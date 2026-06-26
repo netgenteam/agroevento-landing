@@ -292,8 +292,7 @@ const ExpoSection = () => {
 
         <div className="mb-20 md:hidden portrait:hidden landscape:flex" />
         <div className="mb-20 hidden md:block" />
-
-        {/* Plano de Exhibición 
+ 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -324,7 +323,7 @@ const ExpoSection = () => {
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white bg-gray-100 group">
             <div className="absolute inset-0 bg-gray-200 animate-pulse -z-10" />
             <Image
-              src="/expo-map2.png"
+              src="/expo-map3.png"
               alt="Plano de distribución de la Expo Agro Negocios Lácteos 2026"
               fill
               sizes="(max-width: 768px) 100vw, 90vw"
@@ -346,11 +345,9 @@ const ExpoSection = () => {
             </a>
           </div>
         </motion.div>
-        <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
-        */}
-
-        {/* 🔥 NUEVO: BOTÓN AL PLANO INTERACTIVO 🔥 
-        <motion.div
+        {/* <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
+ 
+       <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -385,8 +382,8 @@ const ExpoSection = () => {
               <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </motion.div>
-        */}
+        </motion.div>*/}
+      
 
         {/* Video Modal */}
         <AnimatePresence>
