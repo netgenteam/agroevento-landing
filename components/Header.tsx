@@ -45,7 +45,7 @@ const Header = () => {
                 alt="APROLAC Logo"
                 width={160}
                 height={68}
-                className="h-8 lg:h-10 w-auto object-contain rounded"
+                className="h-7 lg:h-9 w-auto object-contain rounded"
                 priority
               />
             </a>
@@ -61,7 +61,7 @@ const Header = () => {
                 width={160}
                 height={68}
                 // Hacemos que tenga la misma altura que el de Aprolac (h-8 en móvil, h-10 en desktop)
-                className="h-10 lg:h-12 w-auto object-contain"
+                className="h-11 lg:h-14 w-auto object-contain"
                 priority
               />
             </div>
