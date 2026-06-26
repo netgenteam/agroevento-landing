@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 const Hero = () => {
   return (
-    <section id="inicio" className="relative w-full h-screen min-h-150 overflow-hidden">
+    <section id="inicio" className="relative w-full h-screen min-h-160 overflow-hidden">
       {/* Fondo de Video */}
       <video
         src="/hero-video.mp4"
