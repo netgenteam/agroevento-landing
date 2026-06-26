@@ -28,37 +28,56 @@ const Header = () => {
     { name: 'Expo', href: '#expo', icon: 'mdi:bullhorn-outline' },
     { name: 'Actividades', href: '#actividades', icon: 'mdi:calendar-text-outline' },
     { name: 'Solicitudes', href: '#stands', icon: 'mdi:clipboard-text-outline' },
-    
     { name: 'FAQ', href: '#faq', icon: 'mdi:help-circle-outline' },
   ];
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-5">
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* IZQUIERDA — Logo */}
-          <a href={isHome ? '#inicio' : '/#inicio'} className="relative z-[60] flex items-center">
-            <Image
-              src="/logo completo color.png"
-              alt="APROLAC Logo"
-              width={160}
-              height={48}
-              className="h-10 w-auto object-contain rounded"
-              priority
-            />
-          </a>
+      <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-4 lg:py-5">
+        <nav className="max-w-7xl mx-auto px-4 lg:px-6 flex items-center justify-between gap-4">
+          
+          {/* IZQUIERDA — Logos juntos (Visible en todas las pantallas) */}
+          <div className="relative z-[60] flex items-center gap-3 lg:gap-4 shrink-0">
+            {/* Logo APROLAC */}
+            <a href={isHome ? '#inicio' : '/#inicio'} className="flex items-center shrink-0">
+              <Image
+                src="/logo completo color.png"
+                alt="APROLAC Logo"
+                width={160}
+                height={68}
+                className="h-8 lg:h-10 w-auto object-contain rounded"
+                priority
+              />
+            </a>
+
+            {/* Línea divisoria */}
+            <div className="w-[1px] h-7 lg:h-9 bg-gray-300"></div>
+
+            {/* NUEVO LOGO EXPO */}
+            <div className="flex items-center shrink-0">
+              <Image
+                src="/LOGO_EXPO.png"
+                alt="Expo Logo"
+                width={160}
+                height={68}
+                // Hacemos que tenga la misma altura que el de Aprolac (h-8 en móvil, h-10 en desktop)
+                className="h-10 lg:h-12 w-auto object-contain"
+                priority
+              />
+            </div>
+          </div>
 
           {/* CENTRO — Nav links (desktop) */}
-          <ul className="hidden lg:flex items-center gap-6 lg:gap-8">
+          <ul className="hidden xl:flex items-center gap-6 lg:gap-8 flex-grow justify-center">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={isHome ? link.href : `/${link.href}`}
-                  className="group relative flex items-center gap-2 px-2 py-1 font-sans text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
+                  className="group relative flex items-center gap-2 px-2 py-1 font-sans text-[11px] lg:text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
                 >
                   <Icon
                     icon={link.icon}
-                    className="w-5 h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
+                    className="w-4 h-4 lg:w-5 lg:h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
                   />
                   <span className="relative">
                     {link.name}
@@ -69,17 +88,18 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* DERECHA — CTA + Hamburguesa mobile */}
-          <div className="flex items-center gap-4">
+          {/* DERECHA — CTA + Hamburguesa mobile (Ya sin logo) */}
+          <div className="flex items-center gap-3 lg:gap-5 shrink-0">
             <a
               href={isHome ? '#contacto' : '/#contacto'}
-              className="hidden lg:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-6 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
+              className="hidden lg:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-5 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
             >
               <Icon icon="mdi:email-outline" className="w-5 h-5" />
               Contacto
             </a>
+            
             <button
-              className="lg:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[60]"
+              className="xl:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[60]"
               onClick={() => setMenuOpen(true)}
             >
               <Icon icon="mdi:menu" height="28" className="text-aprolac-dark" />
