@@ -345,9 +345,9 @@ const ExpoSection = () => {
             </a>
           </div>
         </motion.div>
-        {/* <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
+        <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
  
-       <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -382,7 +382,7 @@ const ExpoSection = () => {
               <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </motion.div>*/}
+        </motion.div>
       
 
         {/* Video Modal */}

@@ -33,11 +33,11 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-white shadow-sm py-4 lg:py-5">
+      <header className="fixed top-0 w-full z-[100] bg-white shadow-sm py-4 lg:py-5">
         <nav className="max-w-7xl mx-auto px-4 lg:px-6 flex items-center justify-between gap-4">
           
           {/* IZQUIERDA — Logos juntos (Visible en todas las pantallas) */}
-          <div className="relative z-[60] flex items-center gap-3 lg:gap-4 shrink-0">
+          <div className="relative z-[110] flex items-center gap-3 lg:gap-4 shrink-0">
             {/* Logo APROLAC */}
             <a href={isHome ? '#inicio' : '/#inicio'} className="flex items-center shrink-0">
               <Image
@@ -60,7 +60,6 @@ const Header = () => {
                 alt="Expo Logo"
                 width={160}
                 height={68}
-                // Hacemos que tenga la misma altura que el de Aprolac (h-8 en móvil, h-10 en desktop)
                 className="h-11 lg:h-14 w-auto object-contain"
                 priority
               />
@@ -88,7 +87,7 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* DERECHA — CTA + Hamburguesa mobile (Ya sin logo) */}
+          {/* DERECHA — CTA + Hamburguesa mobile */}
           <div className="flex items-center gap-3 lg:gap-5 shrink-0">
             <a
               href={isHome ? '#contacto' : '/#contacto'}
@@ -99,7 +98,7 @@ const Header = () => {
             </a>
             
             <button
-              className="xl:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[60]"
+              className="xl:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[110]"
               onClick={() => setMenuOpen(true)}
             >
               <Icon icon="mdi:menu" height="28" className="text-aprolac-dark" />
@@ -122,14 +121,14 @@ const Header = () => {
                 e.stopPropagation();
                 setMenuOpen(false);
               }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] cursor-pointer"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] cursor-pointer"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[70] p-8 shadow-2xl flex flex-col border-l border-gray-100"
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-white z-[120] p-8 shadow-2xl flex flex-col border-l border-gray-100"
             >
               <div className="flex justify-end mb-12">
                 <button

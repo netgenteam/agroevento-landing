@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import InteractiveFloorPlan from "@/components/InteractiveMap"; // Ajusta la ruta si es necesario
+import InteractiveFloorPlan from "@/components/InteractiveMap";
 
 // Metadata para SEO de esta página específica
 export const metadata = {
@@ -14,8 +14,8 @@ export default function PlanoPage() {
       {/* Header en la parte superior */}
       <Header />
       
-      {/* Contenedor principal que se expande para empujar el footer abajo */}
-      <main className="flex-grow pt-5"> 
+      {/* Contenedor principal con padding superior ajustado para la cabecera fija */}
+      <main className="flex-grow pt-24 md:pt-28 lg:pt-28 pb-12"> 
         {/* Renderizamos el componente del mapa */}
         <InteractiveFloorPlan />
       </main>
