@@ -14,8 +14,9 @@
 El objetivo principal de la aplicación es:
 1. Posicionar el evento B2B líder de la industria láctea venezolana.
 2. Presentar la agenda, actividades, ejes estratégicos y respaldo institucional de APROLAC.
-3. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con derivación directa por WhatsApp (sin precios públicos, con pestañas tituladas *"Plano Interior"* y *"Plano Exterior"*, tipografía compacta en móviles `text-[10px]`, e interacción sin scroll en laptop).
-4. Canalizar registros de visitantes, patrocinantes, conferencistas y agendamiento de reuniones corporativas mediante formularios oficiales.
+3. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con derivación directa por WhatsApp.
+4. Mostrar un **cronómetro regresivo en vivo** programado para el inicio del evento el **14 de octubre de 2026 a las 08:00 AM**.
+5. Canalizar registros de visitantes, patrocinantes, conferencistas y agendamiento de reuniones corporativas mediante formularios oficiales.
 
 ---
 
@@ -35,18 +36,13 @@ El objetivo principal de la aplicación es:
 
 ---
 
-## 3. ANÁLISIS PROFUNDO: Plataforma Dual de Mapas Interactivos (`InteractiveMap.tsx`)
+## 3. Configuración del Cronómetro de Conteo Regresivo (`ExpoSection.tsx`)
 
-El componente [`components/InteractiveMap.tsx`](file:///C:/Users/joses/agroevento/agroevento-landing/components/InteractiveMap.tsx) integra dos mapas con pestañas superiores (*Plano Interior* y *Plano Exterior*):
-
-1. **Pestañas (Tabs):**
-   * **Nombres:** *"Plano Interior"* y *"Plano Exterior"*.
-   * **Tipografía Responsiva:** `text-[10px] sm:text-xs md:text-sm` con padding reducido en móvil (`px-2.5 py-1.5`) para encajar perfectamente en pantallas de teléfono sin desbordamientos.
+En [`components/ExpoSection.tsx`](file:///C:/Users/joses/agroevento/agroevento-landing/components/ExpoSection.tsx#L139):
+* **Fecha Objetivo Actualizada:** `14 de octubre de 2026, 08:00:00 AM` (`2026-10-14T08:00:00`).
 
 ---
 
 ## 4. Estado de Salud del Proyecto
 * **Resultado del Build (`npm run build`):**  
-  `✓ Compiled successfully in 3.4s`  
-  `✓ Finished TypeScript in 2.6s`  
-  `✓ Generating static pages (8/8)`
+  `✓ Compiled successfully`

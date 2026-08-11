@@ -5,4 +5,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- END:nextjs-agent-rules -->
 
 # User Preferences
-- Execute code changes and edits directly without asking for confirmation or choices.
+- ALWAYS execute code changes, edits, and terminal commands directly and immediately without asking for confirmation, permission, or choices.

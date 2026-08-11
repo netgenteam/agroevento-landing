@@ -25,12 +25,7 @@ const slides: SlideData[] = [
     description: "Las últimas tecnologías aplicadas a la industria láctea presentadas en tiempo real.",
     imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop",
   },
-  {
-    id: 3,
-    title: "Alianzas Estratégicas",
-    description: "Fomentando acuerdos comerciales que impulsan el crecimiento del sector a nivel internacional.",
-    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=2000&auto=format&fit=crop",
-  },
+  
 ];
 
 // 3. Variantes de Animación para el Slider
