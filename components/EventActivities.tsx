@@ -24,7 +24,7 @@ const activities = [
   {
     title: 'Rueda de Negocios',
     description: 'Espacio exclusivo para alianzas estratégicas B2B.',
-    image: '/bento1.png'
+    image: '/bento4.jpg'
   }
 ];
 

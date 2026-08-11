@@ -16,7 +16,8 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "APROLAC Contacto <onboarding@resend.dev>",
-      to: [process.env.EMAIL_RECIPIENT || "netgenteam@gmail.com"],
+      to: [process.env.EMAIL_RECIPIENT || "info.agronegocioslacteos@gmail.com"],
+      replyTo: `${nombre} <${email}>`,
       subject: `Nuevo Contacto - Expo 2026: ${motivo}`,
       react: ContactEmailTemplate({ nombre, empresa, email, motivo, mensaje }),
     });

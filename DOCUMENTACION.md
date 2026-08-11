@@ -15,8 +15,8 @@ El objetivo principal de la aplicación es:
 1. Posicionar el evento B2B líder de la industria láctea venezolana.
 2. Presentar la agenda, actividades, ejes estratégicos y respaldo institucional de APROLAC.
 3. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con derivación directa por WhatsApp.
-4. Mostrar un **cronómetro regresivo en vivo** programado para el inicio del evento el **14 de octubre de 2026 a las 08:00 AM**.
-5. Canalizar registros de visitantes, patrocinantes, conferencistas y agendamiento de reuniones corporativas mediante formularios oficiales.
+4. Mostrar un **cronómetro regresivo en vivo** con una insignia ubicada por encima del cuadro del contador indicando la fecha exacta: **`📅 Del 14 al 17 de Octubre de 2026`**.
+5. Canalizar registros de visitantes, patrocinantes, conferencistas y agendamiento de reuniones corporativas hacia **`info.agronegocioslacteos@gmail.com`** con respuesta directa al remitente mediante la cabecera `replyTo`.
 
 ---
 
@@ -36,13 +36,15 @@ El objetivo principal de la aplicación es:
 
 ---
 
-## 3. Configuración del Cronómetro de Conteo Regresivo (`ExpoSection.tsx`)
+## 3. Insignia de Fecha Exacta (`ExpoSection.tsx`)
 
-En [`components/ExpoSection.tsx`](file:///C:/Users/joses/agroevento/agroevento-landing/components/ExpoSection.tsx#L139):
-* **Fecha Objetivo Actualizada:** `14 de octubre de 2026, 08:00:00 AM` (`2026-10-14T08:00:00`).
+En [`components/ExpoSection.tsx`](file:///C:/Users/joses/agroevento/agroevento-landing/components/ExpoSection.tsx#L175):
+* **Insignia Superior:** Se posicionó la píldora indicadora **`Del 14 al 17 de Octubre de 2026`** justo por encima y fuera de la tarjeta del contador regresivo.
 
 ---
 
 ## 4. Estado de Salud del Proyecto
 * **Resultado del Build (`npm run build`):**  
-  `✓ Compiled successfully`
+  `✓ Compiled successfully in 2.8s`  
+  `✓ Finished TypeScript in 2.5s`  
+  `✓ Generating static pages (8/8)`

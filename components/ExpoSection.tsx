@@ -9,7 +9,7 @@ import Toast, { ToastType } from './Toast';
 
 
 const stats = [
-  { id: 1, label: 'Visitantes a la Expo', value: 5000, suffix: '+', icon: 'mdi:account-group-outline' },
+  { id: 1, label: 'Visitantes a la Expo', value: 3000, suffix: '+', icon: 'mdi:account-group-outline' },
   { id: 2, label: 'Empresas Expositoras', value: 50, suffix: '+', icon: 'mdi:domain' },
   { id: 3, label: 'Universidades Aliadas', value: 10, suffix: '+', icon: 'mdi:school-outline' },
   { id: 5, label: 'Congresistas', value: 1000, suffix: '+', icon: 'mdi:domain' },
@@ -172,8 +172,14 @@ const ExpoSection = () => {
             </p>
           </div>
 
-          <div className="lg:w-1/2 flex justify-center lg:justify-end w-full">
-            <div className="bg-aprolac-cream border border-aprolac-border/50 rounded-3xl p-6 md:p-8 shadow-sm flex gap-4 md:gap-8 items-center w-full max-w-lg">
+          <div className="lg:w-1/2 flex flex-col items-center lg:items-end w-full">
+            {/* Badge discreto con la fecha exacta del evento (POR ENCIMA DEL CUADRO) */}
+            <div className="flex items-center gap-2 mb-3 text-xs md:text-sm font-bold text-aprolac-green uppercase tracking-wider bg-white px-4 py-1.5 rounded-full border border-aprolac-green/30 shadow-xs">
+              <Icon icon="mdi:calendar-month-outline" className="w-4 h-4 text-aprolac-green" />
+              <span>Del 14 al 17 de Octubre de 2026</span>
+            </div>
+
+            <div className="bg-aprolac-cream border border-aprolac-border/50 rounded-3xl p-6 md:p-8 shadow-sm flex gap-4 md:gap-8 items-center justify-center w-full max-w-lg">
               {isMounted ? (
                 <>
                   <div className="flex flex-col items-center flex-1">
