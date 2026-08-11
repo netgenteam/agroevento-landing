@@ -89,7 +89,7 @@ const EventActivities = () => {
         </div>
 
         {/* Separador Sutil */}
-        <div className="mt-24 h-px bg-aprolac-border w-full" />
+        <div className="mt-24 h-px w-full" />
 
         {/* Cronograma Interactivo */}
         {/*<ScheduleTabs />*/}

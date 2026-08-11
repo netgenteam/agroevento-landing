@@ -212,9 +212,9 @@ export default function InteractiveFloorPlan() {
             {/* === MAPA 1: PLANO INTERIOR (AMPLIO EN TELÉFONO PARA SCROLL, SIN SCROLL EN LAPTOP) === */}
             {activeTab === "interior" && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.985, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
                 className="min-w-[1150px] xl:min-w-0 xl:w-full w-full min-h-[720px] xl:min-h-[640px] bg-white border-4 border-[#b4b8c5] p-4 xl:p-6 relative flex flex-col font-sans select-none text-[#7d8597] shadow-sm rounded-xl overflow-hidden"
               >
                 {/* --- FILA SUPERIOR --- */}
@@ -360,9 +360,9 @@ export default function InteractiveFloorPlan() {
             {/* === MAPA 2: PLANO EXTERIOR (SCROLL EN MÓVIL, AJUSTADO EN LAPTOP) === */}
             {activeTab === "exterior" && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.985, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
                 className="min-w-[1250px] xl:min-w-0 xl:w-full w-full h-[550px] bg-[#e5e5e5] relative font-sans select-none shadow-inner rounded-lg overflow-hidden border-2 border-gray-300"
               >
                 {/* LÍNEA PUNTEADA AMARILLA (Bordes) */}

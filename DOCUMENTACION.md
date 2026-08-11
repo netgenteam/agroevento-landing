@@ -14,9 +14,11 @@
 El objetivo principal de la aplicación es:
 1. Posicionar el evento B2B líder de la industria láctea venezolana.
 2. Presentar la agenda, actividades, ejes estratégicos y respaldo institucional de APROLAC.
-3. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con derivación directa por WhatsApp.
-4. Mostrar un **cronómetro regresivo en vivo** con una insignia ubicada por encima del cuadro del contador indicando la fecha exacta: **`📅 Del 14 al 17 de Octubre de 2026`**.
-5. Canalizar registros de visitantes, patrocinantes, conferencistas y agendamiento de reuniones corporativas hacia **`info.agronegocioslacteos@gmail.com`** con respuesta directa al remitente mediante la cabecera `replyTo`.
+3. Presentar los tipos de stands comerciales en un **Slider Infinito (`Stand.tsx`)** sin puntos en móvil y con flechas + contador numérico (`1 / 5`) posicionados en la parte inferior.
+4. Incluir un **Visor de Planos PDF Deslizable (`ExpoSection.tsx`)** con tipografía compacta en los tabs en móvil (`text-[10px]`) y flechas laterales ocultas en móvil (`hidden md:flex`).
+5. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con transiciones suaves en cambio de pestañas.
+6. Mostrar un **cronómetro regresivo en vivo** programado para el **14 de octubre de 2026 a las 08:00 AM**.
+7. Canalizar registros de visitantes y contactos hacia **`info.agronegocioslacteos@gmail.com`** con respuesta directa mediante la cabecera `replyTo`.
 
 ---
 
@@ -36,15 +38,17 @@ El objetivo principal de la aplicación es:
 
 ---
 
-## 3. Insignia de Fecha Exacta (`ExpoSection.tsx`)
+## 3. Ajustes de Interfaz Móvil (`Stand.tsx` & `ExpoSection.tsx`)
 
-En [`components/ExpoSection.tsx`](file:///C:/Users/joses/agroevento/agroevento-landing/components/ExpoSection.tsx#L175):
-* **Insignia Superior:** Se posicionó la píldora indicadora **`Del 14 al 17 de Octubre de 2026`** justo por encima y fuera de la tarjeta del contador regresivo.
+* **Sección de Stands (`Stand.tsx`):**
+  * Se ocultaron los puntos de paginación en móvil (`hidden sm:flex`).
+  * Se posicionaron las flechas de navegación y el contador numérico de stands (`1 / 5`) en la parte inferior (`flex sm:hidden`).
+* **Sección de Planos PDF (`ExpoSection.tsx`):**
+  * Reducción de la tipografía de los botones de pestañas en móvil a `text-[10px] sm:text-xs md:text-sm`.
+  * Se ocultaron las flechas laterales de navegación en dispositivos móviles (`hidden md:flex`).
 
 ---
 
 ## 4. Estado de Salud del Proyecto
 * **Resultado del Build (`npm run build`):**  
-  `✓ Compiled successfully in 2.8s`  
-  `✓ Finished TypeScript in 2.5s`  
-  `✓ Generating static pages (8/8)`
+  `✓ Compiled successfully in 3.8s`

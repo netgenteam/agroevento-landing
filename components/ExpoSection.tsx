@@ -125,6 +125,29 @@ const ExpoSection = () => {
     type: 'success' as ToastType,
   });
 
+  const [currentPdfSlide, setCurrentPdfSlide] = useState<0 | 1>(0);
+
+  const pdfPlans = [
+    {
+      id: 'interior',
+      title: 'Plano Interior',
+      description: 'Distribución oficial de los stands comerciales y patrocinantes VIP dentro del Salón Principal.',
+      image: '/imagen-interior.png',
+      pdf: '/Pdf-interior.pdf',
+      downloadName: 'Plano_Interior_Expo_2026.pdf',
+    },
+    {
+      id: 'exterior',
+      title: 'Plano Exterior',
+      description: 'Ubicación de expositores, áreas de ganado, toldos institucionales y pabellón del queso.',
+      image: '/imagen-exterior.png',
+      pdf: '/Pdf-exterior.pdf',
+      downloadName: 'Plano_Exterior_Expo_2026.pdf',
+    },
+  ];
+
+  const currentPlan = pdfPlans[currentPdfSlide];
+
   const showToast = (message: string, type: ToastType = 'success') => {
     setToast({ isVisible: true, message, type });
   };
@@ -304,54 +327,125 @@ const ExpoSection = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-aprolac-cream rounded-[2.5rem] p-8 md:p-12 border border-aprolac-border/50 relative overflow-hidden"
+          className="bg-aprolac-cream rounded-[2.5rem] p-6 md:p-12 border border-aprolac-border/50 relative overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-6 relative z-10">
+          {/* Header del Visor con Título, Botones de Deslizamiento (Tabs) y Descarga */}
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-6 relative z-10">
             <div>
-              <h3 className="font-display font-bold text-2xl md:text-3xl text-aprolac-dark">
-                Plano de Exhibición
-              </h3>
-              <p className="font-sans text-aprolac-text mt-2">
-               Más que un evento, es la plataforma definitiva para integrar nuestra cadena de valor </p>
+              <div className="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 className="font-display font-bold text-2xl md:text-3xl text-aprolac-dark">
+                  Plano de Exhibición
+                </h3>
+                <span className="text-xs font-bold bg-aprolac-green/10 text-aprolac-green px-3 py-1 rounded-full border border-aprolac-green/20">
+                  {currentPlan.title}
+                </span>
+              </div>
+              <p className="font-sans text-aprolac-text text-sm md:text-base">
+                {currentPlan.description}
+              </p>
             </div>
 
-            <a
-              href="/Pdf-interior.pdf"
-              download="Plano_Expo_Agro_Lacteos_2026.pdf"
-              onClick={() => showToast('¡Descarga iniciada! El plano se guardará en tu dispositivo.')}
-              className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm focus:outline-none"
-            >
-              <Icon icon="mdi:download" className="w-5 h-5" />
-              Descargar Plano PDF
-            </a>
+            <div className="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end flex-wrap">
+              {/* Botones de Selección / Pestañas Deslizantes */}
+              <div className="flex items-center gap-1.5 bg-white p-1.5 rounded-xl border border-gray-200 shadow-xs">
+                {pdfPlans.map((plan, index) => (
+                  <button
+                    key={plan.id}
+                    onClick={() => setCurrentPdfSlide(index as 0 | 1)}
+                    className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs md:text-sm font-bold transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
+                      currentPdfSlide === index
+                        ? 'bg-aprolac-green text-white shadow-xs'
+                        : 'text-gray-600 hover:text-aprolac-dark hover:bg-gray-50'
+                    }`}
+                  >
+                    <Icon icon={index === 0 ? 'mdi:building' : 'mdi:sun-wireless'} className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    {index === 0 ? 'Plano Interior' : 'Plano Exterior'}
+                  </button>
+                ))}
+              </div>
+
+              {/* Botón de Descarga del PDF Actual */}
+              <a
+                href={currentPlan.pdf}
+                download={currentPlan.downloadName}
+                onClick={() => showToast(`¡Descarga iniciada! El ${currentPlan.title} se guardará en tu dispositivo.`)}
+                className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-2.5 px-5 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-xs focus:outline-none text-xs md:text-sm"
+              >
+                <Icon icon="mdi:download" className="w-4 h-4" />
+                Descargar Plano PDF
+              </a>
+            </div>
           </div>
 
+          {/* Contenedor del Visor con Flechas de Navegación Lateral (Solo en Escritorio/Laptop) y Animación */}
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white bg-gray-100 group">
-            <div className="absolute inset-0 bg-gray-200 animate-pulse -z-10" />
-            <Image
-              src="/imagen-interior.png"
-              alt="Plano de distribución de la Expo Agro Negocios Lácteos 2026"
-              fill
-              sizes="(max-width: 768px) 100vw, 90vw"
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
-              priority
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPlan.id}
+                initial={{ opacity: 0, scale: 0.985, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.985, y: -8 }}
+                transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={currentPlan.image}
+                  alt={`Distribución de ${currentPlan.title}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-1000"
+                  priority
+                />
 
-            <a
-              href="/Pdf-interior.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => showToast('Abriendo plano en una nueva pestaña...', 'info')}
-              className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                <a
+                  href={currentPlan.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => showToast(`Abriendo ${currentPlan.title} en una nueva pestaña...`, 'info')}
+                  className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
+                >
+                  <span className="bg-white text-aprolac-dark px-5 py-2.5 rounded-xl shadow-lg font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-sm">
+                    <Icon icon="mdi:eye" className="w-5 h-5 text-aprolac-green" />
+                    Ver {currentPlan.title} en PDF
+                  </span>
+                </a>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Flecha Izquierda para Deslizar (Oculta en móvil) */}
+            <button
+              onClick={() => setCurrentPdfSlide(currentPdfSlide === 0 ? 1 : 0)}
+              aria-label="Plano anterior"
+              className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-aprolac-dark rounded-full shadow-lg items-center justify-center transition-all hover:scale-110 cursor-pointer z-20"
             >
-              <span className="bg-white text-aprolac-dark px-4 py-2 rounded-lg shadow-lg font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                <Icon icon="mdi:eye" className="w-5 h-5" />
-                Ver PDF Completo
-              </span>
-            </a>
+              <Icon icon="mdi:chevron-left" className="w-7 h-7" />
+            </button>
+
+            {/* Flecha Derecha para Deslizar (Oculta en móvil) */}
+            <button
+              onClick={() => setCurrentPdfSlide(currentPdfSlide === 0 ? 1 : 0)}
+              aria-label="Plano siguiente"
+              className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-aprolac-dark rounded-full shadow-lg items-center justify-center transition-all hover:scale-110 cursor-pointer z-20"
+            >
+              <Icon icon="mdi:chevron-right" className="w-7 h-7" />
+            </button>
+
+            {/* Indicadores de Puntos en la parte inferior */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full z-20">
+              {pdfPlans.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPdfSlide(index as 0 | 1)}
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
+                    currentPdfSlide === index ? 'w-6 bg-aprolac-green' : 'w-2 bg-white/60 hover:bg-white'
+                  }`}
+                  aria-label={`Ir al plano ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
-        {/*<div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
+        <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
  
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -388,7 +482,7 @@ const ExpoSection = () => {
               <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-        </motion.div>*/}
+        </motion.div>
       
 
         {/* Video Modal */}
