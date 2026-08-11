@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
-
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // 1. Tipos de Datos
 interface Feature {
@@ -13,8 +12,9 @@ interface Feature {
 interface StandPlan {
   id: string;
   title: string;
-  description: string;
+  subtitle?: string;
   features: Feature[];
+  moreFeatures?: boolean;
   buttonText: string;
   isVip: boolean;
 }
@@ -22,72 +22,82 @@ interface StandPlan {
 // 2. Datos del Componente
 const standsData: StandPlan[] = [
   {
-    id: "comercial",
-    title: "Stand Comercial",
-    description: "Presencia esencial para proveedores y servicios especializados.",
+    id: "vehiculos",
+    subtitle: "48 M² TECHADOS",
+    title: "Empresas de Vehículos",
     features: [
-      { text: "Espacio de exhibición de 9m²" },
-      { text: "Mención en el directorio oficial" },
-      { text: "2 Pases de acceso general" },
+      { text: "1 desayuno y 1 almuerzo por día" },
+      { text: "Mesón 1,8 x 0,6 m + alfombra de 16 m² + 4 sillas" },
+      { text: "Punto de luz 110V, máximo 10 amp" },
+      { text: "10 min de exposición en tarima principal" },
+      { text: "Presencia de marca en pantallas digitales" },
     ],
+    moreFeatures: true,
     buttonText: "Consultar Beneficios",
     isVip: false,
   },
   {
-    id: "vip",
-    title: "Stand VIP",
-    description: "Máxima visibilidad y networking de alto nivel para líderes del sector.",
+    id: "emprendedor",
+    subtitle: "IMPULSO A NUEVOS NEGOCIOS",
+    title: "Comercial Emprendedor",
     features: [
-      { text: "Espacio premium de 18m² en zona central" },
-      { text: "Acceso al salón privado de networking" },
-      { text: "Logotipo destacado en materiales del evento" },
-      { text: "5 Pases All-Access B2B" },
+      { text: "1 desayuno y 1 almuerzo por día" },
+      { text: "Mesa cuadrada 0,8 x 0,8 m + 2 sillas" },
+      { text: "Presencia de marca en backing" },
+      { text: "Punto de luz 110V, máximo 10 amp" },
+      { text: "Espacio ideal para emprendedores y marcas emergentes del sector" },
     ],
+    moreFeatures: true,
+    buttonText: "Consultar Beneficios",
+    isVip: false,
+  },
+  {
+    id: "premium",
+    subtitle: "ZONA CLIMATIZADA • ALTA AFLUENCIA",
+    title: "Comercial Premium",
+    features: [
+      { text: "1 desayuno y 1 almuerzo por día" },
+      { text: "Mesa cuadrada 0,8 x 0,8 m + 2 sillas" },
+      { text: "Punto de luz 110V, máximo 10 amp" },
+      { text: "10 min de exposición en tarima principal" },
+      { text: "1 entrada a conferencia + descuento en rueda de negocios" },
+    ],
+    moreFeatures: true,
     buttonText: "Solicitar Disponibilidad",
     isVip: true,
   },
   {
-    id: "aliado",
-    title: "Stand Aliado",
-    description: "Oportunidad estratégica para asociaciones y entidades colaboradoras.",
+    id: "patrocinante",
+    subtitle: "MÁXIMA EXPOSICIÓN",
+    title: "Patrocinante Oficial",
     features: [
-      { text: "Espacio colaborativo de 12m²" },
-      { text: "Participación en panel de discusión" },
-      { text: "3 Pases corporativos" },
+      { text: " Inversión a convenir" },
+      { text: " Máximo nivel de visibilidad de marca" },
+      { text: " 2 desayunos y 2 almuerzos por día." },
+      { text: " Logo en backings, pantallas y medios digitales." },
+      { text: " Presencia en salones de conferencias." },
     ],
+    moreFeatures: true,
+    buttonText: "Solicitar Patrocinio",
+    isVip: false,
+  },
+  {
+    id: "externo",
+    subtitle: "AMPLIA VISIBILIDAD EXTERNA",
+    title: "Comercial Externo",
+    features: [
+      { text: "1 desayuno y 1 almuerzo por día" },
+      { text: "Mesa cuadrada 0,8 x 0,8 m + 2 sillas" },
+      { text: "Punto de luz 110V, máximo 10 amp" },
+      { text: " 10 min de exposición en tarima principal y pantalla" },
+    ],
+    moreFeatures: true,
     buttonText: "Consultar Beneficios",
     isVip: false,
   },
 ];
 
-// 3. Variantes de Animación
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-  },
-};
-
-const headerVariants: Variants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-// Ícono SVG de Check reutilizable
+// Ícono SVG de Check
 const CheckIcon = ({ color }: { color: string }) => (
   <svg
     className="w-5 h-5 flex-shrink-0 mt-0.5"
@@ -106,94 +116,201 @@ const CheckIcon = ({ color }: { color: string }) => (
   </svg>
 );
 
-export default function Stands() {
+export default function StandsSlider() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Funciones de navegación
+  const nextSlide = () => setActiveIndex((prev) => (prev + 1) % standsData.length);
+  const prevSlide = () => setActiveIndex((prev) => (prev - 1 + standsData.length) % standsData.length);
+
+  // Auto-play del slider (se frena si el mouse está encima)
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(nextSlide, 4000); 
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  // Cálculo de posiciones para el efecto infinito
+  const getPosition = (index: number) => {
+    const diff = (index - activeIndex + standsData.length) % standsData.length;
+    if (diff === 0) return "center";
+    if (diff === 1) return "right1";
+    if (diff === 2) return "right2";
+    if (diff === standsData.length - 2) return "left2";
+    if (diff === standsData.length - 1) return "left1";
+    return "center";
+  };
+
+  const sliderVariants: Variants = {
+    center: { x: "0%", scale: 1, zIndex: 10, opacity: 1 },
+    left1: { x: "-105%", scale: 0.85, zIndex: 5, opacity: 0.75 },
+    right1: { x: "105%", scale: 0.85, zIndex: 5, opacity: 0.75 },
+    left2: { x: "-200%", scale: 0.7, zIndex: 0, opacity: 0 },
+    right2: { x: "200%", scale: 0.7, zIndex: 0, opacity: 0 },
+  };
+
   return (
-    <section  className="relative w-full bg-[#f8fbf9] py-20 lg:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full bg-[#f5f5f5] py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header de los Planes */}
+        {/* Header */}
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
-          initial="hidden"
-          whileInView="visible"
+          className="text-center max-w-3xl mx-auto mb-10 lg:mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          variants={headerVariants}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F4A32] mb-6 tracking-tight">
-            Visualización de Autoridad
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F4A32] mb-4 tracking-tight">
+            Nuestros Stands
           </h2>
           <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-            Posicione su marca en la cumbre de la logística láctea global con
-            nuestros niveles de participación exclusivos.
+            Descubra las opciones de participación diseñadas para maximizar la visibilidad y el impacto de su marca en el evento.
           </p>
         </motion.div>
 
-        {/* Cards Grid */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 items-center"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+
+
+        {/* Contenedor Principal (Pausa al pasar el mouse) */}
+        <div 
+          className="relative flex justify-center items-center h-[540px] w-full mx-auto"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {standsData.map((plan) => (
-            <motion.div
-              key={plan.id}
-              variants={cardVariants}
-              className={`relative flex flex-col bg-white rounded-3xl overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-xl ${
-                plan.isVip
-                  ? "border-t-[6px] border-[#7B1938] lg:scale-105 z-10 shadow-2xl py-10"
-                  : "py-8"
-              }`}
-            >
-              {/* Badge VIP */}
-              {plan.isVip && (
-                <div className="absolute top-0 right-0 bg-[#7B1938] text-white text-[10px] sm:text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">
-                  Recomendado
-                </div>
-              )}
+          {/* Flecha Izquierda (Visibles solo en pantallas medianas y grandes) */}
+          <button 
+            onClick={prevSlide}
+            aria-label="Stand anterior"
+            className="hidden sm:flex absolute left-2 lg:left-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#0F4A32] border border-gray-100 hover:bg-[#0F4A32] hover:text-white transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
 
-              <div className="px-6 sm:px-8 flex-grow">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {plan.title}
-                </h3>
-                <p className="text-sm text-gray-500 mb-8 min-h-[40px]">
-                  {plan.description}
-                </p>
+          {/* Wrapper del Slider */}
+          <div className="relative flex justify-center items-center h-full w-full max-w-[1280px] overflow-visible">
+            {standsData.map((plan, index) => {
+              const position = getPosition(index);
+              const isCenter = position === "center";
 
-                {/* Lista de beneficios */}
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <CheckIcon color={plan.isVip ? "#7B1938" : "#0F4A32"} />
-                      <span className="text-sm text-gray-600 leading-relaxed">
-                        {feature.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Botón */}
-              <div className="px-6 sm:px-8 mt-auto pt-4">
-                <a
-                  href="#contacto"
-                  className={`w-full py-3 px-6 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center ${
+              return (
+                <motion.div
+                  key={plan.id}
+                  variants={sliderVariants}
+                  initial={false}
+                  animate={position}
+                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                  className={`absolute w-[90%] sm:w-[430px] lg:w-[440px] h-[510px] flex flex-col bg-white rounded-3xl overflow-hidden transition-shadow duration-300 ${
+                    isCenter ? "shadow-2xl cursor-default" : "shadow-md cursor-pointer"
+                  } ${
                     plan.isVip
-                      ? "bg-[#7B1938] text-white hover:bg-[#5f132b] hover:shadow-lg"
-                      : "bg-transparent text-[#0F4A32] border border-[#0F4A32] hover:bg-[#0F4A32] hover:text-white"
+                      ? "border-t-[6px] border-[#7B1938]"
+                      : "border-t-[6px] border-[#0F4A32]"
                   }`}
+                  onClick={() => !isCenter && setActiveIndex(index)}
                 >
-                  {plan.buttonText}
-                </a>
-              </div>
-            </motion.div>
+                  <div className="flex flex-col h-full bg-white relative">
+                    
+                    {/* Badge Recomendado (VIP) */}
+                    {plan.isVip && (
+                      <div className="absolute top-0 right-0 bg-[#7B1938] text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">
+                        Recomendado
+                      </div>
+                    )}
+
+                    <div className="px-6 sm:px-8 pt-7 flex-grow flex flex-col">
+                      {plan.subtitle && (
+                        <p className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${plan.isVip ? "text-[#7B1938]" : "text-[#0F4A32]"}`}>
+                          {plan.subtitle}
+                        </p>
+                      )}
+                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 pr-4 leading-tight">
+                        {plan.title}
+                      </h3>
+
+                      {/* Lista de beneficios */}
+                      <ul className="space-y-3 mb-2 flex-grow">
+                        {plan.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2.5">
+                            <CheckIcon color={plan.isVip ? "#7B1938" : "#0F4A32"} />
+                            <span className="text-[14px] sm:text-[15px] text-gray-700 leading-relaxed">
+                              {feature.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {/* Indicador de más beneficios */}
+                      {plan.moreFeatures && (
+                        <p className="text-xs text-gray-400 italic mb-3 ml-7 font-medium">
+                          + y más beneficios exclusivos...
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Botón */}
+                    <div className="px-6 sm:px-8 pb-6 mt-auto">
+                      <a
+                        href="#contacto"
+                        className={`w-full py-3.5 px-6 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 flex items-center justify-center border-2 ${
+                          plan.isVip
+                            ? "bg-[#7B1938] text-white border-[#7B1938] hover:bg-transparent hover:text-[#7B1938]"
+                            : "bg-transparent text-[#0F4A32] border-[#0F4A32] hover:bg-[#0F4A32] hover:text-white"
+                        }`}
+                      >
+                        {plan.buttonText}
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Flecha Derecha (Visibles solo en pantallas medianas y grandes) */}
+          <button 
+            onClick={nextSlide}
+            aria-label="Stand siguiente"
+            className="hidden sm:flex absolute right-2 lg:right-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#0F4A32] border border-gray-100 hover:bg-[#0F4A32] hover:text-white transition-colors"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+        
+        {/* Paginación Inferior: Puntos en Escritorio, Flechas + Número en Móvil */}
+        <div className="hidden sm:flex justify-center gap-3 mt-8">
+          {standsData.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={`w-3 h-3 rounded-full transition-colors duration-300 cursor-pointer ${
+                activeIndex === idx ? "bg-[#0F4A32]" : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Ir al slide ${idx + 1}`}
+            />
           ))}
-        </motion.div>
+        </div>
 
-        
-
-        
+        {/* Versión Móvil: Flechas de Navegación con Indicador de Números Abajo (Sin Puntos) */}
+        <div className="flex sm:hidden justify-center items-center gap-4 mt-8">
+          <button 
+            onClick={prevSlide}
+            aria-label="Stand anterior"
+            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#0F4A32] border border-gray-200 active:scale-95 transition-all cursor-pointer"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <span className="text-xs font-bold text-[#0F4A32] uppercase tracking-widest px-3.5 py-1.5 bg-white rounded-full border border-gray-200 shadow-xs">
+            {activeIndex + 1} / {standsData.length}
+          </span>
+          <button 
+            onClick={nextSlide}
+            aria-label="Stand siguiente"
+            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#0F4A32] border border-gray-200 active:scale-95 transition-all cursor-pointer"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
 
       </div>
     </section>
