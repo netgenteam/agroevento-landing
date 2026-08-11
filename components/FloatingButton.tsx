@@ -28,9 +28,9 @@ export default function FloatingButton() {
   const actions = [
     {
       id: "pdf",
-      label: "Descargar Plano",
+      label: "Descargar Brochure",
       color: "bg-[#E23F44]", // Rojo PDF
-      href: "/plano-expo.pdf", 
+      href: "/Brochure de Inversión.pptx.pdf", 
       download: true,
       icon: (
         // Ícono de Documento con flecha de descarga

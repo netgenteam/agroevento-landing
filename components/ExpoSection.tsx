@@ -136,7 +136,7 @@ const ExpoSection = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    const targetDate = new Date('2026-09-18T08:00:00').getTime();
+    const targetDate = new Date('2026-10-14T08:00:00').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -310,7 +310,7 @@ const ExpoSection = () => {
             </div>
 
             <a
-              href="/plano-expo.pdf"
+              href="/Pdf-interior.pdf"
               download="Plano_Expo_Agro_Lacteos_2026.pdf"
               onClick={() => showToast('¡Descarga iniciada! El plano se guardará en tu dispositivo.')}
               className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-3 px-6 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-sm focus:outline-none"
@@ -323,7 +323,7 @@ const ExpoSection = () => {
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-inner border border-white bg-gray-100 group">
             <div className="absolute inset-0 bg-gray-200 animate-pulse -z-10" />
             <Image
-              src="/expo-map3.png"
+              src="/imagen-interior.png"
               alt="Plano de distribución de la Expo Agro Negocios Lácteos 2026"
               fill
               sizes="(max-width: 768px) 100vw, 90vw"
@@ -332,7 +332,7 @@ const ExpoSection = () => {
             />
 
             <a
-              href="/plano-expo.pdf"
+              href="/Pdf-interior.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => showToast('Abriendo plano en una nueva pestaña...', 'info')}
@@ -345,9 +345,9 @@ const ExpoSection = () => {
             </a>
           </div>
         </motion.div>
-        {/* <div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
+        {/*<div className="w-full h-px bg-gray-200 mb-16 mt-16"></div>
  
-       <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
