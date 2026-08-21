@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Lexend } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
+
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
 const inter = Inter({
   subsets: ["latin"],
@@ -160,6 +163,7 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${lexend.variable} h-full`}
     >
+      {gtmId && <GoogleTagManager gtmId={gtmId} />}
       <head>
         {/* JSON-LD: Organization */}
         <script
@@ -176,7 +180,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased" suppressHydrationWarning>{children}</body>
+      <body className="min-h-full flex flex-col antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
+
