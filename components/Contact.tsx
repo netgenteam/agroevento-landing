@@ -64,7 +64,7 @@ const Contact = () => {
           type: 'error'
         });
       }
-    } catch (error) {
+    } catch {
       setToastConfig({
         isVisible: true,
         message: 'Hubo un error al enviar el mensaje. Por favor intente nuevamente.',
@@ -112,7 +112,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-3xl shadow-xl p-4 md:p-10 border border-aprolac-border/50 flex flex-col justify-center relative z-20"
           >
-            <form className="space-y-6 flex-grow" onSubmit={handleSubmit}>
+            <form className="space-y-6 flex-grow" onSubmit={handleSubmit} suppressHydrationWarning>
 
               {/* Contenedor Grid para Nombre y Empresa (Alineados en desktop) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -129,6 +129,8 @@ const Contact = () => {
                       id="nombre"
                       name="nombre"
                       type="text"
+                      autoComplete="name"
+                      suppressHydrationWarning
                       placeholder="Ej. Juan Pérez"
                       className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                     />
@@ -148,6 +150,8 @@ const Contact = () => {
                       id="empresa"
                       name="empresa"
                       type="text"
+                      autoComplete="organization"
+                      suppressHydrationWarning
                       placeholder="Empresa"
                       className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                     />
@@ -172,6 +176,8 @@ const Contact = () => {
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="email"
+                    suppressHydrationWarning
                     placeholder="email@empresa.com"
                     className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans"
                   />
@@ -190,6 +196,7 @@ const Contact = () => {
                   <button
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    suppressHydrationWarning
                     className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans text-left relative z-0"
                   >
                     <span className={selectedReason ? 'text-aprolac-dark' : 'text-gray-400'}>
@@ -243,6 +250,7 @@ const Contact = () => {
                     id="mensaje"
                     name="mensaje"
                     rows={4}
+                    suppressHydrationWarning
                     placeholder="¿En qué podemos ayudarte?"
                     className="bg-aprolac-cream/50 border placeholder:text-sm border-gray-200 rounded-xl pl-12 pr-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-aprolac-green/50 focus:border-aprolac-green transition-all font-sans resize-none"
                   />
@@ -253,6 +261,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isLoading}
+                suppressHydrationWarning
                 className="w-full cursor-pointer flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
