@@ -100,7 +100,7 @@ const standsData: StandPlan[] = [
 // Ícono SVG de Check
 const CheckIcon = ({ color }: { color: string }) => (
   <svg
-    className="w-5 h-5 flex-shrink-0 mt-0.5"
+    className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -170,11 +170,9 @@ export default function StandsSlider() {
           </p>
         </motion.div>
 
-
-
         {/* Contenedor Principal (Pausa al pasar el mouse) */}
         <div 
-          className="relative flex justify-center items-center h-[540px] w-full mx-auto"
+          className="relative flex justify-center items-center h-[560px] sm:h-[540px] w-full mx-auto"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -199,8 +197,15 @@ export default function StandsSlider() {
                   variants={sliderVariants}
                   initial={false}
                   animate={position}
+                  drag={isCenter ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, { offset, velocity }) => {
+                    if (offset.x < -40 || velocity.x < -300) nextSlide();
+                    else if (offset.x > 40 || velocity.x > 300) prevSlide();
+                  }}
                   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  className={`absolute w-[90%] sm:w-[430px] lg:w-[440px] h-[510px] flex flex-col bg-white rounded-3xl overflow-hidden transition-shadow duration-300 ${
+                  className={`absolute w-[92%] max-w-[390px] sm:max-w-none sm:w-[430px] lg:w-[440px] h-[530px] sm:h-[510px] flex flex-col bg-white rounded-3xl overflow-hidden transition-shadow duration-300 ${
                     isCenter ? "shadow-2xl cursor-default" : "shadow-md cursor-pointer"
                   } ${
                     plan.isVip
@@ -209,31 +214,32 @@ export default function StandsSlider() {
                   }`}
                   onClick={() => !isCenter && setActiveIndex(index)}
                 >
-                  <div className="flex flex-col h-full bg-white relative">
+                  <div className="flex flex-col h-full bg-white relative justify-between">
                     
                     {/* Badge Recomendado (VIP) */}
                     {plan.isVip && (
-                      <div className="absolute top-0 right-0 bg-[#7B1938] text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">
+                      <div className="absolute top-0 right-0 bg-[#7B1938] text-white text-[9px] sm:text-[10px] font-bold px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">
                         Recomendado
                       </div>
                     )}
 
-                    <div className="px-6 sm:px-8 pt-7 flex-grow flex flex-col">
+                    {/* Zona de contenido */}
+                    <div className="px-5 sm:px-8 pt-5 sm:pt-7 flex-grow flex flex-col overflow-y-auto sm:overflow-visible">
                       {plan.subtitle && (
-                        <p className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${plan.isVip ? "text-[#7B1938]" : "text-[#0F4A32]"}`}>
+                        <p className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-1.5 sm:mb-2 ${plan.isVip ? "text-[#7B1938]" : "text-[#0F4A32]"}`}>
                           {plan.subtitle}
                         </p>
                       )}
-                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 pr-4 leading-tight">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 sm:mb-4 pr-4 leading-tight shrink-0">
                         {plan.title}
                       </h3>
 
                       {/* Lista de beneficios */}
-                      <ul className="space-y-3 mb-2 flex-grow">
+                      <ul className="space-y-2 sm:space-y-3 mb-2 flex-grow">
                         {plan.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2.5">
+                          <li key={idx} className="flex items-start gap-2 sm:gap-2.5">
                             <CheckIcon color={plan.isVip ? "#7B1938" : "#0F4A32"} />
-                            <span className="text-[14px] sm:text-[15px] text-gray-700 leading-relaxed">
+                            <span className="text-[13px] sm:text-[14px] lg:text-[15px] text-gray-700 leading-snug sm:leading-relaxed">
                               {feature.text}
                             </span>
                           </li>
@@ -242,17 +248,17 @@ export default function StandsSlider() {
                       
                       {/* Indicador de más beneficios */}
                       {plan.moreFeatures && (
-                        <p className="text-xs text-gray-400 italic mb-3 ml-7 font-medium">
+                        <p className="text-[11px] sm:text-xs text-gray-400 italic mb-2 sm:mb-3 ml-6 sm:ml-7 font-medium shrink-0">
                           + y más beneficios exclusivos...
                         </p>
                       )}
                     </div>
 
-                    {/* Botón */}
-                    <div className="px-6 sm:px-8 pb-6 mt-auto">
+                    {/* Botón (flex-shrink-0 garantiza que siempre esté visible y completo) */}
+                    <div className="px-5 sm:px-8 pb-5 sm:pb-6 mt-auto flex-shrink-0 pt-2">
                       <a
                         href="#contacto"
-                        className={`w-full py-3.5 px-6 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 flex items-center justify-center border-2 ${
+                        className={`w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 flex items-center justify-center border-2 ${
                           plan.isVip
                             ? "bg-[#7B1938] text-white border-[#7B1938] hover:bg-transparent hover:text-[#7B1938]"
                             : "bg-transparent text-[#0F4A32] border-[#0F4A32] hover:bg-[#0F4A32] hover:text-white"

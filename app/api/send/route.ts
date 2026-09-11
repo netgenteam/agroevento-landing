@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message: "SUCCESS", id: data?.id });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });
   }
 }

@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-6 pt-16">
         <div className="flex flex-col items-center text-center">
           <span className="text-gray-300 font-sans text-[10px] lg:text-xl tracking-[0.3em] uppercase mb-4 block">
-            "Seguid el ejemplo que Guayana dio"
+            &ldquo;Seguid el ejemplo que Guayana dio&rdquo;
           </span>
          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight leading-none">
             <span className="text-white">EXPO AGRO NEGOCIOS </span>

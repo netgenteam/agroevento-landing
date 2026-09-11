@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useSyncExternalStore } from 'react';
 import { motion, useInView, animate, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
@@ -101,7 +101,11 @@ const VideoModal = ({ onClose }: { onClose: () => void }) => {
 };
 
 const ExpoSection = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
@@ -158,7 +162,6 @@ const ExpoSection = () => {
   }, []);
 
   useEffect(() => {
-    setIsMounted(true);
     const targetDate = new Date('2026-10-14T08:00:00').getTime();
 
     const updateTimer = () => {
@@ -478,7 +481,7 @@ const ExpoSection = () => {
               href="/Map"
               className="bg-aprolac-green text-sm  text-white border-2 border-transparent font-bold font-sans px-8 py-5 rounded-2xl flex items-center gap-3 hover:bg-[#0a5c3e] hover:scale-105 hover:shadow-[0_10px_25px_rgba(40,167,69,0.3)] transition-all duration-300 sm:text-lg group"
             >
-              Ir al Plano Interactivo
+              Plano Interactivo
               <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
