@@ -38,3 +38,46 @@
     color: var(--color-aprolac-dark);
   }
 }
+
+/* --- Marquee / Slider Continuo de Logos --- */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 40s linear infinite;
+  will-change: transform;
+}
+
+/* Pausar únicamente en escritorio con mouse (hover real), nunca en dispositivos móviles o táctiles */
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+}

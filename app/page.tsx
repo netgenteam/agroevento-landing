@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import QuienesSomos from '@/components/QuienesSomos';
 import CommitmentSection from '@/components/CommitmentSection';
 import ExpoSection from '@/components/ExpoSection';
+import AlliesSlider from '@/components/AlliesSlider';
 import Stands from '@/components/Stand';
 import ExperiencesSlider from "@/components/ExperiencesSlider"; 
 import EventActivities from '@/components/EventActivities';// <-- Importación del Slider
@@ -24,6 +25,8 @@ export default function Home() {
         <Hero />
         <QuienesSomos />
         
+        <AlliesSlider />
+
         <CommitmentSection />
         
         <ExpoSection />
