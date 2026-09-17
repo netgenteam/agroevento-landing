@@ -80,7 +80,7 @@ const headerVariants: Variants = {
 
 export default function CommitmentSection() {
   return (
-    <section id="compromiso" className="relative w-full bg-[#f8fbf9] py-20 lg:py-32 overflow-hidden">
+    <section id="compromiso" className="relative w-full bg-[#f8fbf9] py-20 lg:py-24 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Cabecera de la sección */}
