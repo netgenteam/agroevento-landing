@@ -50,11 +50,11 @@ interface LogoCardProps {
 const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
   const imageSrc = encodeURI(`/logos/${ally.filename}`);
 
-  const cardClasses = `group relative flex-shrink-0 bg-white rounded-2xl sm:rounded-3xl border border-gray-100/90 shadow-xs hover:shadow-xl hover:border-aprolac-green/40 transition-all duration-300 flex items-center justify-center ${
+  const cardClasses = `group relative flex-shrink-0 bg-white rounded-2xl sm:rounded-3xl border border-gray-100/90 shadow-xs hover:shadow-xl hover:border-aprolac-green/40 transition-all duration-300 flex items-center justify-center overflow-hidden ${
     ENABLE_LINKS ? 'cursor-pointer' : 'cursor-default'
   } ${
     isMobile
-      ? 'w-72 h-40 xs:w-80 xs:h-44 sm:w-88 sm:h-48 p-4'
+      ? 'w-44 h-26 xs:w-48 xs:h-28 sm:w-52 sm:h-30 p-1.5 xs:p-2'
       : 'w-58 h-35 md:w-58 md:h-35 lg:w-66 lg:h-37 xl:w-73 xl:h-40 p-3.5 sm:p-4'
   }`;
 
@@ -65,7 +65,9 @@ const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
         alt={`Logo de ${ally.name} – Aliado oficial Expo Agro Negocios Lácteos 2026`}
         fill
         sizes="(max-width: 640px) 320px, (max-width: 1024px) 280px, 320px"
-        className="object-contain transition-transform duration-300 group-hover:scale-105 filter drop-shadow-xs"
+        className={`object-contain transition-transform duration-300 filter drop-shadow-xs ${
+          isMobile ? 'scale-125' : 'group-hover:scale-105'
+        }`}
       />
     </div>
   );
@@ -130,9 +132,9 @@ export default function AlliesSlider() {
         {/* Degradado lateral derecho */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-36 md:w-52 bg-gradient-to-l from-aprolac-cream via-aprolac-cream/85 to-transparent z-10" />
 
-        {/* --- VISTA MÓVIL: Una sola fila continua con logos grandes, redirección táctil al tocar y scroll vertical fluido --- */}
-        <div className="flex md:hidden overflow-hidden py-4 touch-pan-y">
-          <div className="animate-marquee flex items-center gap-6 py-2">
+        {/* --- VISTA MÓVIL: Una sola fila continua con logos proporcionados, redirección táctil al tocar y scroll vertical fluido --- */}
+        <div className="flex md:hidden overflow-hidden py-3 touch-pan-y">
+          <div className="animate-marquee flex items-center gap-4 py-1.5">
             {allLogosDuplicated.map((ally, idx) => (
               <LogoCard key={`mobile-${ally.id}-${idx}`} ally={ally} isMobile />
             ))}
