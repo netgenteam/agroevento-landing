@@ -65,6 +65,8 @@ const VideoModal = ({ onClose }: { onClose: () => void }) => {
       onClick={onClose}
     >
       <button
+        type="button"
+        suppressHydrationWarning
         className="absolute top-6 right-6 z-50 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 backdrop-blur-sm transition-all cursor-pointer"
         onClick={onClose}
       >
@@ -294,6 +296,8 @@ const ExpoSection = () => {
 
           {/* Capa 4: Botón Play */}
           <button
+            type="button"
+            suppressHydrationWarning
             onClick={() => setIsVideoModalOpen(true)}
             aria-label="Reproducir video"
             className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 z-30 w-16 h-16 sm:w-20 sm:h-20 bg-aprolac-green/80 backdrop-blur-md rounded-full border-2 border-white/50 flex items-center justify-center text-white hover:bg-aprolac-green hover:border-white hover:scale-110 transition-all duration-300 shadow-[0_0_30px_rgba(40,167,69,0.5)] cursor-pointer"
@@ -306,6 +310,7 @@ const ExpoSection = () => {
           {/* Capa 5: Hitbox Transparente para Móviles */}
           <button
             type="button"
+            suppressHydrationWarning
             className="absolute inset-0 w-full h-full z-40 cursor-pointer bg-transparent appearance-none focus:outline-none [-webkit-tap-highlight-color:transparent]"
             onClick={() => setIsVideoModalOpen(true)}
             aria-label="Reproducir video promocional"
@@ -354,6 +359,8 @@ const ExpoSection = () => {
                 {pdfPlans.map((plan, index) => (
                   <button
                     key={plan.id}
+                    type="button"
+                    suppressHydrationWarning
                     onClick={() => setCurrentPdfSlide(index as 0 | 1)}
                     className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs md:text-sm font-bold transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
                       currentPdfSlide === index
@@ -417,6 +424,8 @@ const ExpoSection = () => {
 
             {/* Flecha Izquierda para Deslizar (Oculta en móvil) */}
             <button
+              type="button"
+              suppressHydrationWarning
               onClick={() => setCurrentPdfSlide(currentPdfSlide === 0 ? 1 : 0)}
               aria-label="Plano anterior"
               className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-aprolac-dark rounded-full shadow-lg items-center justify-center transition-all hover:scale-110 cursor-pointer z-20"
@@ -426,6 +435,8 @@ const ExpoSection = () => {
 
             {/* Flecha Derecha para Deslizar (Oculta en móvil) */}
             <button
+              type="button"
+              suppressHydrationWarning
               onClick={() => setCurrentPdfSlide(currentPdfSlide === 0 ? 1 : 0)}
               aria-label="Plano siguiente"
               className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/90 hover:bg-white text-aprolac-dark rounded-full shadow-lg items-center justify-center transition-all hover:scale-110 cursor-pointer z-20"
@@ -438,6 +449,8 @@ const ExpoSection = () => {
               {pdfPlans.map((_, index) => (
                 <button
                   key={index}
+                  type="button"
+                  suppressHydrationWarning
                   onClick={() => setCurrentPdfSlide(index as 0 | 1)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
                     currentPdfSlide === index ? 'w-6 bg-aprolac-green' : 'w-2 bg-white/60 hover:bg-white'

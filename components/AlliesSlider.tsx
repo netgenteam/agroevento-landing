@@ -28,6 +28,7 @@ const ALLIES_DATA: AllyLogo[] = [
   { id: 'tiburon-blanco', name: 'Tiburón Blanco', filename: 'TIBURON BLANCO.png', link: 'https://www.instagram.com/tiburonblancove/' },
   { id: 'zapoara', name: 'Zapoara', filename: 'ZAPOARA.png', link: 'https://www.instagram.com/zapoaralacteos/' },
   { id: '286', name: '286', filename: '286.png', link: 'https://www.instagram.com/286agro/' },
+  { id: 'campo-alegre', name: 'Centro Genético Campo Alegre', filename: 'Campo_alegre.png', link: 'https://www.instagram.com/campoalegre/' },
 ];
 
 // Fila única completa duplicada para móvil (loop continuo fluido con todos los logos)
@@ -58,6 +59,8 @@ const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
       : 'w-58 h-35 md:w-58 md:h-35 lg:w-66 lg:h-37 xl:w-73 xl:h-40 p-3.5 sm:p-4'
   }`;
 
+  const isCampoAlegre = ally.id === 'campo-alegre';
+
   const imageContent = (
     <div className="relative w-full h-full flex items-center justify-center">
       <Image
@@ -66,7 +69,11 @@ const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
         fill
         sizes="(max-width: 640px) 320px, (max-width: 1024px) 280px, 320px"
         className={`object-contain transition-transform duration-300 filter drop-shadow-xs ${
-          isMobile ? 'scale-125' : 'group-hover:scale-105'
+          isMobile
+            ? isCampoAlegre
+              ? 'scale-85'
+              : 'scale-125'
+            : 'group-hover:scale-105'
         }`}
       />
     </div>

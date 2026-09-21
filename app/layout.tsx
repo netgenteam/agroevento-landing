@@ -162,9 +162,41 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${inter.variable} ${lexend.variable} h-full`}
+      suppressHydrationWarning
     >
       {gtmId && <GoogleTagManager gtmId={gtmId} />}
       <head>
+        {/* Prevenir errores de hidratación causados por extensiones del navegador (ej. McAfee, gestores de contraseñas) que inyectan 'fdprocessedid' */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var origSet = Element.prototype.setAttribute;
+                  Element.prototype.setAttribute = function(name, val) {
+                    if (name === 'fdprocessedid') return;
+                    return origSet.apply(this, arguments);
+                  };
+                  if (typeof MutationObserver !== 'undefined') {
+                    var observer = new MutationObserver(function(mutations) {
+                      for (var i = 0; i < mutations.length; i++) {
+                        var m = mutations[i];
+                        if (m.type === 'attributes' && m.attributeName === 'fdprocessedid') {
+                          m.target.removeAttribute('fdprocessedid');
+                        }
+                      }
+                    });
+                    observer.observe(document.documentElement, {
+                      attributes: true,
+                      subtree: true,
+                      attributeFilter: ['fdprocessedid']
+                    });
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         {/* JSON-LD: Organization */}
         <script
           type="application/ld+json"
