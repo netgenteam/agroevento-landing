@@ -12,6 +12,8 @@ interface AllyLogo {
 
 const ALLIES_DATA: AllyLogo[] = [
   { id: 'ucab', name: 'Universidad Católica Andrés Bello', filename: 'UCAB.png', link: 'https://www.ucab.edu.ve' },
+  { id: 'Indenzo', name: 'Indenzo', filename: 'INDENZO.png', link: '' },
+  { id: 'Leibinger', name: 'Leibinger', filename: 'Leibinger-Logo.jpg', link: '' },
   { id: 'uneg', name: 'Universidad Nacional Experimental de Guayana', filename: 'UNEG.png', link: 'http://www.uneg.edu.ve' },
   { id: 'luz', name: 'Universidad del Zulia', filename: 'LUZ.png', link: 'https://www.luz.edu.ve' },
   { id: 'eurobuilding', name: 'Hotel Eurobuilding', filename: 'EUROBUILDING.png', link: 'https://eurobuilding.com.ve' },
@@ -59,7 +61,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
       : 'w-58 h-35 md:w-58 md:h-35 lg:w-66 lg:h-37 xl:w-73 xl:h-40 p-3.5 sm:p-4'
   }`;
 
-  const isCampoAlegre = ally.id === 'campo-alegre';
+  const isCampoAlegre = ally.id === 'campo-alegre' || ally.id === 'Leibinger' || ally.id === 'Indenzo';
 
   const imageContent = (
     <div className="relative w-full h-full flex items-center justify-center">
