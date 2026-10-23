@@ -50,7 +50,7 @@ export const ContactEmailTemplate = ({
           {/* Header / Logo Area */}
           <Section style={header}>
             <Text style={logo}>APROLAC</Text>
-            <Text style={tagline}>EXPO AGRO NEGOCIOS LÁCTEOS 2026</Text>
+            <Text style={tagline}>EXPO AGRO NEGOCIOS LÁCTEOS 2027</Text>
           </Section>
 
           {/* Hero Section */}
@@ -122,7 +122,7 @@ export const ContactEmailTemplate = ({
           <Section style={footer}>
             <Hr style={hr} />
             <Text style={footerCopyright}>
-              © 2026 APROLAC. Todos los derechos reservados. <br />
+              © 2027 APROLAC. Todos los derechos reservados. <br />
               Bolívar, Venezuela.
             </Text>
           </Section>

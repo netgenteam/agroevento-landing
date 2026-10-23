@@ -55,7 +55,7 @@ const EventActivities = () => {
               <div className="absolute inset-0 z-0">
                 <Image
                   src={activity.image}
-                  alt={`${activity.title} – Expo Agro Negocios Lácteos 2026`}
+                  alt={`${activity.title} – Expo Agro Negocios Lácteos 2027`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

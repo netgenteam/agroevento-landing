@@ -97,7 +97,7 @@ const Contact = () => {
             Reserva tu Espacio
           </h2>
           <p className="font-sans text-aprolac-text text-lg max-w-2xl leading-relaxed">
-            Comunícate con nuestro equipo comercial para asegurar tu Stand, gestionar patrocinios o resolver cualquier duda logística sobre la Expo 2026.
+            Comunícate con nuestro equipo comercial para asegurar tu Stand, gestionar patrocinios o resolver cualquier duda logística sobre la Expo 2027.
           </p>
         </div>
 
@@ -285,7 +285,7 @@ const Contact = () => {
             {/* Contenedor del Mapa - Apuntando a Eurobuilding Puerto Ordaz */}
             <div className="relative w-full h-[350px] md:h-[450px] lg:h-full rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <iframe
-                title="Ubicación del evento Expo Agro Negocios Lácteos 2026 - Eurobuilding Hotel & Suites Guayana, Puerto Ordaz"
+                title="Ubicación del evento Expo Agro Negocios Lácteos 2027 - Eurobuilding Hotel & Suites Guayana, Puerto Ordaz"
 
 
                 src="https://maps.google.com/maps?q=Eurobuilding%20Hotel%20%26%20Suites%20Guayana,%20Puerto%20Ordaz&t=&z=16&ie=UTF8&iwloc=&output=embed"

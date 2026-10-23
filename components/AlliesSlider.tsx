@@ -67,7 +67,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ ally, isMobile }) => {
     <div className="relative w-full h-full flex items-center justify-center">
       <Image
         src={imageSrc}
-        alt={`Logo de ${ally.name} – Aliado oficial Expo Agro Negocios Lácteos 2026`}
+        alt={`Logo de ${ally.name} – Aliado oficial Expo Agro Negocios Lácteos 2027`}
         fill
         sizes="(max-width: 640px) 320px, (max-width: 1024px) 280px, 320px"
         className={`object-contain transition-transform duration-300 filter drop-shadow-xs ${
