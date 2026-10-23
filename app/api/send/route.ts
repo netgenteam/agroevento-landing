@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       from: "APROLAC Contacto <onboarding@resend.dev>",
       to: [process.env.EMAIL_RECIPIENT || "info.agronegocioslacteos@gmail.com"],
       replyTo: `${nombre} <${email}>`,
-      subject: `Nuevo Contacto - Expo 2026: ${motivo}`,
+      subject: `Nuevo Contacto - Expo 2027: ${motivo}`,
       react: ContactEmailTemplate({ nombre, empresa, email, motivo, mensaje }),
     });
 

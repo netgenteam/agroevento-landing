@@ -25,7 +25,7 @@ const SITE_URL = "https://agronegocioslacteos.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
-  title: "1ra Expo Agro Negocios Lácteos Venezuela 2026 | APROLAC",
+  title: "1ra Expo Agro Negocios Lácteos Venezuela 2027 | APROLAC",
   description:
     "El evento B2B más importante del sector lácteo venezolano. Negocios, innovación y networking de alto nivel organizado por APROLAC, Asociación de Productores Lácteos del Estado Bolívar.",
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "sector lácteo Venezuela",
     "APROLAC",
     "negocios lácteos",
-    "agronegocios 2026",
+    "agronegocios 2027",
     "eventos B2B Venezuela",
     "expo lácteos Bolívar",
     "cadena de frío Venezuela",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 
   /* ── Open Graph (Facebook, LinkedIn, WhatsApp) ── */
   openGraph: {
-    title: "1ra Expo Agro Negocios Lácteos Venezuela 2026 | APROLAC",
+    title: "1ra Expo Agro Negocios Lácteos Venezuela 2027 | APROLAC",
     description:
       "El evento B2B más importante del sector lácteo venezolano. Negocios, innovación y networking de alto nivel organizado por APROLAC.",
     type: "website",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "1ra Expo Agro Negocios Lácteos Venezuela 2026 – APROLAC",
+        alt: "1ra Expo Agro Negocios Lácteos Venezuela 2027 – APROLAC",
         type: "image/png",
       },
     ],
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   /* ── Twitter / X Card ── */
   twitter: {
     card: "summary_large_image",
-    title: "1ra Expo Agro Negocios Lácteos Venezuela 2026 | APROLAC",
+    title: "1ra Expo Agro Negocios Lácteos Venezuela 2027 | APROLAC",
     description:
       "Negocios, innovación y networking de alto nivel. El evento B2B líder del sector lácteo venezolano.",
     images: ["/og-image.png"],
@@ -121,20 +121,20 @@ const organizationJsonLd = {
 const eventJsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "1ra Expo Agro Negocios Lácteos Venezuela 2026",
+  name: "1ra Expo Agro Negocios Lácteos Venezuela 2027",
   description:
     "El evento B2B más importante del sector lácteo venezolano. Negocios, innovación, tecnología y networking de alto nivel.",
-  startDate: "2026-05-15T08:00:00-04:00",
-  endDate: "2026-05-19T18:00:00-04:00",
+  startDate: "2027-04-14T08:00:00-04:00",
+  endDate: "2027-04-17T18:00:00-04:00",
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   location: {
     "@type": "Place",
-    name: "Centro de Exposiciones Pariaguán",
+    name: "Eurobuilding Hotel & Suites Guayana",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Pariaguán",
-      addressRegion: "Anzoátegui",
+      addressLocality: "Puerto Ordaz",
+      addressRegion: "Bolívar",
       addressCountry: "VE",
     },
   },

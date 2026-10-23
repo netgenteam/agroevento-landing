@@ -53,11 +53,11 @@ const Header = () => {
             {/* Línea divisoria */}
             <div className="w-[1px] h-7 lg:h-9 bg-gray-300"></div>
 
-            {/* NUEVO LOGO EXPO */}
+            {/* LOGO EXPO 2027 */}
             <div className="flex items-center shrink-0">
               <Image
-                src="/LOGO_EXPO.png"
-                alt="Expo Logo"
+                src="/LOGO 2027 COLOR.png"
+                alt="Expo Logo 2027"
                 width={160}
                 height={68}
                 className="h-11 lg:h-14 w-auto object-contain"

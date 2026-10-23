@@ -96,7 +96,7 @@ const Footer = () => {
       {/* Grid Inferior: Créditos */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-base text-gray-500 font-sans text-center md:text-left">
         <p>
-          © 2026 APROLAC. Todos los derechos reservados.
+          © 2027 APROLAC. Todos los derechos reservados.
         </p>
         <p className="flex items-center gap-1">
           Diseñado y desarrollado por{' '}

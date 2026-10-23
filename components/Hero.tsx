@@ -29,7 +29,7 @@ const Hero = () => {
          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight leading-none">
             <span className="text-white">EXPO AGRO NEGOCIOS </span>
             <br />
-            <span className="text-aprolac-green block mt-2">LÁCTEOS 2026</span>
+            <span className="text-aprolac-green block mt-2">LÁCTEOS 2027</span>
           </h1>
 
           {/* Subtítulo y Botones */}
@@ -45,7 +45,7 @@ const Hero = () => {
                 Contactar Asesor
               </a>
               <a
-                href="https://wa.me/584148469666?text=Hola,%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20la%20Expo%202026."
+                href="https://wa.me/584148469666?text=Hola,%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20la%20Expo%202027."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 border-2 border-white text-white rounded-xl px-6 py-3 lg:px-8 lg:py-4 font-bold text-base lg:text-lg hover:bg-white hover:text-aprolac-dark transition-all transform hover:scale-105"

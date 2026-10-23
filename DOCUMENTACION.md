@@ -1,15 +1,15 @@
-# Documentación Completa del Proyecto — Expo Agro Negocios Lácteos 2026
+# Documentación Completa del Proyecto — Expo Agro Negocios Lácteos 2027
 
 > **Cliente / Marca:** APROLAC (Asociación de Productores Lácteos del Estado Bolívar)  
 > **Proyecto:** Landing Page Oficial & Plataforma de Reserva de Stands (`agroevento-landing`)  
 > **Desarrollado por:** NetGen  
-> **Última Actualización:** Agosto 2026  
+> **Última Actualización:** Octubre 2026  
 
 ---
 
 ## 1. Visión General del Proyecto
 
-`agroevento-landing` es una plataforma web moderna, interactiva y de alta conversión diseñada para la **1ra Expo Agro Negocios Lácteos Venezuela 2026**, organizada por **APROLAC**.
+`agroevento-landing` es una plataforma web moderna, interactiva y de alta conversión diseñada para la **1ra Expo Agro Negocios Lácteos Venezuela 2027**, organizada por **APROLAC**.
 
 El objetivo principal de la aplicación es:
 1. Posicionar el evento B2B líder de la industria láctea venezolana.
@@ -17,7 +17,7 @@ El objetivo principal de la aplicación es:
 3. Presentar los tipos de stands comerciales en un **Slider Infinito (`Stand.tsx`)** sin puntos en móvil y con flechas + contador numérico (`1 / 5`) posicionados en la parte inferior.
 4. Incluir un **Visor de Planos PDF Deslizable (`ExpoSection.tsx`)** con tipografía compacta en los tabs en móvil (`text-[10px]`) y flechas laterales ocultas en móvil (`hidden md:flex`).
 5. Facilitar la consulta y selección de **stands comerciales y VIP** a través de una **Plataforma Dual de Mapas Interactivos** (Plano Interior + Plano Exterior) con transiciones suaves en cambio de pestañas.
-6. Mostrar un **cronómetro regresivo en vivo** programado para el **14 de octubre de 2026 a las 08:00 AM**.
+6. Mostrar un **cronómetro regresivo en vivo** programado para el **14 de abril de 2027 a las 08:00 AM**.
 7. Canalizar registros de visitantes y contactos hacia **`info.agronegocioslacteos@gmail.com`** con respuesta directa mediante la cabecera `replyTo`.
 
 ---

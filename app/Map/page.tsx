@@ -4,8 +4,8 @@ import InteractiveFloorPlan from "@/components/InteractiveMap";
 
 // Metadata para SEO de esta página específica
 export const metadata = {
-  title: "Plano Interactivo de Stands | Expo Agro Negocios Lácteos 2026",
-  description: "Explora el plano interactivo de la Expo Agro Negocios Lácteos 2026 y reserva tu stand ideal directamente en línea.",
+  title: "Plano Interactivo de Stands | Expo Agro Negocios Lácteos 2027",
+  description: "Explora el plano interactivo de la Expo Agro Negocios Lácteos 2027 y reserva tu stand ideal directamente en línea.",
 };
 
 export default function PlanoPage() {
