@@ -29,7 +29,7 @@ const Hero = () => {
          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight leading-none">
             <span className="text-white">EXPO AGRO NEGOCIOS </span>
             <br />
-            <span className="text-aprolac-green block mt-2">LÁCTEOS 2027</span>
+            <span className="text-[#731034] block mt-2">LÁCTEOS 2027</span>
           </h1>
 
           {/* Subtítulo y Botones */}
@@ -39,7 +39,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-10 w-full sm:w-auto px-4 sm:px-0">
               <a
                 href="#contacto"
-                className="flex items-center justify-center gap-3 bg-aprolac-green text-white rounded-xl px-6 py-3 lg:px-10 lg:py-4 font-bold text-base lg:text-lg hover:bg-[#0a5c3e] transition-all transform hover:scale-105 shadow-lg shadow-aprolac-green/20"
+                className="flex items-center justify-center gap-3 bg-[#731034] text-white rounded-xl px-6 py-3 lg:px-10 lg:py-4 font-bold text-base lg:text-lg hover:bg-[#5a0c28] transition-all transform hover:scale-105 shadow-lg shadow-[#731034]/30"
               >
                 <Icon icon="mdi:account-tie" height="24" />
                 Contactar Asesor

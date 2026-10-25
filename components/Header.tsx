@@ -72,15 +72,15 @@ const Header = () => {
               <li key={link.name}>
                 <a
                   href={isHome ? link.href : `/${link.href}`}
-                  className="group relative flex items-center gap-2 px-2 py-1 font-sans text-[11px] lg:text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-aprolac-green transition-colors duration-300"
+                  className="group relative flex items-center gap-2 px-2 py-1 font-sans text-[11px] lg:text-xs font-bold tracking-widest uppercase text-aprolac-text hover:text-[#731034] transition-colors duration-300"
                 >
                   <Icon
                     icon={link.icon}
-                    className="w-4 h-4 lg:w-5 lg:h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
+                    className="w-4 h-4 lg:w-5 lg:h-5 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-[#731034]"
                   />
                   <span className="relative">
                     {link.name}
-                    <span className="absolute -bottom-1.5 left-0 h-[2px] w-0 bg-aprolac-green transition-all duration-300 rounded-full group-hover:w-full"></span>
+                    <span className="absolute -bottom-1.5 left-0 h-[2px] w-0 bg-[#731034] transition-all duration-300 rounded-full group-hover:w-full"></span>
                   </span>
                 </a>
               </li>
@@ -91,14 +91,14 @@ const Header = () => {
           <div className="flex items-center gap-3 lg:gap-5 shrink-0">
             <a
               href={isHome ? '#contacto' : '/#contacto'}
-              className="hidden lg:flex items-center gap-2 bg-aprolac-green text-white rounded-lg px-5 py-2 text-sm font-semibold hover:bg-[#0a5c3e] transition-all duration-300 hover:-translate-y-0.5"
+              className="hidden lg:flex items-center gap-2 bg-[#731034] text-white rounded-lg px-5 py-2 text-sm font-semibold hover:bg-[#5a0c28] transition-all duration-300 hover:-translate-y-0.5"
             >
               <Icon icon="mdi:email-outline" className="w-5 h-5" />
               Contacto
             </a>
             
             <button
-              className="xl:hidden text-aprolac-dark p-1 transition-colors hover:text-aprolac-green relative z-[110]"
+              className="xl:hidden text-aprolac-dark p-1 transition-colors hover:text-[#731034] relative z-[110]"
               onClick={() => setMenuOpen(true)}
             >
               <Icon icon="mdi:menu" height="28" className="text-aprolac-dark" />
@@ -133,7 +133,7 @@ const Header = () => {
               <div className="flex justify-end mb-12">
                 <button
                   onClick={() => setMenuOpen(false)}
-                  className="text-aprolac-text hover:text-aprolac-green transition-colors"
+                  className="text-aprolac-text hover:text-[#731034] transition-colors"
                   aria-label="Cerrar menú"
                 >
                   <Icon icon="mdi:close" className="w-8 h-8" />
@@ -145,11 +145,11 @@ const Header = () => {
                     key={link.name}
                     href={isHome ? link.href : `/${link.href}`}
                     onClick={() => setMenuOpen(false)}
-                    className="group flex items-center gap-4 text-sm font-bold text-aprolac-text hover:text-aprolac-green tracking-widest uppercase transition-colors duration-300"
+                    className="group flex items-center gap-4 text-sm font-bold text-aprolac-text hover:text-[#731034] tracking-widest uppercase transition-colors duration-300"
                   >
                     <Icon
                       icon={link.icon}
-                      className="w-6 h-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-aprolac-green"
+                      className="w-6 h-6 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-[#731034]"
                     />
                     <span>{link.name}</span>
                   </a>
@@ -158,7 +158,7 @@ const Header = () => {
                 <div className="pt-8 border-t border-gray-100">
                   <a
                     href={isHome ? '#contacto' : '/#contacto'}
-                    className="flex items-center justify-center gap-2 w-full text-center bg-aprolac-green text-white rounded-lg py-3 font-semibold uppercase tracking-widest text-sm transition-colors hover:bg-[#0a5c3e]"
+                    className="flex items-center justify-center gap-2 w-full text-center bg-[#731034] text-white rounded-lg py-3 font-semibold uppercase tracking-widest text-sm transition-colors hover:bg-[#5a0c28]"
                     onClick={() => setMenuOpen(false)}
                   >
                     <Icon icon="mdi:email-outline" className="w-5 h-5" />

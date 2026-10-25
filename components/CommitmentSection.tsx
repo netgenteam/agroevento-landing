@@ -91,7 +91,7 @@ export default function CommitmentSection() {
           viewport={{ once: true, margin: "-100px" }}
           variants={headerVariants}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F4A32] mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#731034] mb-6 tracking-tight">
             Ejes Estratégicos para <br className="hidden md:block" />
             Transformar el Sector
           </h2>
@@ -125,11 +125,11 @@ export default function CommitmentSection() {
               {/* Contenido de texto y número de fondo */}
               <div className="relative flex-1 z-10 px-2">
                 {/* Número decorativo gigante */}
-                <div className="absolute -top-12 -right-2 text-7xl md:text-8xl font-bold text-[#0F4A32] opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none select-none">
+                <div className="absolute -top-12 -right-2 text-7xl md:text-8xl font-bold text-[#731034] opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none select-none">
                   {feature.number}
                 </div>
 
-                <h3 className="text-xl font-bold text-[#0F4A32] mb-3 relative z-10 pr-6">
+                <h3 className="text-xl font-bold text-[#731034] mb-3 relative z-10 pr-6">
                   {feature.title}
                 </h3>
                 <p className="text-sm md:text-base text-gray-500 leading-relaxed relative z-10">

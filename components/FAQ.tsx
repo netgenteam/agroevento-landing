@@ -27,7 +27,7 @@ const faqs: FAQItem[] = [
     question: "¿Dónde puedo descargar el dossier corporativo detallado?",
     answer: (
       <span>
-        El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de <strong className="font-bold text-[#0F4A32]">Contacto</strong> en la plataforma.
+        El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de <strong className="font-bold text-[#731034]">Contacto</strong> en la plataforma.
       </span>
     ),
     answerText: "El dossier está disponible en la sección de descargas del sitio web oficial o puede solicitarse directamente a través del botón de Contacto en la plataforma."
@@ -69,7 +69,7 @@ const FAQ = () => {
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         {/* Cabecera */}
         <div className="text-center mb-16">
-          <h2 className="font-display font-bold text-4xl text-aprolac-green mb-4 ">
+          <h2 className="font-display font-bold text-4xl text-[#731034] mb-4 ">
             Preguntas Frecuentes
           </h2>
           <p className="font-sans text-aprolac-text max-w-2xl mx-auto">
@@ -85,13 +85,13 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full cursor-pointer text-left flex justify-between items-center py-6 focus:outline-none group"
               >
-                <span className={`font-display font-semibold text-lg transition-colors duration-300 ${openIndex === index ? 'text-aprolac-green' : 'text-aprolac-dark group-hover:text-aprolac-green'
+                <span className={`font-display font-semibold text-lg transition-colors duration-300 ${openIndex === index ? 'text-[#731034]' : 'text-aprolac-dark group-hover:text-[#731034]'
                   }`}>
                   {faq.question}
                 </span>
                 <Icon
                   icon="mdi:chevron-down"
-                  className={`w-6 h-6 transition-all duration-300 ${openIndex === index ? 'rotate-180 text-aprolac-green' : 'text-aprolac-dark'
+                  className={`w-6 h-6 transition-all duration-300 ${openIndex === index ? 'rotate-180 text-[#731034]' : 'text-aprolac-dark'
                     }`}
                 />
               </button>

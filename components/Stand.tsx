@@ -162,7 +162,7 @@ export default function StandsSlider() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F4A32] mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#731034] mb-4 tracking-tight">
             Nuestros Stands
           </h2>
           <p className="text-base md:text-lg text-gray-500 leading-relaxed">
@@ -180,7 +180,7 @@ export default function StandsSlider() {
           <button 
             onClick={prevSlide}
             aria-label="Stand anterior"
-            className="hidden sm:flex absolute left-2 lg:left-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#0F4A32] border border-gray-100 hover:bg-[#0F4A32] hover:text-white transition-colors"
+            className="hidden sm:flex absolute left-2 lg:left-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#731034] border border-gray-100 hover:bg-[#731034] hover:text-white transition-colors"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -209,16 +209,16 @@ export default function StandsSlider() {
                     isCenter ? "shadow-2xl cursor-default" : "shadow-md cursor-pointer"
                   } ${
                     plan.isVip
-                      ? "border-t-[6px] border-[#7B1938]"
-                      : "border-t-[6px] border-[#0F4A32]"
+                      ? "border-t-[6px] border-[#0E734E]"
+                      : "border-t-[6px] border-[#731034]"
                   }`}
                   onClick={() => !isCenter && setActiveIndex(index)}
                 >
                   <div className="flex flex-col h-full bg-white relative justify-between">
                     
-                    {/* Badge Recomendado (VIP) */}
+                    {/* Badge Recomendado (VIP) en Verde Aprolac */}
                     {plan.isVip && (
-                      <div className="absolute top-0 right-0 bg-[#7B1938] text-white text-[9px] sm:text-[10px] font-bold px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">
+                      <div className="absolute top-0 right-0 bg-[#0E734E] text-white text-[9px] sm:text-[10px] font-bold px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-bl-xl uppercase tracking-wider z-10 shadow-sm">
                         Recomendado
                       </div>
                     )}
@@ -226,7 +226,7 @@ export default function StandsSlider() {
                     {/* Zona de contenido */}
                     <div className="px-5 sm:px-8 pt-5 sm:pt-7 flex-grow flex flex-col overflow-y-auto sm:overflow-visible">
                       {plan.subtitle && (
-                        <p className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-1.5 sm:mb-2 ${plan.isVip ? "text-[#7B1938]" : "text-[#0F4A32]"}`}>
+                        <p className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-1.5 sm:mb-2 ${plan.isVip ? "text-[#0E734E]" : "text-[#731034]"}`}>
                           {plan.subtitle}
                         </p>
                       )}
@@ -238,7 +238,7 @@ export default function StandsSlider() {
                       <ul className="space-y-2 sm:space-y-3 mb-2 flex-grow">
                         {plan.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-2 sm:gap-2.5">
-                            <CheckIcon color={plan.isVip ? "#7B1938" : "#0F4A32"} />
+                            <CheckIcon color={plan.isVip ? "#0E734E" : "#731034"} />
                             <span className="text-[13px] sm:text-[14px] lg:text-[15px] text-gray-700 leading-snug sm:leading-relaxed">
                               {feature.text}
                             </span>
@@ -258,10 +258,10 @@ export default function StandsSlider() {
                     <div className="px-5 sm:px-8 pb-5 sm:pb-6 mt-auto flex-shrink-0 pt-2">
                       <a
                         href="#contacto"
-                        className={`w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 flex items-center justify-center border-2 ${
+                        className={`w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full font-semibold text-xs sm:text-sm md:text-base transition-all duration-300 flex items-center justify-center border-2 shadow-md hover:shadow-lg ${
                           plan.isVip
-                            ? "bg-[#7B1938] text-white border-[#7B1938] hover:bg-transparent hover:text-[#7B1938]"
-                            : "bg-transparent text-[#0F4A32] border-[#0F4A32] hover:bg-[#0F4A32] hover:text-white"
+                            ? "bg-[#0E734E] text-white border-[#0E734E] hover:bg-[#0a5c3e] hover:border-[#0a5c3e]"
+                            : "bg-[#731034] text-white border-[#731034] hover:bg-[#5a0c28] hover:border-[#5a0c28]"
                         }`}
                       >
                         {plan.buttonText}
@@ -277,7 +277,7 @@ export default function StandsSlider() {
           <button 
             onClick={nextSlide}
             aria-label="Stand siguiente"
-            className="hidden sm:flex absolute right-2 lg:right-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#0F4A32] border border-gray-100 hover:bg-[#0F4A32] hover:text-white transition-colors"
+            className="hidden sm:flex absolute right-2 lg:right-8 cursor-pointer z-30 w-12 h-12 items-center justify-center bg-white rounded-full shadow-lg text-[#731034] border border-gray-100 hover:bg-[#731034] hover:text-white transition-colors"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -290,7 +290,7 @@ export default function StandsSlider() {
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={`w-3 h-3 rounded-full transition-colors duration-300 cursor-pointer ${
-                activeIndex === idx ? "bg-[#0F4A32]" : "bg-gray-300 hover:bg-gray-400"
+                activeIndex === idx ? "bg-[#731034]" : "bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Ir al slide ${idx + 1}`}
             />
@@ -302,17 +302,17 @@ export default function StandsSlider() {
           <button 
             onClick={prevSlide}
             aria-label="Stand anterior"
-            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#0F4A32] border border-gray-200 active:scale-95 transition-all cursor-pointer"
+            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#731034] border border-gray-200 active:scale-95 transition-all cursor-pointer"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
-          <span className="text-xs font-bold text-[#0F4A32] uppercase tracking-widest px-3.5 py-1.5 bg-white rounded-full border border-gray-200 shadow-xs">
+          <span className="text-xs font-bold text-[#731034] uppercase tracking-widest px-3.5 py-1.5 bg-white rounded-full border border-gray-200 shadow-xs">
             {activeIndex + 1} / {standsData.length}
           </span>
           <button 
             onClick={nextSlide}
             aria-label="Stand siguiente"
-            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#0F4A32] border border-gray-200 active:scale-95 transition-all cursor-pointer"
+            className="w-11 h-11 flex items-center justify-center bg-white rounded-full shadow-md text-[#731034] border border-gray-200 active:scale-95 transition-all cursor-pointer"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

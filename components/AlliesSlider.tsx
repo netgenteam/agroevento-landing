@@ -107,18 +107,18 @@ export default function AlliesSlider() {
     <section id="aliados" className="relative py-16 sm:py-20 bg-aprolac-cream overflow-hidden border-y border-aprolac-border/60">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10 sm:mb-14 text-center">
         {/* Pastilla llamativa superior */}
-        <div className="inline-flex items-center gap-2 bg-white border border-aprolac-green/30 text-aprolac-green px-4 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase mb-4 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-aprolac-green animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-white border border-[#731034]/30 text-[#731034] px-4 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase mb-4 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#731034] animate-pulse" />
           <span>Alianzas Estratégicas</span>
         </div>
 
         {/* Título Principal Llamativo */}
         <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-aprolac-dark tracking-tight leading-tight">
           Conoce a nuestros{' '}
-          <span className="text-aprolac-green relative inline-block">
+          <span className="text-[#731034] relative inline-block">
             aliados
             <svg
-              className="absolute -bottom-2 left-0 w-full h-2 sm:h-2.5 text-aprolac-green/40"
+              className="absolute -bottom-2 left-0 w-full h-2 sm:h-2.5 text-[#731034]/40"
               viewBox="0 0 100 10"
               preserveAspectRatio="none"
             >

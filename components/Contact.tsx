@@ -262,7 +262,7 @@ const Contact = () => {
                 type="submit"
                 disabled={isLoading}
                 suppressHydrationWarning
-                className="w-full cursor-pointer flex justify-center items-center gap-2 bg-aprolac-guinda text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-aprolac-guinda/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full cursor-pointer flex justify-center items-center gap-2 bg-[#731034] text-white font-bold py-4 rounded-xl hover:bg-[#5a0c28] hover:shadow-lg hover:shadow-[#731034]/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <Icon icon="mdi:loading" className="w-5 h-5 animate-spin" />

@@ -127,7 +127,7 @@ export default function FloatingButton() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         suppressHydrationWarning
-        className="w-16 h-16 bg-[#0F4A32] cursor-pointer rounded-full shadow-2xl flex items-center justify-center hover:scale-105 hover:bg-[#156042] transition-all duration-300 z-50 focus:outline-none pointer-events-auto"
+        className="w-16 h-16 bg-[#731034] cursor-pointer rounded-full shadow-2xl flex items-center justify-center hover:scale-105 hover:bg-[#5a0c28] transition-all duration-300 z-50 focus:outline-none pointer-events-auto"
         aria-label="Abrir menú de contacto"
       >
         <motion.div
