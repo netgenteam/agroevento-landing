@@ -24,8 +24,8 @@ interface ContactEmailProps {
 
 // Colores de marca APROLAC
 const palette = {
-  brand: "#0F4A32",    // Verde Bosque
-  accent: "#0E734E",   // Verde Brillante
+  brand: "#731034",    // Vinotinto APROLAC
+  accent: "#731034",   // Vinotinto APROLAC
   guinda: "#731034",   // Guinda
   dark: "#231F20",     // Texto principal
   light: "#666666",    // Texto secundario

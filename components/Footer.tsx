@@ -36,28 +36,28 @@ const Footer = () => {
         <div>
           <p className="font-display text-lg mb-6 text-white font-semibold">Enlaces Rápidos</p>
           <div className="flex flex-col gap-3 font-sans text-gray-400 text-sm">
-            <a href={isHome ? "#inicio" : "/#inicio"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#inicio" : "/#inicio"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:home-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Inicio
             </a>
-            <a href={isHome ? "#quienes-somos" : "/#quienes-somos"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#quienes-somos" : "/#quienes-somos"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:account-group-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Quiénes Somos
             </a>
-            <a href={isHome ? "#expo" : "/#expo"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#expo" : "/#expo"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:bullhorn-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Expo
             </a>
-            <a href={isHome ? "#actividades" : "/#actividades"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#actividades" : "/#actividades"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:calendar-text-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Actividades
             </a>
-            <a href={isHome ? "#stands" : "/#stands"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#stands" : "/#stands"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:clipboard-text-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Solicitudes
             </a>
             
-            <a href={isHome ? "#faq" : "/#faq"} className="flex items-center gap-2 hover:text-aprolac-green transition-colors w-fit group">
+            <a href={isHome ? "#faq" : "/#faq"} className="flex items-center gap-2 hover:text-[#731034] transition-colors w-fit group">
               <Icon icon="mdi:help-circle-outline" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               FAQ
             </a>
@@ -69,22 +69,22 @@ const Footer = () => {
           <p className="font-display text-lg mb-6 text-white font-semibold">Contacto B2B</p>
           <div className="flex flex-col gap-4 font-sans text-gray-400 text-sm">
             <div className="flex items-start gap-3">
-              <Icon icon="mdi:map-marker" className="w-5 h-5 text-aprolac-green shrink-0 mt-0.5" />
+              <Icon icon="mdi:map-marker" className="w-5 h-5 text-[#731034] shrink-0 mt-0.5" />
               <span> Puerto Ordaz, Estado Bolívar, Venezuela</span>
             </div>
             <div className="flex items-center gap-3">
-              <Icon icon="mdi:phone" className="w-5 h-5 text-aprolac-green shrink-0" />
+              <Icon icon="mdi:phone" className="w-5 h-5 text-[#731034] shrink-0" />
               <span>+58 414 8469666</span>
             </div>
             <div className="flex items-center gap-3">
-              <Icon icon="mdi:email" className="w-5 h-5 text-aprolac-green shrink-0" />
-              <a href="mailto:info.agronegocioslacteos@gmail.com" className="hover:text-white transition-colors">
+              <Icon icon="mdi:email" className="w-5 h-5 text-[#731034] shrink-0" />
+              <a href="mailto:info.agronegocioslacteos@gmail.com" className="hover:text-[#731034] transition-colors">
                 info.agronegocioslacteos@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-3">
-              <Icon icon="mdi:instagram" className="w-5 h-5 text-aprolac-green shrink-0" />
-              <a href="https://www.instagram.com/agronegocioslacteos/?hl=es" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              <Icon icon="mdi:instagram" className="w-5 h-5 text-[#731034] shrink-0" />
+              <a href="https://www.instagram.com/agronegocioslacteos/?hl=es" target="_blank" rel="noopener noreferrer" className="hover:text-[#731034] transition-colors">
                 @agronegocioslacteos
               </a>
             </div>

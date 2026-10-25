@@ -128,7 +128,7 @@ export default function FormLinksSection() {
         >
           <Link href={MEETING_LINK.link} target="_blank" rel="noopener noreferrer" className="block outline-none group">
             {/* Fondo y estructura general adaptada para móvil (flex-col) y escritorio (lg:flex-row) */}
-            <div className="bg-gradient-to-br from-aprolac-green to-[#0a3a25] rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between text-center lg:text-left gap-6 lg:gap-8 shadow-2xl shadow-aprolac-green/20 relative overflow-hidden border border-white/10">
+            <div className="bg-[#731034] rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between text-center lg:text-left gap-6 lg:gap-8 shadow-2xl shadow-[#731034]/25 relative overflow-hidden border border-white/10">
               
               {/* Efectos de luz "Glow" de fondo */}
               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 lg:group-hover:bg-white/10 transition-colors duration-700 pointer-events-none"></div>
@@ -151,7 +151,7 @@ export default function FormLinksSection() {
               
               {/* Botón Derecho: 100% de ancho en móvil, se ajusta en escritorio */}
               <div className="relative z-10 w-full lg:w-auto flex mt-2 lg:mt-0">
-                <div className="w-full lg:w-auto flex items-center justify-center gap-3 bg-white text-aprolac-green px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest shadow-lg lg:group-hover:shadow-white/20 lg:group-hover:bg-gray-50 transition-all duration-300">
+                <div className="w-full lg:w-auto flex items-center justify-center gap-3 bg-white text-[#731034] px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest shadow-lg lg:group-hover:shadow-white/20 lg:group-hover:bg-gray-50 transition-all duration-300">
                   Agendar ahora
                   <ArrowRight className="w-5 h-5 lg:group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
@@ -175,14 +175,14 @@ export default function FormLinksSection() {
               <motion.div key={item.id} variants={itemVariants} whileTap={{ scale: 0.98 }}>
                 <Link href={item.link} target="_blank" rel="noopener noreferrer" className="block outline-none group h-full">
                   
-                  {/* Tarjeta: Borde verde en móvil/tablet, borde gris en escritorio (hasta el hover) */}
-                  <div className="relative bg-aprolac-green/[0.02] lg:bg-white p-5 rounded-2xl border border-aprolac-green/30 lg:border-gray-100 flex items-center justify-between gap-4 lg:hover:border-aprolac-green/40 shadow-sm lg:shadow-none lg:hover:shadow-xl lg:hover:shadow-aprolac-green/5 transition-all duration-500 overflow-hidden">
+                  {/* Tarjeta: Borde vinotinto en móvil/tablet, borde gris en escritorio (hasta el hover) */}
+                  <div className="relative bg-[#731034]/[0.02] lg:bg-white p-5 rounded-2xl border border-[#731034]/20 lg:border-gray-100 flex items-center justify-between gap-4 lg:hover:border-[#731034]/40 shadow-sm lg:shadow-none lg:hover:shadow-xl lg:hover:shadow-[#731034]/5 transition-all duration-500 overflow-hidden">
                     
                     {/* Contenedor Izquierdo (Ícono + Texto) */}
                     <div className="flex items-center gap-5 relative z-10">
                       
-                      {/* Ícono: Fondo verde sólido en móvil. Gris en escritorio (hasta el hover) */}
-                      <div className="bg-aprolac-green text-white lg:bg-gray-50 lg:text-gray-400 p-3.5 rounded-xl lg:group-hover:bg-aprolac-green lg:group-hover:text-white transition-all duration-500 lg:group-hover:scale-110 lg:group-hover:-rotate-3 shrink-0 shadow-md lg:shadow-sm lg:group-hover:shadow-md">
+                      {/* Ícono: Fondo vinotinto sólido en móvil. Gris en escritorio (hasta el hover) */}
+                      <div className="bg-[#731034] text-white lg:bg-gray-50 lg:text-gray-400 p-3.5 rounded-xl lg:group-hover:bg-[#731034] lg:group-hover:text-white transition-all duration-500 lg:group-hover:scale-110 lg:group-hover:-rotate-3 shrink-0 shadow-md lg:shadow-sm lg:group-hover:shadow-md">
                         <Icon className="w-5 h-5" strokeWidth={2} />
                       </div>
                       
@@ -192,8 +192,8 @@ export default function FormLinksSection() {
                       </h3>
                     </div>
 
-                    {/* Flecha Derecha: Verde y desplazada en móvil. Gris en escritorio (hasta el hover) */}
-                    <div className="relative z-10 text-aprolac-green translate-x-1 lg:text-gray-300 lg:translate-x-0 lg:group-hover:text-aprolac-green lg:group-hover:translate-x-1 transition-all duration-300 shrink-0">
+                    {/* Flecha Derecha: Vinotinto y desplazada en móvil. Gris en escritorio (hasta el hover) */}
+                    <div className="relative z-10 text-[#731034] translate-x-1 lg:text-gray-300 lg:translate-x-0 lg:group-hover:text-[#731034] lg:group-hover:translate-x-1 transition-all duration-300 shrink-0">
                       <ChevronRight className="w-6 h-6" strokeWidth={2} />
                     </div>
 

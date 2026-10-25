@@ -67,7 +67,7 @@ const EventActivities = () => {
               {/* Contenido */}
               <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-10">
                 {activity.badge && (
-                  <span className="absolute top-6 left-6 inline-block bg-aprolac-green text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
+                  <span className="absolute top-6 left-6 inline-block bg-[#731034] text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
                     {activity.badge}
                   </span>
                 )}

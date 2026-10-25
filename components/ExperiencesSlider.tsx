@@ -83,7 +83,7 @@ export default function ExperiencesSlider() {
       {/* Cabecera del Slider: Textos a la izquierda, Controles a la derecha */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
         <div className="max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0F4A32] mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#731034] mb-3">
            Nuestros Eventos
           </h2>
           <p className="text-base text-gray-500 leading-relaxed">
@@ -95,14 +95,14 @@ export default function ExperiencesSlider() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => paginate(-1)}
-            className="w-12 h-12 rounded-full  cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
+            className="w-12 h-12 rounded-full  cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#731034] hover:text-white hover:border-[#731034] transition-colors duration-300 bg-white shadow-sm"
             aria-label="Anterior"
           >
             <ChevronLeft />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="w-12 h-12 rounded-full cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#0F4A32] hover:text-white hover:border-[#0F4A32] transition-colors duration-300 bg-white shadow-sm"
+            className="w-12 h-12 rounded-full cursor-pointer border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-[#731034] hover:text-white hover:border-[#731034] transition-colors duration-300 bg-white shadow-sm"
             aria-label="Siguiente"
           >
             <ChevronRight />
@@ -162,7 +162,7 @@ export default function ExperiencesSlider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all duration-500 ${index === currentIndex ? "w-8 bg-[#0F4A32]" : "w-2 bg-gray-300 hover:bg-gray-400"
+            className={`h-2 rounded-full transition-all duration-500 ${index === currentIndex ? "w-8 bg-[#731034]" : "w-2 bg-gray-300 hover:bg-gray-400"
               }`}
             aria-label={`Ir a diapositiva ${index + 1}`}
           />

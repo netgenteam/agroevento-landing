@@ -28,12 +28,12 @@ const QuienesSomos = () => {
             className="flex flex-col items-start"
           >
             {/* Tagline / Pastilla */}
-            <span className="inline-block bg-aprolac-green/10 text-aprolac-green px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+            <span className="inline-block bg-[#731034]/10 text-[#731034] px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6">
               Sobre APROLAC
             </span>
 
             <h2 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-aprolac-dark leading-tight mb-8">
-              Liderando el Ecosistema Agroindustrial <span className="text-aprolac-green">Lácteo</span>
+              Liderando el Ecosistema Agroindustrial <span className="text-[#731034]">Lácteo</span>
             </h2>
 
             <div className="space-y-6">
@@ -76,8 +76,8 @@ const QuienesSomos = () => {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-aprolac-border p-5 md:p-6 flex items-center gap-4 md:gap-5 min-w-[280px] max-w-[320px]"
               >
-                <div className="flex-shrink-0 bg-aprolac-green/10 p-3 rounded-xl">
-                  <Icon icon="mdi:shield-check" className="w-8 h-8 text-aprolac-green" />
+                <div className="flex-shrink-0 bg-[#731034]/10 p-3 rounded-xl">
+                  <Icon icon="mdi:shield-check" className="w-8 h-8 text-[#731034]" />
                 </div>
                 <div>
                   <h4 className="font-display font-bold text-aprolac-dark text-lg md:text-xl leading-tight mb-1">
@@ -88,7 +88,7 @@ const QuienesSomos = () => {
                       Asociación de Productores Lácteos<br/>
                       RIF J-50781399-1
                     </span>
-                    <div className="w-8 h-0.5 bg-aprolac-green/30 mt-2 rounded-full"></div>
+                    <div className="w-8 h-0.5 bg-[#731034]/30 mt-2 rounded-full"></div>
                   </div>
                 </div>
               </motion.div>

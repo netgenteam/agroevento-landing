@@ -185,7 +185,7 @@ export default function InteractiveFloorPlan() {
                 onClick={() => setActiveTab("interior")}
                 className={`px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[10px] sm:text-xs md:text-sm transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   activeTab === "interior"
-                    ? "bg-aprolac-green text-white shadow-md"
+                    ? "bg-[#731034] text-white shadow-md"
                     : "text-gray-600 hover:text-aprolac-dark hover:bg-white/60"
                 }`}
               >
@@ -196,7 +196,7 @@ export default function InteractiveFloorPlan() {
                 onClick={() => setActiveTab("exterior")}
                 className={`px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[10px] sm:text-xs md:text-sm transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
                   activeTab === "exterior"
-                    ? "bg-aprolac-green text-white shadow-md"
+                    ? "bg-[#731034] text-white shadow-md"
                     : "text-gray-600 hover:text-aprolac-dark hover:bg-white/60"
                 }`}
               >

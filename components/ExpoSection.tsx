@@ -121,7 +121,7 @@ const ExpoSection = () => {
         <div className="flex flex-col lg:flex-row justify-between items-center gap-12 mb-20">
           <div className="lg:w-1/2">
             <h2 className="font-display font-bold text-4xl md:text-5xl text-aprolac-dark mb-4">
-              Expo Agro Negocios Lácteos Venezuela <span className="text-aprolac-green">2027</span>
+              Expo Agro Negocios Lácteos Venezuela <span className="text-[#731034]">2027</span>
             </h2>
             <p className="font-sans text-aprolac-text text-lg max-w-xl leading-relaxed">
               El primer gran hito nacional diseñado para articular la cadena de valor, transformar el arraigo rural en competitividad global y convertir nuestra tradición quesera en un activo económico diferenciado.
@@ -130,8 +130,8 @@ const ExpoSection = () => {
 
           <div className="lg:w-1/2 flex flex-col items-center lg:items-end w-full">
             {/* Badge discreto con la fecha exacta del evento (POR ENCIMA DEL CUADRO) */}
-            <div className="flex items-center gap-2 mb-3 text-xs md:text-sm font-bold text-aprolac-green uppercase tracking-wider bg-white px-4 py-1.5 rounded-full border border-aprolac-green/30 shadow-xs">
-              <Icon icon="mdi:calendar-month-outline" className="w-4 h-4 text-aprolac-green" />
+            <div className="flex items-center gap-2 mb-3 text-xs md:text-sm font-bold text-[#731034] uppercase tracking-wider bg-white px-4 py-1.5 rounded-full border border-[#731034]/30 shadow-xs">
+              <Icon icon="mdi:calendar-month-outline" className="w-4 h-4 text-[#731034]" />
               <span>Del 14 al 17 de Abril de 2027</span>
             </div>
 
@@ -142,15 +142,15 @@ const ExpoSection = () => {
                     <span className="font-display font-bold text-3xl md:text-5xl text-aprolac-dark">{timeLeft.days}</span>
                     <span className="font-sans text-xs md:text-sm text-aprolac-text uppercase tracking-widest mt-1">Días</span>
                   </div>
-                  <div className="text-2xl text-aprolac-green/50 font-light">:</div>
+                  <div className="text-2xl text-[#731034]/50 font-light">:</div>
                   <div className="flex flex-col items-center flex-1">
                     <span className="font-display font-bold text-3xl md:text-5xl text-aprolac-dark">{timeLeft.hours.toString().padStart(2, '0')}</span>
                     <span className="font-sans text-xs md:text-sm text-aprolac-text uppercase tracking-widest mt-1">Hrs</span>
                   </div>
-                  <div className="text-2xl text-aprolac-green/50 font-light">:</div>
+                  <div className="text-2xl text-[#731034]/50 font-light">:</div>
                   <div className="flex flex-col items-center flex-1">
-                    <span className="font-display font-bold text-3xl md:text-5xl text-aprolac-green">{timeLeft.minutes.toString().padStart(2, '0')}</span>
-                    <span className="font-sans text-xs md:text-sm text-aprolac-green uppercase tracking-widest mt-1">Min</span>
+                    <span className="font-display font-bold text-3xl md:text-5xl text-[#731034]">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+                    <span className="font-sans text-xs md:text-sm text-[#731034] uppercase tracking-widest mt-1">Min</span>
                   </div>
                 </>
               ) : (
@@ -173,8 +173,8 @@ const ExpoSection = () => {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className="bg-aprolac-cream/30 border border-gray-100 rounded-2xl p-6 md:p-8 text-center flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="bg-aprolac-green/10 p-4 rounded-full mb-4">
-                <Icon icon={stat.icon} className="w-8 h-8 text-aprolac-green" />
+              <div className="bg-[#731034]/10 p-4 rounded-full mb-4">
+                <Icon icon={stat.icon} className="w-8 h-8 text-[#731034]" />
               </div>
               <h4 className="font-display font-bold text-3xl md:text-4xl text-aprolac-dark mb-2">
                 <AnimatedCounter value={stat.value as number} suffix={stat.suffix as string} />
@@ -245,7 +245,7 @@ const ExpoSection = () => {
                 <h3 className="font-display font-bold text-2xl md:text-3xl text-aprolac-dark">
                   Plano de Exhibición
                 </h3>
-                <span className="text-xs font-bold bg-aprolac-green/10 text-aprolac-green px-3 py-1 rounded-full border border-aprolac-green/20">
+                <span className="text-xs font-bold bg-[#731034]/10 text-[#731034] px-3 py-1 rounded-full border border-[#731034]/20">
                   {currentPlan.title}
                 </span>
               </div>
@@ -265,7 +265,7 @@ const ExpoSection = () => {
                     onClick={() => setCurrentPdfSlide(index as 0 | 1)}
                     className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-[10px] sm:text-xs md:text-sm font-bold transition-all flex items-center gap-1 sm:gap-1.5 cursor-pointer ${
                       currentPdfSlide === index
-                        ? 'bg-aprolac-green text-white shadow-xs'
+                        ? 'bg-[#731034] text-white shadow-xs'
                         : 'text-gray-600 hover:text-aprolac-dark hover:bg-gray-50'
                     }`}
                   >
@@ -280,7 +280,7 @@ const ExpoSection = () => {
                 href={currentPlan.pdf}
                 download={currentPlan.downloadName}
                 onClick={() => showToast(`¡Descarga iniciada! El ${currentPlan.title} se guardará en tu dispositivo.`)}
-                className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-2.5 px-5 rounded-xl hover:border-aprolac-green hover:text-aprolac-green transition-colors flex items-center gap-2 shadow-xs focus:outline-none text-xs md:text-sm"
+                className="bg-white border border-gray-200 text-aprolac-dark font-sans font-semibold py-2.5 px-5 rounded-xl hover:border-[#731034] hover:text-[#731034] transition-colors flex items-center gap-2 shadow-xs focus:outline-none text-xs md:text-sm"
               >
                 <Icon icon="mdi:download" className="w-4 h-4" />
                 Descargar Plano PDF
@@ -316,7 +316,7 @@ const ExpoSection = () => {
                   className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100"
                 >
                   <span className="bg-white text-aprolac-dark px-5 py-2.5 rounded-xl shadow-lg font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-sm">
-                    <Icon icon="mdi:eye" className="w-5 h-5 text-aprolac-green" />
+                    <Icon icon="mdi:eye" className="w-5 h-5 text-[#731034]" />
                     Ver {currentPlan.title} en PDF
                   </span>
                 </a>
@@ -354,7 +354,7 @@ const ExpoSection = () => {
                   suppressHydrationWarning
                   onClick={() => setCurrentPdfSlide(index as 0 | 1)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
-                    currentPdfSlide === index ? 'w-6 bg-aprolac-green' : 'w-2 bg-white/60 hover:bg-white'
+                    currentPdfSlide === index ? 'w-6 bg-[#731034]' : 'w-2 bg-white/60 hover:bg-white'
                   }`}
                   aria-label={`Ir al plano ${index + 1}`}
                 />
@@ -378,7 +378,7 @@ const ExpoSection = () => {
           </div>
 
           <div className="text-center md:text-left relative z-10">
-            <div className="inline-flex items-center gap-2 bg-aprolac-green/10 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-aprolac-green/20 text-aprolac-green">
+            <div className="inline-flex items-center gap-2 bg-[#731034]/10 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-[#731034]/20 text-[#731034]">
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
               Stands Disponibles
             </div>
@@ -393,7 +393,7 @@ const ExpoSection = () => {
           <div className="relative z-10 shrink-0">
             <Link
               href="/Map"
-              className="bg-aprolac-green text-sm  text-white border-2 border-transparent font-bold font-sans px-8 py-5 rounded-2xl flex items-center gap-3 hover:bg-[#0a5c3e] hover:scale-105 hover:shadow-[0_10px_25px_rgba(40,167,69,0.3)] transition-all duration-300 sm:text-lg group"
+              className="bg-[#731034] text-sm  text-white border-2 border-transparent font-bold font-sans px-8 py-5 rounded-2xl flex items-center gap-3 hover:bg-[#5a0c28] hover:scale-105 hover:shadow-[0_10px_25px_rgba(115,16,52,0.3)] transition-all duration-300 sm:text-lg group"
             >
               Plano Interactivo
               <Icon icon="mdi:arrow-right" className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

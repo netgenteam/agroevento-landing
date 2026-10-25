@@ -136,7 +136,7 @@ const ScheduleTabs = () => {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`font-sans cursor-pointer font-medium text-xs md:text-sm md:text-base whitespace-nowrap pb-4 transition-all relative ${activeTab === tab
-              ? 'text-aprolac-green'
+              ? 'text-[#731034]'
               : 'text-gray-500 hover:text-aprolac-text'
               }`}
           >
@@ -144,7 +144,7 @@ const ScheduleTabs = () => {
             {activeTab === tab && (
               <motion.div
                 layoutId="activeTab"
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-aprolac-green"
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#731034]"
               />
             )}
           </button>
@@ -168,14 +168,14 @@ const ScheduleTabs = () => {
                 className={`flex flex-col md:flex-row md:items-center p-6 gap-6 transition-all rounded-2xl ${event.type === 'break'
                   ? 'bg-gray-100 italic'
                   : 'bg-white shadow-sm border border-aprolac-border hover:shadow-md'
-                  } ${event.type === 'highlight' ? 'border-l-4 border-l-aprolac-green' : ''
+                  } ${event.type === 'highlight' ? 'border-l-4 border-l-[#731034]' : ''
                   }`}
               >
                 {/* Hora */}
                 <div className="flex items-center gap-3 md:w-32 flex-shrink-0">
                   <Icon
                     icon={event.type === 'break' ? 'mdi:coffee-outline' : 'mdi:clock-outline'}
-                    className={`w-5 h-5 ${event.type === 'break' ? 'text-gray-400' : 'text-aprolac-green'}`}
+                    className={`w-5 h-5 ${event.type === 'break' ? 'text-gray-400' : 'text-[#731034]'}`}
                   />
                   <span className={`font-sans font-bold text-sm md:text-base ${event.type === 'break' ? 'text-gray-400' : 'text-aprolac-dark'}`}>
                     {event.time}
