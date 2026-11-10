@@ -29,7 +29,7 @@ const Hero = () => {
          <h1 className="font-lexend font-extrabold text-4xl lg:text-6xl xl:text-8xl uppercase tracking-tight leading-none">
             <span className="text-white">EXPO AGRO NEGOCIOS </span>
             <br />
-            <span className="text-[#731034] block mt-2">LÁCTEOS 2027</span>
+            <span className="text-white block mt-2">LÁCTEOS 2027</span>
           </h1>
 
           {/* Subtítulo y Botones */}
