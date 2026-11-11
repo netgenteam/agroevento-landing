@@ -38,13 +38,99 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
   return <span ref={nodeRef}>0{suffix}</span>;
 };
 
+const VIDEO_SRC = encodeURI('/EXPO 2027 VÍDEO GENERAL.mp4');
+
+/* ── Modal de Video Oficial Expo 2027 con soporte responsive ── */
+const VideoModal = ({ onClose }: { onClose: () => void }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
+
+  // Cerrar al pulsar Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[150] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 md:p-10"
+      onClick={onClose}
+    >
+      <button
+        type="button"
+        suppressHydrationWarning
+        className="absolute top-6 right-6 z-50 text-white/80 hover:text-white bg-white/10 hover:bg-[#731034] rounded-full p-3 backdrop-blur-sm transition-all cursor-pointer shadow-lg"
+        onClick={onClose}
+        aria-label="Cerrar video"
+      >
+        <Icon icon="mdi:close" className="w-6 h-6 md:w-8 md:h-8" />
+      </button>
+
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        transition={{ delay: 0.1 }}
+        className="relative w-full max-w-6xl aspect-[4/3] md:aspect-video rounded-2xl sm:rounded-3xl shadow-2xl border border-white/20 bg-black overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <video
+          ref={videoRef}
+          src={VIDEO_SRC}
+          controls
+          playsInline
+          autoPlay
+          className="w-full h-full object-contain rounded-2xl sm:rounded-3xl"
+        />
+
+        <div className="absolute -bottom-14 md:hidden left-0 right-0 z-10 portrait:flex landscape:hidden justify-center pointer-events-none">
+          <div className="bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 flex items-center gap-2 shadow-lg animate-pulse">
+            <Icon icon="mdi:phone-rotate-landscape" className="w-5 h-5 text-white" />
+            <span className="text-white text-xs font-sans font-medium tracking-wide">
+              Gira tu dispositivo para pantalla completa
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const ExpoSection = () => {
   const isMounted = useSyncExternalStore(
     () => () => {},
     () => true,
     () => false
   );
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleCloseVideoModal = () => {
+    setIsVideoModalOpen(false);
+    setTimeout(() => {
+      videoContainerRef.current?.scrollIntoView({ behavior: 'instant', block: 'center' });
+    }, 50);
+  };
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -186,48 +272,70 @@ const ExpoSection = () => {
           ))}
         </div>
 
-        {/* Video en reconstrucción (Placeholder Próximamente preparado para futuro video) */}
+        {/* Video Oficial Expo Agro Negocios Lácteos 2027 */}
         <motion.div
           ref={videoContainerRef}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative w-full aspect-[4/3] sm:aspect-video rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group bg-gradient-to-br from-[#0c1f17] via-[#103024] to-[#0a1712]"
+          className="relative w-full aspect-[4/3] sm:aspect-video rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white group cursor-pointer bg-black"
         >
-          {/* Fondo Texturizado / Gradiente Elegante */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-aprolac-green/25 via-transparent to-black/60 z-0 pointer-events-none" />
+          {/* Capa 1: Gradiente Oscuro para legibilidad y elegancia visual */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20 z-10 pointer-events-none" />
 
-          {/* Insignia Central: Próximamente */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none px-6 text-center">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-2xl mb-3"
-            >
-              <span className="w-2.5 h-2.5 rounded-full bg-aprolac-green animate-pulse" />
-              <span className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase">
-                Próximamente
-              </span>
-            </motion.div>
-            <p className="text-gray-300 text-xs sm:text-sm md:text-base max-w-md font-sans font-medium">
-              Nuevo material audiovisual en producción
-            </p>
-          </div>
+          {/* Capa 2: Video de fondo silenciado en loop */}
+          <video
+            src={VIDEO_SRC}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 z-0 pointer-events-none"
+          />
 
-          {/* Capa Inferior: Textos de Identidad */}
-          <div className="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 z-20 pointer-events-none pr-6">
-            <span className="inline-flex items-center gap-2 bg-aprolac-green/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 sm:mb-4 shadow-lg border border-aprolac-green/50">
+          {/* Capa 3: Textos de Identidad */}
+          <div className="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 z-20 pointer-events-none pr-[80px] sm:pr-[100px] md:pr-[120px]">
+            <span className="inline-flex items-center gap-2 bg-[#731034]/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 sm:mb-4 shadow-lg border border-[#731034]/50">
               <Icon icon="mdi:movie-open-outline" className="w-4 h-4" />
-              Experiencia APROLAC
+              Experiencia APROLAC 2027
             </span>
             <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-lg leading-tight max-w-2xl">
               El renacer del agronegocio venezolano.
             </h3>
           </div>
+
+          {/* Capa 4: Botón Play llamativo en Vinotinto con animación hover */}
+          <button
+            type="button"
+            suppressHydrationWarning
+            onClick={() => setIsVideoModalOpen(true)}
+            aria-label="Reproducir video oficial Expo 2027"
+            className="absolute bottom-5 right-5 sm:bottom-8 sm:right-8 md:bottom-12 md:right-12 z-30 w-16 h-16 sm:w-20 sm:h-20 bg-[#731034]/90 backdrop-blur-md rounded-full border-2 border-white/60 flex items-center justify-center text-white hover:bg-[#5a0c28] hover:border-white hover:scale-110 transition-all duration-300 shadow-[0_0_30px_rgba(115,16,52,0.6)] cursor-pointer group-hover:scale-110"
+          >
+            <Icon icon="mdi:play" className="w-8 h-8 sm:w-10 sm:h-10 ml-1 text-white" />
+          </button>
+
+          {/* Capa 5: Hitbox interactiva en todo el contenedor */}
+          <button
+            type="button"
+            suppressHydrationWarning
+            className="absolute inset-0 w-full h-full z-20 cursor-pointer bg-transparent appearance-none focus:outline-none [-webkit-tap-highlight-color:transparent]"
+            onClick={() => setIsVideoModalOpen(true)}
+            aria-label="Reproducir video oficial Expo 2027"
+          />
         </motion.div>
+
+        {/* Recomendación de orientación en móvil */}
+        <div className="mb-10 md:hidden portrait:flex landscape:hidden justify-center mt-3 pointer-events-none">
+          <div className="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
+            <Icon icon="mdi:phone-rotate-landscape" className="w-4 h-4 text-[#731034] flex-shrink-0" />
+            <span className="text-aprolac-text text-xs font-sans">
+              Gira tu dispositivo para mejor experiencia
+            </span>
+          </div>
+        </div>
 
         <div className="mb-20" />
  
@@ -404,6 +512,13 @@ const ExpoSection = () => {
 
 
         {/* ✅ FIX: onClose usa handleCloseToast con useCallback para referencia estable */}
+        {/* Video Modal Oficial Expo 2027 */}
+        <AnimatePresence>
+          {isVideoModalOpen && (
+            <VideoModal onClose={handleCloseVideoModal} />
+          )}
+        </AnimatePresence>
+
         <Toast
           isVisible={toast.isVisible}
           message={toast.message}

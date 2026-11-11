@@ -2,8 +2,18 @@
 
 > **Proyecto:** Landing Page Oficial & Plataforma de Reserva de Stands B2B  
 > **Cliente / Marca:** APROLAC (Asociación de Productores Lácteos del Estado Bolívar)   
-> **Última Actualización:** 24 de Octubre de 2026  
+> **Última Actualización:** 11 de Noviembre de 2026  
 > **Estado General:** 🟢 Operativo / Compilación 100% Exitosa  
+
+---
+
+## 📌 Contexto Actual y Resumen de la Última Iteración
+
+### Integración del Video Oficial Expo 2027 (`EXPO 2027 VÍDEO GENERAL.mp4`)
+Se sustituyó el bloque temporal de *«Próximamente»* por la integración definitiva del nuevo video oficial para la edición 2027 suministrado en el directorio `public/`:
+* **Video Oficial:** `EXPO 2027 VÍDEO GENERAL.mp4`.
+* **Vista Previa en Tarjeta:** Reproducción en bucle silenciosa (`autoPlay loop muted playsInline preload="metadata"`), con gradiente cinematográfico, badge de *«Experiencia APROLAC 2027»* y botón de reproducción interactivo en vinotinto institucional (`bg-[#731034]`).
+* **Modal de Alta Definición (`VideoModal`):** Al hacer clic sobre el botón de reproducción o la tarjeta completa, se abre el reproductor a pantalla completa con controles nativos, atajo de teclado `Escape` para cerrar, bloqueo del scroll de fondo y sugerencia de rotación para dispositivos móviles.
 
 ---
 
